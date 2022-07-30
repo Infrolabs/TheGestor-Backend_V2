@@ -1,5 +1,21 @@
 export interface ITax {
-
+    _id: string
+    pendingTax: string
+    vat: string
+    irpf: string
+    retentionProviders: string
+    retentionRent: string
+    presentPeriod: Date
+    details: string
+    year: number
+    trimester: number
+    cifNif: string
+    name: string
+    status: string
+    userId: string
+    type: string
+    data: Object,
+    note: string
 }
 
 
