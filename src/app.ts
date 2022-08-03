@@ -29,6 +29,7 @@ class App {
     this.initializeRoutes(routes);
     this.initializeSwagger();
     this.initializeErrorHandling();
+
   }
 
   public listen() {

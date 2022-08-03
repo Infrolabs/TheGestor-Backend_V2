@@ -1,7 +1,7 @@
-import { DB_HOST, DB_PORT, DB_DATABASE } from '@config';
+import { MONGODB_URI } from '@config';
 
 export const dbConnection = {
-  url: `mongodb://${DB_HOST}:${DB_PORT}/${DB_DATABASE}`,
+  url: MONGODB_URI,
   options: {
     useNewUrlParser: true,
     useUnifiedTopology: true

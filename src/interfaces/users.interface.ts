@@ -1,44 +1,44 @@
 import { EPremiumType } from "./premium.interface"
 
 export interface IUser {
-  _id: string
-  name: string
-  companyName: string
-  email: string
-  countryCode: string
-  phoneNumber: string
-  image: string
+  _id?: string
+  name?: string
+  companyName?: string
+  email?: string
+  countryCode?: string
+  phoneNumber?: string
+  image?: string
   password?: string
-  cifNif: string
-  areaHome: string
-  areaOffice: string
-  address: string
-  city: string
-  zipCode: string
-  province: string
-  country: string
-  website: string
-  iae: string
-  cnae: string
-  isVerified: string
-  userType: EUserType
-  officeType: string
-  bank: IUserBankInfo
-  bizum: IUserBizum
-  platform: EUserPlatform
-  nordigenRequisitionId: string
-  accounts: IUserBankAccount[]
-  invoiceLogo: string
-  invoiceLanguage: ELanguage
-  adminNote: string
-  taxConfig: IUserTaxConfig
-  userAnswer: IUserAnswers
-  notificationSettings: IUserNotificationSettings
-  language: ELanguage
-  lastBilling: string
-  premiumType: EPremiumType
-  trialExpiryDate: Date
-  billingInfo: IUserBillingInfo
+  cifNif?: string
+  areaHome?: string
+  areaOffice?: string
+  address?: string
+  city?: string
+  zipCode?: string
+  province?: string
+  country?: string
+  website?: string
+  iae?: string
+  cnae?: string
+  isVerified?: string
+  userType?: EUserType
+  officeType?: string
+  bank?: IUserBankInfo
+  bizum?: IUserBizum
+  platform?: EUserPlatform
+  nordigenRequisitionId?: string
+  accounts?: IUserBankAccount[]
+  invoiceLogo?: string
+  invoiceLanguage?: ELanguage
+  adminNote?: string
+  taxConfig?: IUserTaxConfig
+  userAnswer?: IUserAnswers
+  notificationSettings?: IUserNotificationSettings
+  language?: ELanguage
+  lastBilling?: string
+  premiumType?: EPremiumType
+  trialExpiryDate?: Date
+  billingInfo?: IUserBillingInfo
 }
 
 export interface IUserBankInfo {
