@@ -40,6 +40,7 @@ const userSchema: Schema = new Schema({
   password: {
     type: String,
     trim: true,
+    select: false
   },
   bank: {
     bankName: String,

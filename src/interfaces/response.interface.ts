@@ -11,5 +11,8 @@ export enum ResponseCodes {
 export enum ResponseMessages {
     EMAIL_EXISTS = 'Email already exists',
     PHONE_EXISTS = 'Phone number already exists',
-    OTP_SENT = 'OTP sent to you phone'
+    OTP_SENT = 'OTP sent to your phone',
+    OTP_EXPIRED = 'OTP has been expired',
+    OTP_INCORRECT = 'OTP entered is incorrect',
+    SIGNUP_SUCCESS = "User signup successfully"
 }

@@ -17,3 +17,9 @@ export const isEmpty = (value: string | number | object): boolean => {
     return false;
   }
 };
+
+export const getNameAndSurname = (fullName: string) : any => {
+  const name = fullName.slice(0, fullName.indexOf(" "))
+  const surname = fullName.slice(fullName.indexOf(" ") + 1)
+  return { name, surname }
+}

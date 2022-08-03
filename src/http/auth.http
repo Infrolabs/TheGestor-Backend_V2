@@ -10,8 +10,8 @@ POST {{ baseURL }}/verify-exists
 Content-Type: application/json
 
 {
-    "email": "parmarnilkanth@gmail.com",
-    "phoneNumber": "9714577044",
+    "email": "test@gmail.com",
+    "phoneNumber": "9898989898",
     "countryCode":"+91"
 }
 
@@ -21,8 +21,16 @@ POST {{ baseURL }}/signup
 Content-Type: application/json
 
 {
-    "email": "example@email.com",
-    "password": "password"
+    "name": "test",
+    "email": "test@test.com",
+    "countryCode": "+91",
+    "phoneNumber": "9898989898",
+    "otp": "123456",
+    "userType": "freelancer",
+    "password": "test1234",
+    "cifNif": "test",
+    "companyName": "Test Company",
+    "platform": "web"
 }
 
 ###

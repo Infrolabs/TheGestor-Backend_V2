@@ -20,7 +20,7 @@ export interface IUser {
   website?: string
   iae?: string
   cnae?: string
-  isVerified?: string
+  isVerified?: boolean
   userType?: EUserType
   officeType?: string
   bank?: IUserBankInfo
