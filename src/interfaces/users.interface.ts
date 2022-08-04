@@ -20,12 +20,10 @@ export interface IUser {
   website?: string
   iae?: string
   cnae?: string
-  isVerified?: boolean
   userType?: EUserType
   officeType?: string
   bank?: IUserBankInfo
   bizum?: IUserBizum
-  platform?: EUserPlatform
   nordigenRequisitionId?: string
   accounts?: IUserBankAccount[]
   invoiceLogo?: string
@@ -114,12 +112,6 @@ export enum EUserType {
   FREELANCER = 'freelancer',
   COMPANY = 'company',
   ACCOUNTING_FIRM = 'accounting_firm'
-}
-
-export enum EUserPlatform {
-  ANDROID = 'android',
-  IOS = 'ios',
-  WEB = 'web'
 }
 
 export enum EUserAnswer1 {

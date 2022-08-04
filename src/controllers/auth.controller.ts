@@ -31,8 +31,7 @@ class AuthController {
         userType: req.body.userType,
         password: req.body.password,
         cifNif: req.body.cifNif,
-        companyName: req.body.companyName,
-        platform: req.body.platform
+        companyName: req.body.companyName
       }
       const { token, user } = await this.authService.signup(reqData, req.body.otp)
       res.status(ResponseCodes.SUCCESS).json({ data: { token, user }, message: ResponseMessages.SIGNUP_SUCCESS });
@@ -43,10 +42,13 @@ class AuthController {
 
   public logIn = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      // const userData: CreateUserDto = req.body;
-      // const { token, findUser } = await this.authService.login(userData);
+      const reqData: IUser = {
+        email: req.body.email,
+        password: req.body.password
+      }
+      const { token, user } = await this.authService.login(reqData)
 
-      res.status(200).json({ data: {}, message: 'login' });
+      res.status(ResponseCodes.SUCCESS).json({ data: { token, user }, message: ResponseMessages.LOGIN_SUCCESS });
     } catch (error) {
       next(error);
     }

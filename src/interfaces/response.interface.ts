@@ -14,5 +14,8 @@ export enum ResponseMessages {
     OTP_SENT = 'OTP sent to your phone',
     OTP_EXPIRED = 'OTP has been expired',
     OTP_INCORRECT = 'OTP entered is incorrect',
-    SIGNUP_SUCCESS = "User signup successfully"
+    SIGNUP_SUCCESS = "User signup successfully",
+    EMAIL_NOT_REGISTERED = "This email is not registered",
+    PASSWORD_INCORRECT = "The password is incorrect",
+    LOGIN_SUCCESS = "Login successfully"
 }

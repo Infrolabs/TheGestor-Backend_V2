@@ -1,5 +1,5 @@
 import { model, Schema, Document } from 'mongoose';
-import { ELanguage, IUser, EUserAnswer1, EUserAnswer2, EUserAnswer3, EUserPlatform, EUserType } from '@interfaces/users.interface';
+import { ELanguage, IUser, EUserAnswer1, EUserAnswer2, EUserAnswer3, EUserType } from '@interfaces/users.interface';
 import { EPremiumType } from '@/interfaces/premium.interface';
 
 const userSchema: Schema = new Schema({
@@ -20,7 +20,7 @@ const userSchema: Schema = new Schema({
   cnae: String,
   isVerified: {
     type: Boolean,
-    default: false
+    default: true
   },
   userType: {
     type: String,
@@ -40,7 +40,6 @@ const userSchema: Schema = new Schema({
   password: {
     type: String,
     trim: true,
-    select: false
   },
   bank: {
     bankName: String,
@@ -50,10 +49,6 @@ const userSchema: Schema = new Schema({
   },
   bizum: {
     mobileNumber: String
-  },
-  platform: {
-    type: String,
-    enum: Object.values(EUserPlatform),
   },
   nordigenRequisitionId: {
     type: String
