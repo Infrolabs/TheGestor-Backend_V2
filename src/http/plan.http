@@ -1,0 +1,11 @@
+# baseURL
+@baseURL = http://localhost:3000/v3
+
+# @baseURL = https://api.thegestor.app/v3
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNjczNmNjOGMyODQzMzE0MzJlNjkiLCJpYXQiOjE2NjAwMjg3NTd9.7BDA2ReNGDeWmPlbkW9Lte02RNyZA1l0SeiMBAdsLLA
+
+###
+# Get plan list for the user
+GET {{ baseURL }}/plan/list
+Authorization: Bearer {{token}}

@@ -9,6 +9,8 @@ export enum ResponseCodes {
 }
 
 export enum ResponseMessages {
+    WRONG_AUTH_TOKEN = 'Wrong authentication token',
+    AUTH_TOKEN_MISSING = 'Authentication token missing',
     EMAIL_EXISTS = 'Email already exists',
     PHONE_EXISTS = 'Phone number already exists',
     OTP_SENT = 'OTP sent to your phone',
@@ -17,5 +19,6 @@ export enum ResponseMessages {
     SIGNUP_SUCCESS = "User signup successfully",
     EMAIL_NOT_REGISTERED = "This email is not registered",
     PASSWORD_INCORRECT = "The password is incorrect",
-    LOGIN_SUCCESS = "Login successfully"
+    LOGIN_SUCCESS = "Login successfully",
+    PLANS_FOUND = "Plans found"
 }
