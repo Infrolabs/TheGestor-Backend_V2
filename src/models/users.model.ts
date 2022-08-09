@@ -18,6 +18,8 @@ const userSchema: Schema = new Schema({
   website: String,
   iae: String,
   cnae: String,
+  professionalActivity: String,
+  proffesionalCategory: String,
   isVerified: {
     type: Boolean,
     default: true

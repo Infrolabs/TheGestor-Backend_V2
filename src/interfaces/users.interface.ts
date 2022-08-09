@@ -20,6 +20,8 @@ export interface IUser {
   website?: string
   iae?: string
   cnae?: string
+  professionalActivity?: string
+  proffesionalCategory?: string
   userType?: EUserType
   officeType?: string
   bank?: IUserBankInfo
