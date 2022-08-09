@@ -66,7 +66,7 @@ class App {
 
   private initializeRoutes(routes: Routes[]) {
     routes.forEach(route => {
-      this.app.use('/', route.router);
+      this.app.use('/v3/', route.router);
     });
   }
 
