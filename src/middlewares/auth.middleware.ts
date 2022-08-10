@@ -13,7 +13,7 @@ const authMiddleware = async (req: IUserRequest, res: Response, next: NextFuncti
     if (Authorization) {
       const secretKey: string = SECRET_KEY;
       const verificationResponse = (await verify(Authorization, secretKey)) as DataStoredInToken;
-      const userId = verificationResponse._id;
+      const userId = verificationResponse.user.id;
       const findUser = await userModel.findById(userId);
 
       if (findUser) {

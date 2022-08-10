@@ -90,7 +90,7 @@ class AuthService {
   // }
 
   public createToken(user: IUser): string {
-    const dataStoredInToken: DataStoredInToken = { _id: user._id };
+    const dataStoredInToken: DataStoredInToken = { user: { id: user._id } }
     const secretKey: string = SECRET_KEY;
 
     return sign(dataStoredInToken, secretKey);
