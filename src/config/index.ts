@@ -1,5 +1,4 @@
-import { config } from 'dotenv';
-config({ path: '.env' });
+import 'dotenv/config'
 
 export const CREDENTIALS = process.env.CREDENTIALS === 'true';
 export const { 
