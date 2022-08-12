@@ -13,6 +13,7 @@ import { dbConnection } from '@databases';
 import { Routes } from '@interfaces/routes.interface';
 import errorMiddleware from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
+import responseMiddleware from './middlewares/response.middleware';
 
 class App {
   public app: express.Application;
@@ -62,6 +63,7 @@ class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
+    this.app.use(responseMiddleware)
   }
 
   private initializeRoutes(routes: Routes[]) {

@@ -11,5 +11,5 @@ export interface TokenData {
 }
 
 export interface IUserRequest extends Request {
-  user: IUser;
+  user?: IUser;
 }

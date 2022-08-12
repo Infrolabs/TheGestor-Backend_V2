@@ -1,6 +1,20 @@
 import { EUserType } from "@/interfaces/users.interface";
 
-export const BillinPlans = [
+export interface IBillingPlan {
+    id: string
+    name: string,
+    userType: EUserType
+    description: any
+    features: any
+    amount: IBillingPlanAmount
+}
+
+export interface IBillingPlanAmount {
+    month: number
+    year: number
+}
+
+export const BillinPlans : IBillingPlan[] = [
     {
         id: "freelancers",
         name: "Premium",

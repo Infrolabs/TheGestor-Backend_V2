@@ -24,9 +24,9 @@ class OtpService {
         .verificationChecks
         .create({ to: phone, code: otp })
       if (verificationCheck.status !== "approved")
-        throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.OTP_INCORRECT)
+        throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.OTP_INCORRECT)
     } catch (e) {
-      throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.OTP_EXPIRED)
+      throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.OTP_EXPIRED)
     }
   }
 

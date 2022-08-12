@@ -15,7 +15,7 @@ class AuthController {
         phoneNumber: req.body.phoneNumber
       }
       await this.authService.verifyExists(reqData);
-      res.status(ResponseCodes.SUCCESS).json({ message: ResponseMessages.OTP_SENT });
+      res.status(ResponseCodes.SUCCESS).json({ message: ResponseMessages.en.OTP_SENT });
     } catch (error) {
       next(error);
     }
@@ -34,7 +34,7 @@ class AuthController {
         companyName: req.body.companyName
       }
       const { token, user } = await this.authService.signup(reqData, req.body.otp)
-      res.status(ResponseCodes.SUCCESS).json({ data: { token, user }, message: ResponseMessages.SIGNUP_SUCCESS });
+      res.status(ResponseCodes.SUCCESS).json({ data: { token, user }, message: ResponseMessages.en.SIGNUP_SUCCESS });
     } catch (error) {
       next(error);
     }
@@ -48,7 +48,7 @@ class AuthController {
       }
       const { token, user } = await this.authService.login(reqData)
 
-      res.status(ResponseCodes.SUCCESS).json({ data: { token, user }, message: ResponseMessages.LOGIN_SUCCESS });
+      res.status(ResponseCodes.SUCCESS).json({ data: { token, user }, message: ResponseMessages.en.LOGIN_SUCCESS });
     } catch (error) {
       next(error);
     }
