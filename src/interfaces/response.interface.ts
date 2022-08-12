@@ -1,7 +1,7 @@
 import { Response } from "express";
 
-export interface ApiResponse extends Response {
-    success: (message: string, data: any) => void
+export interface IApiResponse extends Response {
+    success: (message: string, data?: any) => void
 }
 
 export enum ResponseCodes {
@@ -28,7 +28,13 @@ export const ResponseMessages = {
         EMAIL_NOT_REGISTERED: "This email is not registered",
         PASSWORD_INCORRECT: "The password is incorrect",
         LOGIN_SUCCESS: "Login successfully",
-        PLANS_FOUND: "Plans found"
+        PLANS_FOUND: "Plans found",
+        COUPON_NOT_FOUND: 'Coupon not found',
+        COUPON_INVALID_PLAN: 'Coupon cannot be applied to selected plan',
+        COUPON_CANNOT_REDEEM: 'Coupon cannot be redeemed by you',
+        COUPON_USED: 'Coupon already used',
+        COUPON_APPLIED_SUCCESS: 'Coupon applied successfully',
+        COUPON_CREATED: 'Coupon created successfully',
     },
     es: {
         SOMETHING_WENT_WRONG: 'Something went wrong',
@@ -43,6 +49,12 @@ export const ResponseMessages = {
         EMAIL_NOT_REGISTERED: "This email is not registered",
         PASSWORD_INCORRECT: "The password is incorrect",
         LOGIN_SUCCESS: "Login successfully",
-        PLANS_FOUND: "Plans found"
+        PLANS_FOUND: "Plans found",
+        COUPON_NOT_FOUND: 'Coupon not found',
+        COUPON_INVALID_PLAN: 'Coupon cannot be applied to selected plan',
+        COUPON_CANNOT_REDEEM: 'Coupon cannot be redeemed by you',
+        COUPON_USED: 'Coupon already used',
+        COUPON_APPLIED_SUCCESS: 'Coupon applied successfully',
+        COUPON_CREATED: 'Coupon created successfully',
     }
 }
