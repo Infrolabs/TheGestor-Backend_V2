@@ -3,7 +3,7 @@ import { ResponseCodes, ResponseMessages } from "@/interfaces/response.interface
 import { NextFunction } from "express"
 
 const responseMiddleware = (req: IUserRequest, res: any, next: NextFunction) => {
-    res.success = (message: string, data: any) => {
+    res.success = (message: string, data: any = null) => {
         // Response message localization
         const respMessage = message && req.user &&
             Object.values(ResponseMessages.en).some(v => v === message) &&
