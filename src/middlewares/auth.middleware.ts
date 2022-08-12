@@ -20,13 +20,13 @@ const authMiddleware = async (req: IUserRequest, res: Response, next: NextFuncti
         req.user = findUser;
         next();
       } else {
-        next(new HttpException(ResponseCodes.UNAUTHORIZED, ResponseMessages.WRONG_AUTH_TOKEN));
+        next(new HttpException(ResponseCodes.UNAUTHORIZED, ResponseMessages.en.WRONG_AUTH_TOKEN));
       }
     } else {
-      next(new HttpException(ResponseCodes.UNAUTHORIZED, ResponseMessages.AUTH_TOKEN_MISSING));
+      next(new HttpException(ResponseCodes.UNAUTHORIZED, ResponseMessages.en.AUTH_TOKEN_MISSING));
     }
   } catch (error) {
-    next(new HttpException(ResponseCodes.UNAUTHORIZED, ResponseMessages.WRONG_AUTH_TOKEN));
+    next(new HttpException(ResponseCodes.UNAUTHORIZED, ResponseMessages.en.WRONG_AUTH_TOKEN));
   }
 };
 

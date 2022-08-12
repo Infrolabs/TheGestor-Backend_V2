@@ -26,9 +26,9 @@ class AuthService {
       ]
     })
     if (existingUser && existingUser.email === user.email)
-      throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.EMAIL_EXISTS)
+      throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.EMAIL_EXISTS)
     if (existingUser && existingUser.phoneNumber === user.phoneNumber)
-      throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.PHONE_EXISTS)
+      throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.PHONE_EXISTS)
 
     // SENDS CODE
     this.otpService.sendOtp(user.countryCode + "" + user.phoneNumber)
@@ -42,9 +42,9 @@ class AuthService {
       ]
     })
     if (existingUser && existingUser.email === userData.email)
-      throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.EMAIL_EXISTS)
+      throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.EMAIL_EXISTS)
     if (existingUser && existingUser.phoneNumber === userData.phoneNumber)
-      throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.PHONE_EXISTS)
+      throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.PHONE_EXISTS)
 
     this.otpService.verifyOtp(userData.countryCode + "" + userData.phoneNumber, otp)
 
@@ -70,11 +70,11 @@ class AuthService {
   public async login(userData: IUser): Promise<{ token: string; user: IUser }> {
     const user = await userModel.findOne({ email: userData.email }).lean();
     if (!user)
-      throw new HttpException(ResponseCodes.NOT_FOUND, ResponseMessages.EMAIL_NOT_REGISTERED)
+      throw new HttpException(ResponseCodes.NOT_FOUND, ResponseMessages.en.EMAIL_NOT_REGISTERED)
 
     const isMatch = await compare(userData.password, user.password);
     if (!isMatch)
-      throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.PASSWORD_INCORRECT)
+      throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.PASSWORD_INCORRECT)
 
     const token = this.createToken(user)
     return { token, user: filterCurrentUser(user) };
