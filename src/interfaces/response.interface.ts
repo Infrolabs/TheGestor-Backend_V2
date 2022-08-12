@@ -34,6 +34,7 @@ export const ResponseMessages = {
         COUPON_CANNOT_REDEEM: 'Coupon cannot be redeemed by you',
         COUPON_USED: 'Coupon already used',
         COUPON_APPLIED_SUCCESS: 'Coupon applied successfully',
+        COUPON_CREATED: 'Coupon created successfully',
     },
     es: {
         SOMETHING_WENT_WRONG: 'Something went wrong',
@@ -54,5 +55,6 @@ export const ResponseMessages = {
         COUPON_CANNOT_REDEEM: 'Coupon cannot be redeemed by you',
         COUPON_USED: 'Coupon already used',
         COUPON_APPLIED_SUCCESS: 'Coupon applied successfully',
+        COUPON_CREATED: 'Coupon created successfully',
     }
 }

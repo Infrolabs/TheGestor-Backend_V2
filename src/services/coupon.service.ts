@@ -1,5 +1,5 @@
 import { HttpException } from "@/exceptions/HttpException";
-import { EBillingPaymentStatus } from "@/interfaces/billing.interface";
+import { EBillingPaymentStatus, EPlanType } from "@/interfaces/billing.interface";
 import { ICoupon } from "@/interfaces/coupon.interface";
 import { ResponseCodes, ResponseMessages } from "@/interfaces/response.interface";
 import { IUser } from "@/interfaces/users.interface";
@@ -7,7 +7,13 @@ import billingModel from "@/models/billing.model";
 import couponModel from "@/models/coupon.model";
 
 class CouponService {
-    public async applyCoupon(coupon: string, planId: string, planType: string, user: IUser): Promise<ICoupon> {
+    public async createCoupon(couponData: ICoupon): Promise<ICoupon> {
+        let coupon = new couponModel(couponData)
+        coupon = await coupon.save()
+        return coupon
+    }
+
+    public async applyCoupon(coupon: string, planId: string, planType: EPlanType, user: IUser): Promise<ICoupon> {
         const couponObj = await couponModel.findOne({ code: coupon, planId, isDeleted: false })
         if (!couponObj)
             throw new HttpException(ResponseCodes.NOT_FOUND, ResponseMessages.en.COUPON_NOT_FOUND)

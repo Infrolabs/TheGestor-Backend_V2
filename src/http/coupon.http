@@ -5,7 +5,25 @@
 
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJlYTY3MzZjYzhjMjg0MzMxNDMyZTY5In0sImlhdCI6MTY2MDA0NTI5MywiZXhwIjoxNjkxNTgxMjkzLCJhdWQiOiJkZXYiLCJpc3MiOiJ0aGVnZXN0b3JhcHAifQ.BaytKEl8GOL8xHSLAZOuww4fGUI5PCaIwSXj1UbZRFI
 
+
+###
+# Create new user coupon
+POST {{ baseURL }}/coupon/
+Content-Type: application/json
+
+{
+    "code": "TEST_COUPON",
+    "planId":"freelancer", 
+    "planType":"monthly", 
+    "discountPercent":100, 
+    "isPublic":true, 
+    "users":[], 
+    "units":1
+}
+
+
+
 ###
 # Get plan list for the user
-GET {{ baseURL }}/coupon/apply?coupon=
+GET {{ baseURL }}/coupon/apply?coupon=TEST_COUPON&planType=monthly&planId=freelancer
 Authorization: Bearer {{token}}
