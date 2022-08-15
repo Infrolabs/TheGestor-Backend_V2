@@ -15,11 +15,13 @@ import errorMiddleware from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
 import responseMiddleware from './middlewares/response.middleware';
 import path from 'path';
+import CronService from './services/cron.service';
 
 class App {
   public app: express.Application;
   public env: string;
   public port: string | number;
+  private cronService = new CronService()
 
   constructor(routes: Routes[]) {
     this.app = express();
@@ -31,7 +33,7 @@ class App {
     this.initializeRoutes(routes);
     this.initializeSwagger();
     this.initializeErrorHandling();
-
+    this.rescheduleJobs()
   }
 
   public listen() {
@@ -96,6 +98,11 @@ class App {
   private initializeErrorHandling() {
     this.app.use(errorMiddleware);
   }
+
+  private rescheduleJobs(){
+    this.cronService.rescheduleAllJobs()
+  }
+
 }
 
 export default App;
