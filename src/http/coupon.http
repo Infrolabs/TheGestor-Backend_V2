@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "code": "TEST_COUPON",
-    "planId":"freelancer", 
+    "planId":"freelancers", 
     "planType":"monthly", 
     "discountPercent":100, 
     "isPublic":true, 

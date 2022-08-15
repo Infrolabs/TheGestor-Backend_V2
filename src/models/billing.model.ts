@@ -50,6 +50,7 @@ const billingSchema: Schema = new Schema({
 })
 
 billingSchema.index({ user: 1, coupon: 1 })
+billingSchema.index({ user: 1, paymentStatus: 1 })
 const billingModel = model<IBilling & Document>('Billing', billingSchema);
 
 export default billingModel;
