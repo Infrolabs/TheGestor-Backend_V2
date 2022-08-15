@@ -2,6 +2,7 @@ import { Router } from 'express';
 import PlanController from '@controllers/plan.controller';
 import { Routes } from '@interfaces/routes.interface';
 import authMiddleware from '@/middlewares/auth.middleware';
+import { adminAuthorityMiddleware } from '@/middlewares/authority.middleware';
 
 class PlanRoute implements Routes {
     public path = '/plan';
@@ -13,7 +14,7 @@ class PlanRoute implements Routes {
     }
 
     private initializeRoutes() {
-        this.router.get(`${this.path}/list`, authMiddleware, this.planController.list);
+        this.router.get(`${this.path}/list`, authMiddleware, adminAuthorityMiddleware, this.planController.list);
     }
 }
 

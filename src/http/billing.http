@@ -1,0 +1,71 @@
+# baseURL
+@baseURL = http://localhost:3001/v3
+
+# @baseURL = https://api.thegestor.app/v3
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJlYTY3MzZjYzhjMjg0MzMxNDMyZTY5In0sImlhdCI6MTY2MDA0NTI5MywiZXhwIjoxNjkxNTgxMjkzLCJhdWQiOiJkZXYiLCJpc3MiOiJ0aGVnZXN0b3JhcHAifQ.BaytKEl8GOL8xHSLAZOuww4fGUI5PCaIwSXj1UbZRFI
+
+###
+# Create new billing
+POST {{ baseURL }}/billing/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "name":"Test",
+    "cifNif":"test",
+    "email": "test@test.com",
+    "province": "test",
+    "address": "test street, near test",
+    "country": "TEST",
+    "zipCode": "123456",
+    "city": "test",
+    "amount": 0,
+    "units": 1,
+    "coupon": "TEST_COUPON",
+    "planId":"freelancers", 
+    "planType":"monthly"
+}
+
+
+###
+# Get payment form
+GET {{ baseURL }}/billing/form/62fa0c9826ebc009d1121782
+
+###
+# Update billing on success
+PUT {{ baseURL }}/billing/62fa0c9826ebc009d1121782
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "paymentStatus":"paid",
+    "transactionDetails":{
+        "Ds_MerchantParameters":"eyJEc19EYXRlIjoiMTUlMkYwOCUyRjIwMjIiLCJEc19Ib3VyIjoiMTElM0EzOCIsIkRzX1NlY3VyZVBheW1lbnQiOiIxIiwiRHNfQW1vdW50IjoiMCIsIkRzX0N1cnJlbmN5IjoiOTc4IiwiRHNfT3JkZXIiOiIwMDAwMDE0MzJlNjkiLCJEc19NZXJjaGFudENvZGUiOiI5NzE1MjQ2NiIsIkRzX1Rlcm1pbmFsIjoiMDAxIiwiRHNfUmVzcG9uc2UiOiIwMDAwIiwiRHNfVHJhbnNhY3Rpb25UeXBlIjoiMCIsIkRzX01lcmNoYW50RGF0YSI6IiIsIkRzX0F1dGhvcmlzYXRpb25Db2RlIjoiMjk3MTk0IiwiRHNfRXhwaXJ5RGF0ZSI6IjI2MTEiLCJEc19NZXJjaGFudF9JZGVudGlmaWVyIjoiMzIyNTQ5YTc2Y2M5MDkwYzBmODE3MmU1YjcxYjhkYzQ1MTM5NDg4YiIsIkRzX0NvbnN1bWVyTGFuZ3VhZ2UiOiIxIiwiRHNfQ2FyZF9Db3VudHJ5IjoiNzI0IiwiRHNfQ2FyZF9CcmFuZCI6IjEiLCJEc19NZXJjaGFudF9Db2ZfVHhuaWQiOiIyMjA4MTUxMTM4MDgwIiwiRHNfUHJvY2Vzc2VkUGF5TWV0aG9kIjoiMSIsIkRzX0NvbnRyb2xfMTY2MDU1NjI4OTQ5NCI6IjE2NjA1NTYyODk0OTQifQ==&Ds_Signature=HOF40yH_5pvkSSybPnPiVanh48hPkyDE9j1K0kf6g38="
+    }
+}
+
+###
+# Update billing on failure
+PUT {{ baseURL }}/billing/62f9fe49589b555094ae49fd
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "paymentStatus":"error",
+    "errorDetails":{
+        "message":"Some error returned from the redsys"
+    }
+}
+
+###
+# Get billing list
+GET {{ baseURL }}/billing/list
+Authorization: Bearer {{token}}
+
+
+
+###
+# Cancel the current subscription
+DELETE {{ baseURL }}/billing/subscription
+Authorization: Bearer {{token}}
