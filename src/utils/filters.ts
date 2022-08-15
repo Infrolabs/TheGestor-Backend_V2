@@ -9,11 +9,18 @@ export const filterCurrentUser = (user: IUser): IUser => {
 }
 
 export const filterPlans = (plans: IBillingPlan[], language: ELanguage): IBillingPlan[] => {
+    const result : IBillingPlan[] = []
     plans.forEach(plan => {
-        plan.features = plan.features[language] ? plan.features[language] : plan.features[ELanguage.ES]
-        plan.description = plan.description[language] ? plan.description[language] : plan.description[ELanguage.ES]
+        result.push({
+            id: plan.id,
+            name: plan.name,
+            userType: plan.userType,
+            description: plan.description[language] ? plan.description[language] : plan.description[ELanguage.ES],
+            features: plan.features[language] ? plan.features[language] : plan.features[ELanguage.ES],
+            amount: plan.amount
+        })
     })
-    return plans
+    return result
 }
 
 export const filterCoupon = (coupon: ICoupon): ICoupon => {
