@@ -39,7 +39,19 @@ class BillingController {
                 transactionDetails: req.body.transactionDetails
             }
             const billingObj = await this.billingService.updateBilling(req.params.id, reqData, req.user)
-            res.success(ResponseMessages.en.BILLING_CREATED, filterBilling(billingObj))
+            res.success(ResponseMessages.en.BILLING_UPDATED, filterBilling(billingObj))
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    public updateUnpaidBilling = async (req: IUserRequest, res: IApiResponse, next: NextFunction) => {
+        try {
+            const reqData: IBilling = {
+                transactionDetails: req.body.transactionDetails
+            }
+            await this.billingService.updateUnpaidBillings(req.body.billingIds, reqData, req.user)
+            res.success(ResponseMessages.en.BILLING_UPDATED)
         } catch (error) {
             next(error);
         }
@@ -48,6 +60,17 @@ class BillingController {
     public getForm = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const form = await this.billingService.getBillingForm(req.params.id)
+            res.set('Content-Type', 'text/html')
+            res.render('redsys', form)
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    public getUnpaidForm = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const billingIds = JSON.parse(String(req.query.billingIds))
+            const form = await this.billingService.getUnpaidBillingForm(billingIds as string[])
             res.set('Content-Type', 'text/html')
             res.render('redsys', form)
         } catch (error) {

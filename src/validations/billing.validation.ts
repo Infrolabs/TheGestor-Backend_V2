@@ -26,3 +26,16 @@ export const billingUpdateSchema = {
         errorDetails: Joi.object().optional().allow(null)
     })
 }
+
+export const billingUnpaidFormSchema = {
+    query: Joi.object({
+        billingIds: Joi.string().required()
+    })
+}
+
+export const billingUpdateUnpaidSchema = {
+    body: Joi.object({
+        billingIds: Joi.array().items(Joi.string()).required(),
+        transactionDetails: Joi.object().optional().allow(null)
+    })
+}

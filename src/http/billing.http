@@ -69,3 +69,29 @@ Authorization: Bearer {{token}}
 # Cancel the current subscription
 DELETE {{ baseURL }}/billing/subscription
 Authorization: Bearer {{token}}
+
+
+
+##########################
+# UNPAID BILLS FLOW
+
+###
+# Get unpaid bills payment form
+GET {{ baseURL }}/billing/unpaid-form?billingIds=["62fe3eff6d30caecbf1b6a0f"]
+
+###
+# Update billing status on success. 
+PUT {{ baseURL }}/billing/unpaid-bills
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "billingIds":["62fe3eff6d30caecbf1b6a0f"],
+    "transactionDetails":{
+        "Ds_MerchantParameters":"eyJEc19EYXRlIjoiMTglMkYwOCUyRjIwMjIiLCJEc19Ib3VyIjoiMTUlM0EzOCIsIkRzX1NlY3VyZVBheW1lbnQiOiIxIiwiRHNfQW1vdW50IjoiNjAwIiwiRHNfQ3VycmVuY3kiOiI5NzgiLCJEc19PcmRlciI6IjY2MDgyOTgzMTczNSIsIkRzX01lcmNoYW50Q29kZSI6Ijk3MTUyNDY2IiwiRHNfVGVybWluYWwiOiIwMDEiLCJEc19SZXNwb25zZSI6IjAwMDAiLCJEc19UcmFuc2FjdGlvblR5cGUiOiIwIiwiRHNfTWVyY2hhbnREYXRhIjoiIiwiRHNfQXV0aG9yaXNhdGlvbkNvZGUiOiIwNzEwMDgiLCJEc19Db25zdW1lckxhbmd1YWdlIjoiMSIsIkRzX0NhcmRfQ291bnRyeSI6IjcyNCIsIkRzX0NhcmRfQnJhbmQiOiIxIiwiRHNfUHJvY2Vzc2VkUGF5TWV0aG9kIjoiMSIsIkRzX0NvbnRyb2xfMTY2MDgyOTg5NzkwNyI6IjE2NjA4Mjk4OTc5MDcifQ==&Ds_Signature=mntmtrCrMGoSg6GlNE5TKXTi9MAH_VdQDI_wIfgtmyo="
+    }
+}
+
+
+###
+# NOTE : For failure just display error. No need to call any apis
