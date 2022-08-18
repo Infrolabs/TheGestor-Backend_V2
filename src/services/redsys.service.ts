@@ -15,10 +15,10 @@ class RedsysService {
         secretKey(REDSYS_SECRET_KEY)
     }
 
-    public getMerchantParams(billing: IBilling): any {
+    public getMerchantParams(orderNo: string, amount: number, userId: string, isRecurring: boolean = false): any {
         const obj = {
-            amount: Math.round(billing.amount * 100),
-            order: billing.orderNo,
+            amount: Math.round(amount * 100),
+            order: orderNo,
             merchantName: REDSYS_MERCHANT_NAME,
             merchantCode: REDSYS_MERCHANT_CODE,
             currency: CURRENCIES.EUR,
@@ -27,11 +27,12 @@ class RedsysService {
             merchantURL: REDSYS_MERCHANT_URL,
             successURL: REDSYS_SUCCESS_URL,
             errorURL: REDSYS_ERROR_URL,
-            productDesc: "User : " + billing.user,
-            identifier: "REQUIRED",
-            cofIni: "S",
-            cofType: "R"
+            productDesc: "User : " + userId,
+            identifier: isRecurring ? "REQUIRED" : null,
+            cofIni: isRecurring ? "S" : null,
+            cofType: isRecurring ? "R" : null
         }
+
 
         const result = this.makeParameters(obj)
 
@@ -114,10 +115,10 @@ class RedsysService {
         })
     }
 
-    public validatePayment(merchantParams: any): boolean {
+    public validatePayment(merchantParams: any, amount: number): boolean {
         try {
             const result = getResponseParameters(merchantParams)
-            if (result?.Ds_AuthorisationCode)
+            if (result?.Ds_AuthorisationCode && Number(result?.Ds_Amount) === amount * 100)
                 return true
         } catch (e) {
             logger.error("Payment validate error : ", e)

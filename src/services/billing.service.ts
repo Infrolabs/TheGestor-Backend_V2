@@ -58,8 +58,11 @@ class BillingService {
     }
 
     public async updateBilling(billingId: string, billingData: IBilling, user: IUser): Promise<IBilling> {
+        const billing = await billingModel.findOne({ _id: billingId, user: user._id })
+        if (!billing)
+            throw new HttpException(ResponseCodes.NOT_FOUND, ResponseMessages.en.BILL_NOT_FOUND)
         if (billingData.paymentStatus === EBillingPaymentStatus.PAID) {
-            if (!this.redsysService.validatePayment(billingData.transactionDetails.Ds_MerchantParameters))
+            if (!this.redsysService.validatePayment(billingData.transactionDetails.Ds_MerchantParameters, billing.amount))
                 throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.INVALID_PAYMENT)
             const start = new Date()
             start.setMonth(0, 1)
@@ -71,18 +74,39 @@ class BillingService {
             const invoices = await billingModel.countDocuments({ createdAt: { $gte: start, $lt: end }, paymentStatus: { $in: [EBillingPaymentStatus.PAID, EBillingPaymentStatus.UNPAID] } })
             billingData.invoiceNo = (new Date()).getFullYear() + "-INC-" + (String(invoices).padStart(6, "0"))
         }
-        const billing = await billingModel.findOneAndUpdate({ _id: billingId, user: user._id }, billingData, { new: true })
-        if(!billing)
-            throw new HttpException(ResponseCodes.NOT_FOUND,ResponseMessages.en.BILL_NOT_FOUND)
+        const billingNew = await billingModel.findOneAndUpdate({ _id: billingId, user: user._id }, billingData, { new: true })
         if (billingData.paymentStatus === EBillingPaymentStatus.PAID) {
-            await userModel.updateOne({ _id: user._id }, { $set: { premiumType: EPremiumType.PREMIUM, lastBilling: billing._id } })
+            await userModel.updateOne({ _id: user._id }, { $set: { premiumType: EPremiumType.PREMIUM, lastBilling: billingNew._id } })
         }
-        return billing
+        return billingNew
+    }
+
+    public async updateUnpaidBillings(billingIds: string[], billingData: IBilling, user: IUser): Promise<void> {
+        const billings = await billingModel.find({ _id: { $in: billingIds }, user: user._id })
+        if (!billings || billings.length === 0)
+            throw new HttpException(ResponseCodes.NOT_FOUND, ResponseMessages.en.BILL_NOT_FOUND)
+        let amount = 0
+        billings.forEach(billing => { amount += billing.amount })
+        if (!this.redsysService.validatePayment(billingData.transactionDetails.Ds_MerchantParameters, amount))
+            throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.INVALID_PAYMENT)
+        billingData.paymentStatus = EBillingPaymentStatus.PAID
+        await billingModel.updateMany({ _id: { $in: billingIds } }, billingData, { new: true })
     }
 
     public async getBillingForm(billingId: string): Promise<any> {
         const billingObj = await billingModel.findById(billingId).lean()
-        return this.redsysService.getMerchantParams(billingObj)
+        return this.redsysService.getMerchantParams(billingObj.orderNo, billingObj.amount, billingObj.user, true)
+    }
+
+    public async getUnpaidBillingForm(billingIds: string[]): Promise<any> {
+        const billings = await billingModel.find({ _id: { $in: billingIds }, paymentStatus: EBillingPaymentStatus.UNPAID }).lean()
+        if (billings.length === 0)
+            throw new HttpException(ResponseCodes.NOT_FOUND, ResponseMessages.en.BILL_NOT_FOUND)
+        let amount = 0
+        billings.forEach(billing => { amount += billing.amount })
+        const dateStr = String(new Date().getTime())
+        const orderNo = dateStr.substring(dateStr.length - 12)
+        return this.redsysService.getMerchantParams(orderNo, amount, billings[0].user)
     }
 
     public async getBillingList(userId: string): Promise<IBilling[]> {
