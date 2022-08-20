@@ -1,3 +1,4 @@
+import { ESubscriptionStatus } from '@/interfaces/billing.interface'
 import { EPremiumType } from '@/interfaces/premium.interface'
 import userModel from '@/models/users.model'
 import { logger } from '@/utils/logger'
@@ -15,8 +16,10 @@ class CronService {
     }
 
 
-    private async premiumRenewJob(){
+    private async premiumRenewJob() {
         logger.info("======>> Premium cron started")
+        const endDate = new Date()
+        const startDate = new Date(endDate.getTime() - 2 * 24 * 60 * 60 * 1000)
         const users = await userModel.aggregate([
             {
                 $lookup: {
@@ -24,17 +27,16 @@ class CronService {
                     localField: "lastBilling",
                     foreignField: "_id",
                     as: "lastBilling"
-    
+
                 }
             },
             { $unwind: "$lastBilling" },
             {
                 $match: {
-                    premiumType: EPremiumType.PREMIUM,
-                    "lastBilling.expiryDate": { $lt: new Date() }
+                    "lastBilling.expiryDate": { $lt: endDate, $gte: startDate }
                 }
             }
-    
+
         ])
         logger.info("======>> Premium expired : ", users.map(u => u._id))
         let i = 0
