@@ -19,7 +19,8 @@ class CronService {
     private async premiumRenewJob() {
         logger.info("======>> Premium cron started")
         const endDate = new Date()
-        const startDate = new Date(endDate.getTime() - 2 * 24 * 60 * 60 * 1000)
+        endDate.setHours(9,0,0,0)
+        const startDate = new Date(endDate.getTime() - 24 * 60 * 60 * 1000)
         const users = await userModel.aggregate([
             {
                 $lookup: {
