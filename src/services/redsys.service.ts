@@ -43,7 +43,7 @@ class RedsysService {
         const identifier = billing?.transactionDetails?.Ds_MerchantParameters ? getResponseParameters(billing.transactionDetails.Ds_MerchantParameters)?.Ds_Merchant_Identifier : null
         const txnId = billing?.transactionDetails?.Ds_MerchantParameters ? getResponseParameters(billing.transactionDetails.Ds_MerchantParameters)?.Ds_Merchant_Cof_Txnid : null
         const plan = BillinPlans.find(plan => plan.id === billing.planId)
-        if (!identifier || !txnId || billing.subscriptionStatus === ESubscriptionStatus.CANCELED || !plan) {
+        if (!identifier || !txnId || billing.subscriptionStatus === ESubscriptionStatus.CANCELED || !plan || billing.paymentStatus === EBillingPaymentStatus.UNPAID) {
             await userModel.updateOne({ _id: billing.user }, { $set: { premiumType: EPremiumType.FREE } })
             return
         }
@@ -92,7 +92,7 @@ class RedsysService {
 
         soap.createClient(REDSYS_SOAP_URL, (err, client) => {
             if (err) {
-                userModel.updateOne({ _id: billing.user }, { $set: { premiumType: EPremiumType.FREE } })
+                userModel.updateOne({ _id: billing.user }, { $set: { premiumType: EPremiumType.FREE }})
             } else {
                 client.trataPeticion({ _xml: params }, async (err2, result, rawResponse) => {
                     const start = new Date()
