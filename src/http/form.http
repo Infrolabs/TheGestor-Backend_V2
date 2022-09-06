@@ -1,0 +1,27 @@
+# baseURL
+@baseURL = http://localhost:3001/v3
+
+# @baseURL = https://api.thegestor.app/v3
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJlYTY3MzZjYzhjMjg0MzMxNDMyZTY5In0sImlhdCI6MTY2MDA0NTI5MywiZXhwIjoxNjkxNTgxMjkzLCJhdWQiOiJkZXYiLCJpc3MiOiJ0aGVnZXN0b3JhcHAifQ.BaytKEl8GOL8xHSLAZOuww4fGUI5PCaIwSXj1UbZRFI
+
+
+###
+# Test form
+GET {{baseURL}}/form/test
+
+
+###
+# Save Test form
+POST {{baseURL}}/form/test
+Content-Type: application/json
+
+{
+    "data":{
+        "name": "Nilkanth",
+        "address": "Test address",
+        "city": "SURAT",
+        "state": "GUJARAT",
+        "country": "INDIA"
+    }
+}
