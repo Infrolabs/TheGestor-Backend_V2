@@ -9,6 +9,7 @@ class FormController {
     public getTestForm = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const taxData = await this.formService.getTestFormData()
+            logger.info(taxData.postUrl)
             res.set('Content-Type', 'text/html')
             res.render('testform', taxData)
         } catch (error) {
@@ -18,7 +19,7 @@ class FormController {
 
     public saveTestForm = async (req: Request, res: IApiResponse, next: NextFunction) => {
         try {
-            await this.formService.saveTestFormData(req.body.data)
+            await this.formService.saveTestFormData(req.body)
             res.success(ResponseMessages.en.SIGNUP_SUCCESS)
         } catch (error) {
             next(error);

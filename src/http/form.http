@@ -7,7 +7,8 @@
 
 
 ###
-# Test form
+# Get Test form
+# To save the form call "document.taxForm.submit()"
 GET {{baseURL}}/form/test
 
 

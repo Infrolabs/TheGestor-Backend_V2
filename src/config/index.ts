@@ -9,6 +9,7 @@ export const {
     LOG_DIR, 
     ORIGIN,
     MONGODB_URI,
+    API_BASE_URL,
     FROM_EMAIL,
     FROM_EMAIL_PASSWORD,
     TWILIO_ACCOUNT_SID,
