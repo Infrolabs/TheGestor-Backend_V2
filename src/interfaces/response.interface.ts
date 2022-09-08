@@ -49,6 +49,7 @@ export const ResponseMessages = {
         SUBSCRIPTION_CANCELED: 'Subscription canceled successfully',
         BILL_NOT_FOUND: 'Bill not found',
         BILLING_UPDATED: 'Billing updated successfully',
+        TAXES_FOUND: 'Taxes found',
     },
     es: {
         SOMETHING_WENT_WRONG: 'Algo salió mal',
@@ -84,5 +85,6 @@ export const ResponseMessages = {
         SUBSCRIPTION_CANCELED: 'Suscripción cancelada con éxito',
         BILL_NOT_FOUND: 'Factura no encontrada',
         BILLING_UPDATED: 'Billing updated successfully',
+        TAXES_FOUND: 'Taxes found',
     }
 }
