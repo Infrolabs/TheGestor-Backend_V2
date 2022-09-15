@@ -1,9 +1,10 @@
 {
     "watch": [
         "src",
-        ".env"
+        ".env",
+        "public"
     ],
-    "ext": "js,ts,json,ejs",
+    "ext": "js,ts,json,ejs,css",
     "ignore": [
         "src/logs/*",
         "src/**/*.{spec,test}.ts"

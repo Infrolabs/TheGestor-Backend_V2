@@ -1,0 +1,288 @@
+input,
+input:hover,
+input:focus {
+  background-color: white;
+  border-width: 0px;
+}
+
+.currency {
+  text-align: end;
+}
+
+.main-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.year {
+  position: absolute;
+  top: 11%;
+  left: 71.5%;
+  width: 9%;
+  height: 1.5%;
+}
+
+.trimester {
+  position: absolute;
+  top: 11%;
+  left: 91.5%;
+  width: 5%;
+  height: 1.5%;
+}
+
+.cifnif {
+  position: absolute;
+  top: 22.5%;
+  left: 9%;
+  width: 17%;
+  height: 1.5%;
+}
+
+.name {
+  position: absolute;
+  top: 22.5%;
+  left: 41%;
+  width: 55%;
+  height: 1.5%;
+}
+
+.in-1 {
+  position: absolute;
+  top: 28.5%;
+  left: 47%;
+  width: 9.5%;
+  height: 1.5%;
+}
+
+.in-2 {
+  position: absolute;
+  top: 28.5%;
+  left: 61%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-3 {
+  position: absolute;
+  top: 28.5%;
+  left: 81%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-4 {
+  position: absolute;
+  top: 31.5%;
+  left: 47%;
+  width: 9.5%;
+  height: 1.5%;
+}
+
+.in-5 {
+  position: absolute;
+  top: 31.5%;
+  left: 61%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-6 {
+  position: absolute;
+  top: 31.5%;
+  left: 81%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-7 {
+  position: absolute;
+  top: 35.7%;
+  left: 47%;
+  width: 9.5%;
+  height: 1.5%;
+}
+
+.in-8 {
+  position: absolute;
+  top: 35.7%;
+  left: 61%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-9 {
+  position: absolute;
+  top: 35.7%;
+  left: 81%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-10 {
+  position: absolute;
+  top: 38.6%;
+  left: 47%;
+  width: 9.5%;
+  height: 1.5%;
+}
+
+.in-11 {
+  position: absolute;
+  top: 38.6%;
+  left: 61%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-12 {
+  position: absolute;
+  top: 38.6%;
+  left: 81%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-13 {
+  position: absolute;
+  top: 44.3%;
+  left: 47%;
+  width: 9.5%;
+  height: 1.5%;
+}
+
+.in-14 {
+  position: absolute;
+  top: 44.3%;
+  left: 61%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-15 {
+  position: absolute;
+  top: 44.3%;
+  left: 81%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-16 {
+  position: absolute;
+  top: 47.2%;
+  left: 47%;
+  width: 9.5%;
+  height: 1.5%;
+}
+
+.in-17 {
+  position: absolute;
+  top: 47.2%;
+  left: 61%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-18 {
+  position: absolute;
+  top: 47.2%;
+  left: 81%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-19 {
+  position: absolute;
+  top: 52.9%;
+  left: 47%;
+  width: 9.5%;
+  height: 1.5%;
+}
+
+.in-20 {
+  position: absolute;
+  top: 52.9%;
+  left: 61%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-21 {
+  position: absolute;
+  top: 52.9%;
+  left: 81%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-22 {
+  position: absolute;
+  top: 55.7%;
+  left: 47%;
+  width: 9.5%;
+  height: 1.5%;
+}
+
+.in-23 {
+  position: absolute;
+  top: 55.7%;
+  left: 61%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-24 {
+  position: absolute;
+  top: 55.7%;
+  left: 81%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-25 {
+  position: absolute;
+  top: 61.4%;
+  left: 47%;
+  width: 9.5%;
+  height: 1.5%;
+}
+
+.in-26 {
+  position: absolute;
+  top: 61.4%;
+  left: 61%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-27 {
+  position: absolute;
+  top: 61.4%;
+  left: 81%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-28 {
+  position: absolute;
+  top: 65.7%;
+  left: 81%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-29 {
+  position: absolute;
+  top: 68.6%;
+  left: 81%;
+  width: 15%;
+  height: 1.5%;
+}
+
+.in-30 {
+  position: absolute;
+  top: 71.4%;
+  left: 81%;
+  width: 15%;
+  height: 1.5%;
+}

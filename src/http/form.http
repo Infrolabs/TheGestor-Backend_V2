@@ -9,7 +9,8 @@
 ###
 # Get Test form
 # To save the form call "document.taxForm.submit()"
-GET {{baseURL}}/form/test
+GET {{baseURL}}/form/view?type=form111&year=2022&trimester=1
+Authorization: Bearer {{token}}
 
 
 ###

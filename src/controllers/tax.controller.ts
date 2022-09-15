@@ -1,5 +1,6 @@
 import { IUserRequest } from '@/interfaces/auth.interface';
 import { IApiResponse, ResponseCodes, ResponseMessages } from '@/interfaces/response.interface';
+import { ETaxType } from '@/interfaces/tax.interface';
 import TaxService from '@/services/tax.service';
 import { NextFunction, Response } from 'express';
 
@@ -16,7 +17,7 @@ class TaxController {
     public getTxt = async (req: IUserRequest, res: IApiResponse, next: NextFunction) => {
         try {
             const { type, year, trimester } = req.query
-            const txtData = await this.taxService.generateTxt(type, year, trimester, req.user._id)
+            const txtData = await this.taxService.generateTxt(type as ETaxType, Number(year), Number(trimester), req.user._id)
             res.attachment(type + " " + trimester + " " + year + ".txt")
             res.type('txt')
             res.send(txtData)

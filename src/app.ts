@@ -57,9 +57,6 @@ class App {
     this.app.use(morgan(LOG_FORMAT, { stream }));
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
     this.app.use(hpp());
-    this.app.use(helmet({
-      contentSecurityPolicy: false
-    }));
     this.app.use(helmet.crossOriginEmbedderPolicy({ policy: "credentialless" }));
     this.app.use(compression());
     this.app.use(express.json());
@@ -67,6 +64,7 @@ class App {
     this.app.use(responseMiddleware)
     this.app.set("views", path.join(__dirname, "views"));
     this.app.set("view engine", "ejs");
+    this.app.use('/v3/static', express.static('public'))
   }
 
   private initializeRoutes(routes: Routes[]) {
