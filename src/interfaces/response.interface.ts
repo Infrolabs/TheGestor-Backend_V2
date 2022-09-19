@@ -51,6 +51,9 @@ export const ResponseMessages = {
         BILLING_UPDATED: 'Billing updated successfully',
         TAXES_FOUND: 'Taxes found',
         FORM_NOT_SUPPORTED: 'Form not supported currently',
+        FORM_INVALID_DATA: 'It seems there is some error in form data',
+        TAX_NOT_FOUND: 'Tax details not saved. Please save tax details first.',
+        TAX_UPDATED: 'Tax details saved successfully',
     },
     es: {
         SOMETHING_WENT_WRONG: 'Algo salió mal',
@@ -88,5 +91,8 @@ export const ResponseMessages = {
         BILLING_UPDATED: 'Billing updated successfully',
         TAXES_FOUND: 'Taxes found',
         FORM_NOT_SUPPORTED: 'Form not supported currently',
+        FORM_INVALID_DATA: 'It seems there is some error in form data',
+        TAX_NOT_FOUND: 'Tax details not saved. Please save tax details first.',
+        TAX_UPDATED: 'Tax details saved successfully',
     }
 }

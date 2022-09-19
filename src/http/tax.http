@@ -1,0 +1,70 @@
+# baseURL
+@baseURL = http://localhost:3001/v3
+
+# @baseURL = https://api.thegestor.app/v3
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJlYTY3MzZjYzhjMjg0MzMxNDMyZTY5In0sImlhdCI6MTY2MDA0NTI5MywiZXhwIjoxNjkxNTgxMjkzLCJhdWQiOiJkZXYiLCJpc3MiOiJ0aGVnZXN0b3JhcHAifQ.BaytKEl8GOL8xHSLAZOuww4fGUI5PCaIwSXj1UbZRFI
+
+###
+# Get Tax list
+GET {{ baseURL }}/tax/list?year=2022&trimester=2
+Authorization: Bearer {{token}}
+
+
+###
+# Get Tax Txt
+GET {{ baseURL }}/tax/txt?year=2022&trimester=2&type=form111
+Authorization: Bearer {{token}}
+
+
+###
+# Add/Update tax
+PUT {{ baseURL }}/tax/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "year":2022,
+    "trimester":2,
+    "type":"form111",
+    "status": "pending",
+    "name": "Nilkanth Parmar",
+    "cifNif": "123456",
+    "note":"Hello",
+    "data":{
+        "1":"0",
+        "2":"0",
+        "3":"0",
+        "4":"0",
+        "5":"0",
+        "6":"0",
+        "7":"0",
+        "8":"10",
+        "9":"0",
+        "10":"0",
+        "11":"0",
+        "12":"0",
+        "13":"0",
+        "14":"0",
+        "15":"0",
+        "16":"10",
+        "17":"0",
+        "18":"0",
+        "19":"0",
+        "20":"0",
+        "21":"0",
+        "22":"0",
+        "23":"10",
+        "24":"0",
+        "25":"0",
+        "26":"0",
+        "27":"0",
+        "28":"0",
+        "29":"0",
+        "30":"0",
+        "31":"0",
+        "32":"0",
+        "33":"0",
+        "34":"0"
+    }
+}

@@ -1,7 +1,7 @@
 input,
 input:hover,
 input:focus {
-  background-color: white;
+  background-color: red;
   border-width: 0px;
 }
 

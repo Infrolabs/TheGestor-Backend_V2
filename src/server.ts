@@ -5,6 +5,7 @@ import PlanRoute from '@routes/plan.route';
 import CouponRoute from '@routes/coupon.route';
 import BillingRoute from '@routes/billing.route';
 import FormRoute from '@routes/form.route';
+import TaxRoute from '@routes/tax.route';
 import validateEnv from '@utils/validateEnv';
 
 validateEnv();
@@ -16,6 +17,7 @@ const app = new App([
     new CouponRoute(),
     new BillingRoute(),
     new FormRoute(),
+    new TaxRoute(),
 ]);
 
 app.listen();

@@ -18,6 +18,10 @@ export const isEmpty = (value: string | number | object): boolean => {
   }
 };
 
+export const removeEmptyKeys = (object: Object) : any => {
+  return Object.fromEntries(Object.entries(object).filter(([_, v]) => v != null));
+}
+
 export const getNameAndSurname = (fullName: string): { name: string, surname: string } => {
   const name = fullName.slice(0, fullName.indexOf(" "))
   const surname = fullName.slice(fullName.indexOf(" ") + 1)
