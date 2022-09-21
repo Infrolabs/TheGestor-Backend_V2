@@ -10,12 +10,16 @@ import { EPremiumType } from '@/interfaces/premium.interface'
 import userModel from '@/models/users.model'
 import billingModel from '@/models/billing.model'
 import { logger } from '@/utils/logger'
+import { IUser } from '@/interfaces/users.interface'
 class RedsysService {
     constructor() {
         secretKey(REDSYS_SECRET_KEY)
     }
 
-    public getMerchantParams(orderNo: string, amount: number, userId: string, isRecurring: boolean = false): any {
+    public getMerchantParams(orderNo: string, amount: number, user: IUser, isRecurring: boolean = false): any {
+        let productDesc = "User:" + user.name+"("+user.email+")"
+        if(productDesc.length > 125)
+            productDesc = productDesc.slice(0,125)
         const obj = {
             amount: Math.round(amount * 100),
             order: orderNo,
@@ -27,7 +31,7 @@ class RedsysService {
             merchantURL: REDSYS_MERCHANT_URL,
             successURL: REDSYS_SUCCESS_URL,
             errorURL: REDSYS_ERROR_URL,
-            productDesc: "User : " + userId,
+            productDesc,
             identifier: isRecurring ? "REQUIRED" : null,
             cofIni: isRecurring ? "S" : null,
             cofType: isRecurring ? "R" : null

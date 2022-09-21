@@ -95,7 +95,8 @@ class BillingService {
 
     public async getBillingForm(billingId: string): Promise<any> {
         const billingObj = await billingModel.findById(billingId).lean()
-        return this.redsysService.getMerchantParams(billingObj.orderNo, billingObj.amount, billingObj.user, true)
+        const user = await userModel.findById(billingObj.user)
+        return this.redsysService.getMerchantParams(billingObj.orderNo, billingObj.amount, user, true)
     }
 
     public async getUnpaidBillingForm(billingIds: string[]): Promise<any> {
@@ -106,7 +107,8 @@ class BillingService {
         billings.forEach(billing => { amount += billing.amount })
         const dateStr = String(new Date().getTime())
         const orderNo = dateStr.substring(dateStr.length - 12)
-        return this.redsysService.getMerchantParams(orderNo, amount, billings[0].user)
+        const user = await userModel.findById(billings[0].user)
+        return this.redsysService.getMerchantParams(orderNo, amount, user)
     }
 
     public async getBillingList(userId: string): Promise<IBilling[]> {
