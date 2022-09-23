@@ -21,6 +21,13 @@
 			window.history.back();
 			return false
 		});
+		$(document).on("submit",function (event) {
+			console.log(">>>>>>> JQUERY ON Submit DOC >>>>>>>>>")
+			event.preventDefault();
+			$(this).submit();
+			window.history.back();
+			return false
+		});
 	});
 	$(document).on("wheel", "input[type=number]", function (e) {
 		$(this).blur();
