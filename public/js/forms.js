@@ -4,7 +4,7 @@ $(document).ready(function () {
 		$('.currency').formatCurrency();
 	});
 	$('.currency').formatCurrency();
-	$('[name="taxForm"]').submit(function(event) {
+	$('#taxForm').submit(function(event) {
 		event.preventDefault();
 		$(this).submit();
 		}); 
