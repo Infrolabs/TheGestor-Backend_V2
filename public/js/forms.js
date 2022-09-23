@@ -11,12 +11,14 @@
 			console.log(">>>>>>> JQUERY >>>>>>>>>")
 			event.preventDefault();
 			$(this).submit();
+			window.history.back();
 			return false
 		});
 		$('#taxForm').on("submit",function (event) {
 			console.log(">>>>>>> JQUERY ON Submit >>>>>>>>>")
 			event.preventDefault();
 			$(this).submit();
+			window.history.back();
 			return false
 		});
 	});
