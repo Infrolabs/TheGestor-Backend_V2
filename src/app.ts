@@ -64,7 +64,7 @@ class App {
     this.app.use(responseMiddleware)
     this.app.set("views", path.join(__dirname, "views"));
     this.app.set("view engine", "ejs");
-    this.app.use('/v3/static', express.static('src/public'))
+    this.app.use('/v3/static', express.static('dist/public'))
   }
 
   private initializeRoutes(routes: Routes[]) {
