@@ -4,16 +4,17 @@ $(document).ready(function () {
 		$('.currency').formatCurrency();
 	});
 	$('.currency').formatCurrency();
-	$('#taxForm').submit(function(event) {
+	$('#taxForm').submit(function (event) {
 		event.preventDefault();
 		$(this).submit();
-		}); 
+		return false
+	});
 });
 $(document).on("wheel", "input[type=number]", function (e) {
-    $(this).blur();
+	$(this).blur();
 });
 
-(function($) {
+(function ($) {
 
 	$.formatCurrency = {};
 
@@ -29,7 +30,7 @@ $(document).on("wheel", "input[type=number]", function (e) {
 		groupDigits: true
 	};
 
-	$.fn.formatCurrency = function(destination, settings) {
+	$.fn.formatCurrency = function (destination, settings) {
 
 		if (arguments.length == 1 && typeof destination !== "string") {
 			settings = destination;
@@ -56,7 +57,7 @@ $(document).on("wheel", "input[type=number]", function (e) {
 		}
 		settings.regex = generateRegex(settings);
 
-		return this.each(function() {
+		return this.each(function () {
 			$this = $(this);
 
 			// get number
@@ -76,11 +77,11 @@ $(document).on("wheel", "input[type=number]", function (e) {
 			if (isNaN(num)) {
 				// clean number
 				num = num.replace(settings.regex, '');
-				
+
 				if (num === '' || (num === '-' && settings.roundToDecimalPlace === -1)) {
 					return;
 				}
-				
+
 				if (settings.decimalSymbol != '.') {
 					num = num.replace(settings.decimalSymbol, '.');  // reset to US decimal for arithmetic
 				}
@@ -88,14 +89,14 @@ $(document).on("wheel", "input[type=number]", function (e) {
 					num = '0';
 				}
 			}
-			
+
 			// evalutate number input
 			var numParts = String(num).split('.');
 			var isPositive = (num == Math.abs(num));
 			var hasDecimals = (numParts.length > 1);
 			var decimals = (hasDecimals ? numParts[1].toString() : '0');
 			var originalDecimals = decimals;
-			
+
 			// format number
 			num = Math.abs(numParts[0]);
 			num = isNaN(num) ? 0 : num;
@@ -135,8 +136,8 @@ $(document).on("wheel", "input[type=number]", function (e) {
 			$destination[$destination.is('input, select, textarea') ? 'val' : 'html'](money);
 
 			if (
-				hasDecimals && 
-				settings.eventOnDecimalsEntered && 
+				hasDecimals &&
+				settings.eventOnDecimalsEntered &&
 				originalDecimals.length > settings.roundToDecimalPlace
 			) {
 				$destination.trigger('decimalsEntered', originalDecimals);
@@ -150,7 +151,7 @@ $(document).on("wheel", "input[type=number]", function (e) {
 	};
 
 	// Remove all non numbers from text
-	$.fn.toNumber = function(settings) {
+	$.fn.toNumber = function (settings) {
 		var defaults = $.extend({
 			name: "toNumber",
 			region: '',
@@ -163,14 +164,14 @@ $(document).on("wheel", "input[type=number]", function (e) {
 		}
 		settings.regex = generateRegex(settings);
 
-		return this.each(function() {
+		return this.each(function () {
 			var method = $(this).is('input, select, textarea') ? 'val' : 'html';
 			$(this)[method]($(this)[method]().replace('(', '(-').replace(settings.regex, ''));
 		});
 	};
 
 	// returns the value from the first element as a number
-	$.fn.asNumber = function(settings) {
+	$.fn.asNumber = function (settings) {
 		var defaults = $.extend({
 			name: "asNumber",
 			region: '',
@@ -230,15 +231,15 @@ $(document).on("wheel", "input[type=number]", function (e) {
 				throw 'invalid parseType';
 		}
 	}
-	
+
 	function generateRegex(settings) {
 		if (settings.symbol === '') {
 			return new RegExp("[^\\d" + settings.decimalSymbol + "-]", "g");
 		}
 		else {
-			var symbol = settings.symbol.replace('$', '\\$').replace('.', '\\.');		
+			var symbol = settings.symbol.replace('$', '\\$').replace('.', '\\.');
 			return new RegExp(symbol + "|[^\\d" + settings.decimalSymbol + "-]", "g");
-		}	
+		}
 	}
 
 })(jQuery);
