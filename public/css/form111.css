@@ -7,15 +7,20 @@
 }
 
 @media only screen and (min-width: 600px) {
+
   /* For tablets: */
-  .gf-input {
-    font-size: 0.8rem;
+  .gf-input,
+  .gf-input:hover,
+  .gf-input:focus {
+    font-size: 0.7rem;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .gf-input {
-    font-size: 0.9rem;
+  .gf-input,
+  .gf-input:hover,
+  .gf-input:focus {
+    font-size: 0.8rem;
   }
 }
 
