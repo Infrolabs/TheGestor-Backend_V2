@@ -10,6 +10,12 @@ $(document).ready(function () {
 		$(this).submit();
 		return false
 	});
+	$('#taxForm').on("submit",function (event) {
+		console.log(">>>>>>> JQUERY ON Submit >>>>>>>>>")
+		event.preventDefault();
+		$(this).submit();
+		return false
+	});
 });
 $(document).on("wheel", "input[type=number]", function (e) {
 	$(this).blur();
