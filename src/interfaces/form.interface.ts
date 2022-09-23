@@ -1,6 +1,7 @@
 import { ETaxType } from "./tax.interface";
 
 export interface IForm {
+    authToken: string
     postUrl: string
     modelBackgroundImage: string
     currencyformaterUrl: string

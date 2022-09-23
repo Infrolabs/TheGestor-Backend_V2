@@ -13,8 +13,8 @@ class FormRoute implements Routes {
     }
 
     private initializeRoutes() {
-        this.router.get(`${this.path}/view`, this.formController.getForm);
-        this.router.post(`${this.path}/`, authMiddleware, this.formController.saveForm);
+        this.router.get(`${this.path}/view`, authMiddleware, this.formController.getForm);
+        this.router.post(`${this.path}/`, this.formController.saveForm);
     }
 }
 
