@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿// @ts-nocheck
+$(document).ready(function () {
 	$('.currency').blur(function () {
 		$('.currency').formatCurrency();
 	});
