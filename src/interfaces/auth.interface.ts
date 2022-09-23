@@ -12,4 +12,5 @@ export interface TokenData {
 
 export interface IUserRequest extends Request {
   user?: IUser;
+  authToken?: string
 }

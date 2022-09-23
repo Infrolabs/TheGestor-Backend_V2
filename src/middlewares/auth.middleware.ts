@@ -12,12 +12,13 @@ const authMiddleware = async (req: IUserRequest, res: Response, next: NextFuncti
 
     if (Authorization) {
       const secretKey: string = SECRET_KEY;
-      const verificationResponse = (await verify(Authorization, secretKey)) as DataStoredInToken;
+      const verificationResponse = (verify(Authorization, secretKey)) as DataStoredInToken;
       const userId = verificationResponse.user.id;
       const findUser = await userModel.findById(userId);
 
       if (findUser) {
         req.user = findUser;
+        req.authToken = Authorization
         next();
       } else {
         next(new HttpException(ResponseCodes.UNAUTHORIZED, ResponseMessages.en.WRONG_AUTH_TOKEN));
