@@ -5,6 +5,7 @@ $(document).ready(function () {
 	});
 	$('.currency').formatCurrency();
 	$('#taxForm').submit(function (event) {
+		console.log(">>>>>>> JQUERY >>>>>>>>>")
 		event.preventDefault();
 		$(this).submit();
 		return false
