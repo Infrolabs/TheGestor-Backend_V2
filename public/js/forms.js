@@ -4,10 +4,15 @@ $(document).ready(function () {
 		$('.currency').formatCurrency();
 	});
 	$('.currency').formatCurrency();
+	$('form[name="taxForm"]').submit(function(event) {
+		event.preventDefault();
+		$(this).submit();
+		}); 
 });
 $(document).on("wheel", "input[type=number]", function (e) {
     $(this).blur();
 });
+
 (function($) {
 
 	$.formatCurrency = {};
