@@ -1,34 +1,34 @@
 ﻿// @ts-nocheck
 
-
-(function ($) {
-	$(document).ready(function () {
-		$('.currency').blur(function () {
-			$('.currency').formatCurrency();
-		});
+$(document).ready(function () {
+	$('.currency').blur(function () {
 		$('.currency').formatCurrency();
-		$('#taxForm').submit(function (event) {
-			console.log(">>>>>>> JQUERY >>>>>>>>>")
-			event.preventDefault();
-			$(this).submit();
-			window.history.back();
-			return false
-		});
-		$('#taxForm').on("submit",function (event) {
-			console.log(">>>>>>> JQUERY ON Submit >>>>>>>>>")
-			event.preventDefault();
-			$(this).submit();
-			window.history.back();
-			return false
-		});
-		$(document).on("submit",function (event) {
-			console.log(">>>>>>> JQUERY ON Submit DOC >>>>>>>>>")
-			event.preventDefault();
-			$(this).submit();
-			window.history.back();
-			return false
-		});
 	});
+	$('.currency').formatCurrency();
+	$('#taxForm').submit(function (event) {
+		console.log(">>>>>>> JQUERY >>>>>>>>>")
+		event.preventDefault();
+		$(this).submit();
+		window.history.back();
+		return false
+	});
+	$('#taxForm').on("submit",function (event) {
+		console.log(">>>>>>> JQUERY ON Submit >>>>>>>>>")
+		event.preventDefault();
+		$(this).submit();
+		window.history.back();
+		return false
+	});
+	$(document).on("submit",function (event) {
+		console.log(">>>>>>> JQUERY ON Submit DOC >>>>>>>>>")
+		event.preventDefault();
+		$(this).submit();
+		window.history.back();
+		return false
+	});
+});
+(function ($) {
+	
 	$(document).on("wheel", "input[type=number]", function (e) {
 		$(this).blur();
 	});
