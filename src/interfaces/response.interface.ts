@@ -88,11 +88,11 @@ export const ResponseMessages = {
         INVALID_PAYMENT: 'El pago no es válido. Por favor, póngase en contacto con el servicio de atención al cliente',
         SUBSCRIPTION_CANCELED: 'Suscripción cancelada con éxito',
         BILL_NOT_FOUND: 'Factura no encontrada',
-        BILLING_UPDATED: 'Billing updated successfully',
-        TAXES_FOUND: 'Taxes found',
-        FORM_NOT_SUPPORTED: 'Form not supported currently',
-        FORM_INVALID_DATA: 'It seems there is some error in form data',
-        TAX_NOT_FOUND: 'Tax details not saved. Please save tax details first.',
-        TAX_UPDATED: 'Tax details saved successfully',
+        BILLING_UPDATED: 'Facturación actualizada con éxito',
+        TAXES_FOUND: 'Impuestos encontrados',
+        FORM_NOT_SUPPORTED: 'Formulario no soportado actualmente',
+        FORM_INVALID_DATA: 'Hay algún error en los datos del formulario',
+        TAX_NOT_FOUND: 'Los datos fiscales no se han guardado. Por favor, guarde primero los datos fiscales',
+        TAX_UPDATED: 'Datos fiscales se han guardado correctamente',
     }
 }

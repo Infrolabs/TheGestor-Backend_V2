@@ -1,10 +1,12 @@
 import { API_BASE_URL, SECRET_KEY } from "@/config";
 import { HttpException } from "@/exceptions/HttpException";
 import { DataStoredInToken } from "@/interfaces/auth.interface";
+import { EClientType } from "@/interfaces/client.interface";
 import { IForm } from "@/interfaces/form.interface";
 import { ResponseCodes, ResponseMessages } from "@/interfaces/response.interface";
 import { ETaxStatus, ETaxType, ITax } from "@/interfaces/tax.interface";
 import { IUser } from "@/interfaces/users.interface";
+import clientModel from "@/models/client.model";
 import taxModel from "@/models/tax.model";
 import userModel from "@/models/users.model";
 import { logger } from "@/utils/logger";
@@ -42,7 +44,7 @@ class FormService {
             cifNif: user.cifNif,
             name: getNameAndSurname(user.name).name,
             surname: getNameAndSurname(user.name).surname,
-            data: {}
+            data: this.getDefaultFormData(user._id, type, year, trimester)
         }
     }
 
@@ -70,6 +72,18 @@ class FormService {
         if (!user)
             throw new HttpException(ResponseCodes.UNAUTHORIZED, ResponseMessages.en.WRONG_AUTH_TOKEN)
         return user
+    }
+
+    private async getDefaultFormData(userId: string, type: ETaxType, trimester: number, year: number): Promise<any> {
+        if (type === ETaxType.FORM111) {
+            let dataArray = new Array(31).fill(null)
+            const noOfSuppliers = await clientModel.countDocuments({ createdBy: userId, clientType: EClientType.SUPPLIER, isDeleted: false })
+            dataArray[7] = noOfSuppliers
+            const data = Object.fromEntries(dataArray.map((element,index)=>[String(index),element]))
+            delete data['0']
+            return data
+        }
+        return {}
     }
 
 
