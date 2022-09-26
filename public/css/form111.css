@@ -18,7 +18,7 @@
   .gf-input:focus,
   .gf-input::-webkit-outer-spin-button,
   .gf-input::-webkit-inner-spin-button {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
 }
 
@@ -28,7 +28,7 @@
   .gf-input:focus,
   .gf-input::-webkit-outer-spin-button,
   .gf-input::-webkit-inner-spin-button {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 

@@ -5,33 +5,48 @@ $(document).ready(function () {
 		$('.currency').formatCurrency();
 	});
 	$('.currency').formatCurrency();
-	$('#taxForm').submit(function (event) {
-		console.log(">>>>>>> JQUERY >>>>>>>>>")
-		event.preventDefault();
-		$(this).submit();
-		window.history.back();
-		return false
-	});
-	$('#taxForm').on("submit",function (event) {
-		console.log(">>>>>>> JQUERY ON Submit >>>>>>>>>")
-		event.preventDefault();
-		$(this).submit();
-		window.history.back();
-		return false
-	});
-	$(document).on("submit",function (event) {
-		console.log(">>>>>>> JQUERY ON Submit DOC >>>>>>>>>")
-		event.preventDefault();
-		$(this).submit();
-		window.history.back();
-		return false
-	});
+
+	// Calculate total on blur
+	$('.gf-in-3').blur(calculateTotal)
+	$('.gf-in-6').blur(calculateTotal)
+	$('.gf-in-9').blur(calculateTotal)
+	$('.gf-in-12').blur(calculateTotal)
+	$('.gf-in-15').blur(calculateTotal)
+	$('.gf-in-18').blur(calculateTotal)
+	$('.gf-in-21').blur(calculateTotal)
+	$('.gf-in-24').blur(calculateTotal)
+	$('.gf-in-27').blur(calculateTotal)
+
+
+	function calculateTotal() {
+		$('.gf-in-28').val(
+			getNum($('.gf-in-3').val()) +
+			getNum($('.gf-in-6').val()) +
+			getNum($('.gf-in-9').val()) +
+			getNum($('.gf-in-12').val()) +
+			getNum($('.gf-in-15').val()) +
+			getNum($('.gf-in-18').val()) +
+			getNum($('.gf-in-21').val()) +
+			getNum($('.gf-in-24').val()) +
+			getNum($('.gf-in-27').val())
+		)
+
+		$('.gf-in-30').val(
+			getNum($('.gf-in-28').val()) -
+			getNum($('.gf-in-29').val())
+		)
+	}
+
+	function getNum(str) {
+		return parseFloat(str)
+	}
+
 });
+$(document).on("wheel", "input[type=number]", function (e) {
+	$(this).blur();
+});
+
 (function ($) {
-	
-	$(document).on("wheel", "input[type=number]", function (e) {
-		$(this).blur();
-	});
 
 	$.formatCurrency = {};
 
