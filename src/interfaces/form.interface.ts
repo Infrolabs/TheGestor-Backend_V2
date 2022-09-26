@@ -4,7 +4,7 @@ export interface IForm {
     authToken: string
     postUrl: string
     modelBackgroundImage: string
-    currencyformaterUrl: string
+    jsUrl: string
     cssUrl: string
     formType: ETaxType
     data: Object

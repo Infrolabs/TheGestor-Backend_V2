@@ -22,7 +22,7 @@ class FormService {
                 postUrl: API_BASE_URL + "/form/",
                 modelBackgroundImage: API_BASE_URL + "/static/img/" + type + ".jpeg",
                 cssUrl: API_BASE_URL + "/static/css/" + type + ".css",
-                currencyformaterUrl: API_BASE_URL + "/static/js/jquery.formatCurrency.js",
+                jsUrl: API_BASE_URL + "/static/js/" + type + ".js",
                 formType: type,
                 year,
                 trimester,
@@ -37,7 +37,7 @@ class FormService {
             postUrl: API_BASE_URL + "/form/",
             modelBackgroundImage: API_BASE_URL + "/static/img/" + type + ".jpeg",
             cssUrl: API_BASE_URL + "/static/css/" + type + ".css",
-            currencyformaterUrl: API_BASE_URL + "/static/js/jquery.formatCurrency.js",
+            jsUrl: API_BASE_URL + "/static/js/" + type + ".js",
             formType: type,
             year,
             trimester,
@@ -79,7 +79,7 @@ class FormService {
             let dataArray = new Array(31).fill(null)
             const noOfSuppliers = await clientModel.countDocuments({ createdBy: userId, clientType: EClientType.SUPPLIER, isDeleted: false })
             dataArray[7] = noOfSuppliers
-            const data = Object.fromEntries(dataArray.map((element,index)=>[String(index),element]))
+            const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
             delete data['0']
             return data
         }
