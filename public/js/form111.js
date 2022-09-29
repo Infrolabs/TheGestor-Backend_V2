@@ -15,6 +15,7 @@ $(document).ready(function () {
 	$('.gf-in-21').blur(calculateTotal)
 	$('.gf-in-24').blur(calculateTotal)
 	$('.gf-in-27').blur(calculateTotal)
+	$('.gf-in-29').blur(calculateTotal)
 
 
 	function calculateTotal() {
@@ -34,6 +35,7 @@ $(document).ready(function () {
 			getNum($('.gf-in-28').val()) -
 			getNum($('.gf-in-29').val())
 		)
+		$('.currency').formatCurrency();
 	}
 
 	function getNum(str) {

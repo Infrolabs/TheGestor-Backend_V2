@@ -7,10 +7,11 @@ import { ResponseCodes, ResponseMessages } from "@/interfaces/response.interface
 import { ETaxStatus, ETaxType, ITax } from "@/interfaces/tax.interface";
 import { IUser } from "@/interfaces/users.interface";
 import clientModel from "@/models/client.model";
+import expenseModel from "@/models/expense.model";
 import taxModel from "@/models/tax.model";
 import userModel from "@/models/users.model";
 import { logger } from "@/utils/logger";
-import { getNameAndSurname } from "@/utils/util";
+import { getNameAndSurname, getTrimesterEndDate, getTrimesterStartDate } from "@/utils/util";
 import { verify } from 'jsonwebtoken';
 
 class FormService {
@@ -79,6 +80,34 @@ class FormService {
             let dataArray = new Array(31).fill(null)
             const noOfSuppliers = await clientModel.countDocuments({ createdBy: userId, clientType: EClientType.SUPPLIER, isDeleted: false })
             dataArray[7] = noOfSuppliers
+            const expenses = await expenseModel.find({
+                invoiceDate: { $gte: getTrimesterStartDate(trimester, year), $lte: getTrimesterEndDate(trimester, year) },
+                createdBy: userId,
+                isDeleted: false,
+                isDraft: false
+            }, { manualItem: 1, items: 1 })
+            let totalBaseExp = 0
+            let totalIrpf = 0
+            expenses.forEach(exp=>{
+                if(exp.manualItem && exp.manualItem.length > 0){
+                    exp.manualItem.forEach(item=>{
+                        if(item.irpf !== 1 && item.irpf !== 2 && item.irpf !== 7 && item.irpf !== 15)
+                        return
+
+                        totalBaseExp += item.cost * item.unit
+                        totalIrpf += item.cost * item.unit * item.irpf / 100
+                    })
+                }else if(exp.items && exp.items.length > 0){
+                    exp.items.forEach(item=>{
+                        if(item.irpf !== 1 && item.irpf !== 2 && item.irpf !== 7 && item.irpf !== 15)
+                        return
+
+                        totalBaseExp += item.cost * item.selectedQuantity
+                        totalIrpf += item.cost * item.selectedQuantity * item.irpf / 100
+                    })
+                }
+            })
+
             const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
             delete data['0']
             return data

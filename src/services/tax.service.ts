@@ -34,7 +34,7 @@ class TaxService {
     private getForm111TxtData(year: number, trimester: number, cifNif: string, name: string, tax: ITax): string {
         const data = tax.data
         const nameSurname = getNameAndSurname(name)
-        if (Object.values(data).length < 32) throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_INVALID_DATA)
+        if (Object.values(data).length < 30) throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_INVALID_DATA)
         return "<T1110" + year + trimester + "T0000><AUX>"
             + "1.9".padStart(70 + 4, ' ') // 70 blank + 4 version string
             + "B88476437".padStart(9 + 4, ' ') // 9 NIF + 4 blanks
@@ -77,9 +77,9 @@ class TaxService {
             + numberToStr(data["29"], 17)
             + numberToStr(data["30"], 17)
             + String(data['31'] || " ").charAt(0)
-            + String(data['32']).padStart(13, ' ')
+            + String(data['32'] || "").padStart(13, ' ')
             + String(data['33'] || " ").charAt(0)
-            + String(data['34']).padStart(34, ' ')
+            + String(data['34'] || "").padStart(34, ' ')
             + "</T11101000>".padStart(389 + 13 + 12, ' ') // 389 + 13 spaces + 12 tag
             + "</T1110" + year + trimester + "T0000>"
     }

@@ -38,7 +38,7 @@ export interface IManualClient {
 
 export interface IManualItem {
     name: string
-    cost: string
+    cost: number
     unit: number
     vat: number
     irpf: number
