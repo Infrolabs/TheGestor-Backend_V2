@@ -107,7 +107,8 @@ class FormService {
                     })
                 }
             })
-
+            dataArray[8] = totalBaseExp
+            dataArray[9] = totalIrpf
             const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
             delete data['0']
             return data
