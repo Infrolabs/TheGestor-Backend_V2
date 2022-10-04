@@ -1,0 +1,228 @@
+.gf-input,
+.gf-input:hover,
+.gf-input:focus,
+.gf-input::-webkit-outer-spin-button,
+.gf-input::-webkit-inner-spin-button {
+    background-color: white;
+    border-width: 0px;
+    font-size: 0.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+@media only screen and (min-width: 600px) {
+
+    /* For tablets: */
+    .gf-input,
+    .gf-input:hover,
+    .gf-input:focus,
+    .gf-input::-webkit-outer-spin-button,
+    .gf-input::-webkit-inner-spin-button {
+        font-size: 0.6rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .gf-input,
+    .gf-input:hover,
+    .gf-input:focus,
+    .gf-input::-webkit-outer-spin-button,
+    .gf-input::-webkit-inner-spin-button {
+        font-size: 0.7rem;
+    }
+}
+
+.currency {
+    text-align: end;
+}
+
+.gf-main-container {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.gf-year {
+    position: absolute;
+    top: 11.5%;
+    left: 71%;
+    width: 9%;
+    height: 1.5%;
+}
+
+.gf-trimester {
+    position: absolute;
+    top: 11.5%;
+    left: 90%;
+    width: 5%;
+    height: 1.5%;
+}
+
+.gf-cifnif {
+    position: absolute;
+    top: 22.5%;
+    left: 11%;
+    width: 16%;
+    height: 1.5%;
+}
+
+.gf-name {
+    position: absolute;
+    top: 22.5%;
+    left: 36%;
+    width: 55%;
+    height: 1.5%;
+}
+
+.gf-in-0 {
+    position: absolute;
+    top: 30%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-1 {
+    position: absolute;
+    top: 31.3%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-2 {
+    position: absolute;
+    top: 32.8%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-3 {
+    position: absolute;
+    top: 34.2%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-4 {
+    position: absolute;
+    top: 37.1%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-5 {
+    position: absolute;
+    top: 39.9%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-6 {
+    position: absolute;
+    top: 42.8%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-7 {
+    position: absolute;
+    top: 47.1%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-8 {
+    position: absolute;
+    top: 48.5%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-9 {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-10 {
+    position: absolute;
+    top: 51.4%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-11 {
+    position: absolute;
+    top: 55.6%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-12 {
+    position: absolute;
+    top: 57%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-13 {
+    position: absolute;
+    top: 58.5%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-14 {
+    position: absolute;
+    top: 61.3%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-15 {
+    position: absolute;
+    top: 64.2%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-16 {
+    position: absolute;
+    top: 65.6%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-17 {
+    position: absolute;
+    top: 68.5%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}
+
+.gf-in-18 {
+    position: absolute;
+    top: 70%;
+    left: 80%;
+    width: 15%;
+    height: 1.2%;
+}

@@ -3,11 +3,13 @@ import { HttpException } from "@/exceptions/HttpException";
 import { DataStoredInToken } from "@/interfaces/auth.interface";
 import { EClientType } from "@/interfaces/client.interface";
 import { IForm } from "@/interfaces/form.interface";
+import { EVatType } from "@/interfaces/invoice.interface";
 import { ResponseCodes, ResponseMessages } from "@/interfaces/response.interface";
 import { ETaxStatus, ETaxType, ITax } from "@/interfaces/tax.interface";
 import { IUser } from "@/interfaces/users.interface";
 import clientModel from "@/models/client.model";
 import expenseModel from "@/models/expense.model";
+import incomeModel from "@/models/income.model";
 import taxModel from "@/models/tax.model";
 import userModel from "@/models/users.model";
 import { logger } from "@/utils/logger";
@@ -88,19 +90,19 @@ class FormService {
             }, { manualItem: 1, items: 1 })
             let totalBaseExp = 0
             let totalIrpf = 0
-            expenses.forEach(exp=>{
-                if(exp.manualItem && exp.manualItem.length > 0){
-                    exp.manualItem.forEach(item=>{
-                        if(item.irpf !== 1 && item.irpf !== 2 && item.irpf !== 7 && item.irpf !== 15)
-                        return
+            expenses.forEach(exp => {
+                if (exp.manualItem && exp.manualItem.length > 0) {
+                    exp.manualItem.forEach(item => {
+                        if (item.irpf !== 1 && item.irpf !== 2 && item.irpf !== 7 && item.irpf !== 15)
+                            return
 
                         totalBaseExp += item.cost * item.unit
                         totalIrpf += item.cost * item.unit * item.irpf / 100
                     })
-                }else if(exp.items && exp.items.length > 0){
-                    exp.items.forEach(item=>{
-                        if(item.irpf !== 1 && item.irpf !== 2 && item.irpf !== 7 && item.irpf !== 15)
-                        return
+                } else if (exp.items && exp.items.length > 0) {
+                    exp.items.forEach(item => {
+                        if (item.irpf !== 1 && item.irpf !== 2 && item.irpf !== 7 && item.irpf !== 15)
+                            return
 
                         totalBaseExp += item.cost * item.selectedQuantity
                         totalIrpf += item.cost * item.selectedQuantity * item.irpf / 100
@@ -111,6 +113,83 @@ class FormService {
             dataArray[9] = totalIrpf
             const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
             delete data['0']
+            return data
+        } else if (type === ETaxType.FORM130) {
+            let dataArray = new Array(20).fill("")
+            const cumulativeStart = new Date()
+            cumulativeStart.setFullYear(cumulativeStart.getFullYear(), 0, 1)
+            cumulativeStart.setHours(0, 0, 0, 0)
+            const cumulativeIncomes = await incomeModel.aggregate([
+                {
+                    $match: {
+                        createdBy: userId,
+                        isDeleted: false,
+                        invoiceDate: { $gte: cumulativeStart, $lt: getTrimesterEndDate(trimester, year) },
+                        isDraft: false
+                    }
+                },
+                {
+                    $project: {
+                        totalDouble: { $ifNull: [{ $convert: { input: "$subTotal", to: "double", onError: 0 } }, 0] },
+                        totalTriDouble: { $cond: { if: { invoiceDate: { $gte: getTrimesterStartDate(trimester, year), $lt: getTrimesterEndDate(trimester, year) } }, then: [{ $convert: { input: "$subTotal", to: "double", onError: 0 } }, 0], else: 0 } },
+                    }
+                },
+                {
+                    $group: {
+                        _id: null,
+                        totalIncome: { $sum: '$totalDouble' },
+                        totalTriIncome: { $sum: '$totalTriDouble' }
+                    }
+                }
+            ])
+            dataArray[0] = cumulativeIncomes[0]?.totalIncome || 0
+            const expenses = await expenseModel.aggregate([
+                {
+                    $match: {
+                        createdBy: userId,
+                        isDeleted: false,
+                        invoiceDate: { $gte: getTrimesterStartDate(trimester, year), $lt: getTrimesterEndDate(trimester, year) },
+                        isDraft: false
+                    }
+                },
+                {
+                    $project: {
+                        totalDouble: { $ifNull: [{ $convert: { input: "$subTotal", to: "double", onError: 0 } }, 0] },
+                        vatDouble: { $ifNull: [{ $convert: { input: "$vat", to: "double", onError: 0 } }, 0] },
+                        irpfDouble: { $ifNull: [{ $convert: { input: "$irpf", to: "double", onError: 0 } }, 0] },
+                        retentionProvidersDouble: { $ifNull: [{ $convert: { input: "$retentionProviders", to: "double", onError: 0 } }, 0] },
+                        retentionRentDouble: { $ifNull: [{ $convert: { input: "$retentionRent", to: "double", onError: 0 } }, 0] },
+                    }
+                },
+                {
+                    $group: {
+                        _id: null,
+                        totalExpense: { $sum: '$totalDouble' },
+                        totalVat: { $sum: "$vatDouble" },
+                        totalIRPF: { $sum: "$irpfDouble" },
+                        totalRetentionProviders: { $sum: "$retentionProvidersDouble" },
+                        totalRetentionRent: { $sum: "$retentionRentDouble" },
+                    }
+                }
+            ])
+            let cell2Total = 0
+            let cell5 = 0
+            const taxes = await taxModel.find({ userId: userId, year, trimester: { $lt: trimester }, type: ETaxType.FORM130 })
+            taxes.forEach(tax => {
+                if (tax.data && Object.keys(tax.data).length > 15) {
+                    cell2Total += Number(tax.data[1]) || 0
+                    if ((Number(tax.data[7]) || 0) > 0 && tax.trimester === trimester - 1) {
+                        cell5 = Number(tax.data[7]) - (Number(tax.data[15]) || 0)
+                    }
+                }
+            })
+
+
+            const totalIncome = cumulativeIncomes[0]?.totalTriDouble || 0
+            const totalExpense = (expenses[0]?.totalExpense || 0)
+            dataArray[1] = ((totalIncome - totalExpense) * 5 / 100) + totalIncome + cell2Total
+            dataArray[4] = cell5
+            const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
             return data
         }
         return {}
