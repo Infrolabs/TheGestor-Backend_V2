@@ -18,7 +18,7 @@ export const isEmpty = (value: string | number | object): boolean => {
   }
 };
 
-export const removeEmptyKeys = (object: Object) : any => {
+export const removeEmptyKeys = (object: Object): any => {
   return Object.fromEntries(Object.entries(object).filter(([_, v]) => v != null));
 }
 
@@ -34,4 +34,22 @@ export const numberToStr = (number: string, padding: number, multiplier = 100) =
     return "N" + str.padStart(padding - 1, '0')
 
   return str.padStart(padding, '0')
+}
+
+export const getTrimesterStartDate = (trimester: number, year: number): Date => {
+  if (trimester < 0 || trimester > 4)
+    throw Error("Invalid trimester")
+  const date = new Date()
+  date.setFullYear(year, trimester === 0 ? 0 : (trimester - 1) * 3, 1)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+export const getTrimesterEndDate = (trimester: number, year: number): Date => {
+  if (trimester < 0 || trimester > 4)
+    throw Error("Invalid trimester")
+  const date = new Date()
+  date.setFullYear(year, trimester === 0 ? 12 : trimester * 3, 0)
+  date.setHours(23, 59, 59, 999)
+  return date
 }

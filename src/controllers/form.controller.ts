@@ -1,5 +1,7 @@
+import { API_BASE_URL } from '@/config';
 import { HttpException } from '@/exceptions/HttpException';
 import { IUserRequest } from '@/interfaces/auth.interface';
+import { IForm } from '@/interfaces/form.interface';
 import { IApiResponse, ResponseCodes, ResponseMessages } from '@/interfaces/response.interface';
 import { ETaxType } from '@/interfaces/tax.interface';
 import FormService from '@/services/form.service';
@@ -9,9 +11,9 @@ class FormController {
     private formService = new FormService()
     public getForm = async (req: IUserRequest, res: Response, next: NextFunction) => {
         try {
-            if (req.query.type !== ETaxType.FORM111)
+            if (req.query.type !== ETaxType.FORM111 && req.query.type !== ETaxType.FORM130)
                 throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_NOT_SUPPORTED)
-            const taxData = await this.formService.getFormData(req.authToken,req.user, req.query.type as ETaxType, Number(req.query.year), Number(req.query.trimester))
+            const taxData = await this.formService.getFormData(req.authToken, req.user, req.query.type as ETaxType, Number(req.query.year), Number(req.query.trimester))
             res.set('Content-Type', 'text/html')
             res.render(req.query.type, taxData)
         } catch (error) {
@@ -23,6 +25,29 @@ class FormController {
         try {
             await this.formService.saveFormData(req.body)
             res.success(ResponseMessages.en.SIGNUP_SUCCESS)
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    public getTestForm = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const formData: IForm = {
+                authToken:"1234",
+                postUrl: "#",
+                modelBackgroundImage: API_BASE_URL + "/static/img/" + req.query.type + ".jpeg",
+                cssUrl: API_BASE_URL + "/static/css/" + req.query.type + ".css",
+                jsUrl: API_BASE_URL + "/static/js/" + req.query.type + ".js",
+                formType: req.query.type as ETaxType,
+                year:2022,
+                trimester:1,
+                cifNif: "12345",
+                name: "Test",
+                surname: "Surname",
+                data: {}
+            }
+            res.set('Content-Type', 'text/html')
+            res.render(req.query.type as string, formData)
         } catch (error) {
             next(error);
         }

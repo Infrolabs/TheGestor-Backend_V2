@@ -11,7 +11,7 @@ const expenseSchema: Schema = new Schema({
   },
   manualItem: [{
     name: String,
-    cost: String,
+    cost: Number,
     unit: Number,
     vat: Number,
     irpf: Number,
