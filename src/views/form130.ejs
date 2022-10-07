@@ -18,28 +18,28 @@
         <form method="POST" action="<%- postUrl %>" id="taxForm"  name="taxForm" onsubmit="return false">
             <input type="hidden" name="type" value="<%= formType %>"/>
             <input type="hidden" name="authToken" value="<%= authToken %>"/>
-            <input type="text" name="year" value="<%= year %>" class="gf-input gf-year" disabled />
-            <input type="text" name="trimester" value="<%= trimester %>" class="gf-input gf-trimester" disabled />
-            <input type="text" name="cifNif" value="<%= cifNif %>" class="gf-input gf-cifnif" disabled />
-            <input type="text" name="name" value="<%= name %>" class="gf-input gf-name" disabled />
+            <input type="text" name="year" value="<%= year %>" class="gf-input gf-year" readonly />
+            <input type="text" name="trimester" value="<%= trimester %>" class="gf-input gf-trimester" readonly />
+            <input type="text" name="cifNif" value="<%= cifNif %>" class="gf-input gf-cifnif" readonly />
+            <input type="text" name="name" value="<%= name %>" class="gf-input gf-name" readonly />
             <input type="number" name="0" value="<%= data['0'] ? data['0'] : '0.00'  %>" class="gf-input gf-in-0 currency" />
             <input type="number" name="1" value="<%= data['1'] ? data['1'] : '0.00'  %>" class="gf-input gf-in-1 currency" />
-            <input type="number" name="2" value="<%= data['2'] ? data['2'] : '0.00'  %>" class="gf-input gf-in-2 currency" disabled/>
-            <input type="number" name="3" value="<%= data['3'] ? data['3'] : '0.00'  %>" class="gf-input gf-in-3 currency" disabled/>
+            <input type="number" name="2" value="<%= data['2'] ? data['2'] : '0.00'  %>" class="gf-input gf-in-2 currency" readonly/>
+            <input type="number" name="3" value="<%= data['3'] ? data['3'] : '0.00'  %>" class="gf-input gf-in-3 currency" readonly/>
             <input type="number" name="4" value="<%= data['4'] ? data['4'] : '0.00'  %>" class="gf-input gf-in-4 currency" />
             <input type="number" name="5" value="<%= data['5'] ? data['5'] : '0.00'  %>" class="gf-input gf-in-5 currency" />
-            <input type="number" name="6" value="<%= data['6'] ? data['6'] : '0.00'  %>" class="gf-input gf-in-6 currency" disabled/>
+            <input type="number" name="6" value="<%= data['6'] ? data['6'] : '0.00'  %>" class="gf-input gf-in-6 currency" readonly/>
             <input type="number" name="7" value="<%= data['7'] ? data['7'] : '0.00'  %>" class="gf-input gf-in-7 currency" />
             <input type="number" name="8" value="<%= data['8'] ? data['8'] : '0.00'  %>" class="gf-input gf-in-8 currency" />
             <input type="number" name="9" value="<%= data['9'] ? data['9'] : '0.00'  %>" class="gf-input gf-in-9 currency" />
             <input type="number" name="10" value="<%= data['10'] ? data['10'] : '0.00'  %>" class="gf-input gf-in-10 currency" />
-            <input type="number" name="11" value="<%= data['11'] ? data['11'] : '0.00'  %>" class="gf-input gf-in-11 currency" disabled/>
+            <input type="number" name="11" value="<%= data['11'] ? data['11'] : '0.00'  %>" class="gf-input gf-in-11 currency" readonly/>
             <input type="number" name="12" value="<%= data['12'] ? data['12'] : '0.00'  %>" class="gf-input gf-in-12 currency" />
-            <input type="number" name="13" value="<%= data['13'] ? data['13'] : '0.00'  %>" class="gf-input gf-in-13 currency" disabled/>
+            <input type="number" name="13" value="<%= data['13'] ? data['13'] : '0.00'  %>" class="gf-input gf-in-13 currency" readonly/>
             <input type="number" name="14" value="<%= data['14'] ? data['14'] : '0.00'  %>" class="gf-input gf-in-14 currency" />
             <input type="number" name="15" value="<%= data['15'] ? data['15'] : '0.00'  %>" class="gf-input gf-in-15 currency" />
-            <input type="number" name="16" value="<%= data['16'] ? data['16'] : '0.00'  %>" class="gf-input gf-in-16 currency" disabled/>
-            <input type="number" name="17" value="<%= data['17'] ? data['17'] : '0.00'  %>" class="gf-input gf-in-17 currency" disabled/>
+            <input type="number" name="16" value="<%= data['16'] ? data['16'] : '0.00'  %>" class="gf-input gf-in-16 currency" readonly/>
+            <input type="number" name="17" value="<%= data['17'] ? data['17'] : '0.00'  %>" class="gf-input gf-in-17 currency" readonly/>
             <input type="number" name="18" value="<%= data['18'] ? data['18'] : '0.00'  %>" class="gf-input gf-in-18 currency" />
             
         </form>
