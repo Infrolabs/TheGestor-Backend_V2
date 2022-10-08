@@ -25,6 +25,7 @@ export interface IBilling {
     subscriptionStatus?: ESubscriptionStatus
     transactionDetails?: any
     errorDetails?: any
+    createdAt?: Date
 }
 
 

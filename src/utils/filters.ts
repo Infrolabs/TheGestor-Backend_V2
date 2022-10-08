@@ -65,6 +65,7 @@ export const filterBilling = (billing: IBilling): IBilling => {
         coupon: billing.coupon,
         planType: billing.planType,
         paymentStatus: billing.paymentStatus,
-        subscriptionStatus: billing.subscriptionStatus
+        subscriptionStatus: billing.subscriptionStatus,
+        createdAt: billing.createdAt
     }
 }
