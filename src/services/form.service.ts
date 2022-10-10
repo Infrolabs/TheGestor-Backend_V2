@@ -190,6 +190,8 @@ class FormService {
             dataArray[1] = ((totalIncome - totalExpense) * 5 / 100) + totalIncome + cell2Total
             dataArray[4] = cell5
             const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
+            data.isSimplified = "true"
+            data.simplifiedExtraValue = ((totalIncome - totalExpense) * 5 / 100)
             return data
         }
         return {}

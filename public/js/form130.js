@@ -5,6 +5,32 @@ $(document).ready(function () {
 	});
 	$('.currency').formatCurrency();
 
+	$('.gf-simplified-btn').click(function () {
+		const value = $('.gf-isSimplified').val() === 'true' ? 'false' : 'true'
+		$('.gf-isSimplified').val(value)
+		if (value && $('.gf-simplified-btn').hasClass('btn-primary')) {
+			$('.gf-simplified-btn').removeClass('btn-primary')
+			$('.gf-simplified-btn').addClass('btn-danger')
+			$('.gf-simplified-btn').html('Revertir')
+		} else if ($('.gf-simplified-btn').hasClass('btn-danger')) {
+			$('.gf-simplified-btn').addClass('btn-primary')
+			$('.gf-simplified-btn').removeClass('btn-danger')
+			$('.gf-simplified-btn').html('Añadido')
+		}
+		if (value) {
+			$('.gf-in-2').val(
+				getNum($('.gf-simplifiedExtraValue').val()) +
+				getNum($('.gf-in-2').val())
+			)
+		}else{
+			$('.gf-in-2').val(
+				getNum($('.gf-in-2').val()) - 
+				getNum($('.gf-simplifiedExtraValue').val())
+			)
+		}
+		$('.currency').formatCurrency();
+	})
+
 	calculateTotal()
 	// Calculate total on blur
 	$('.gf-in-0').blur(calculateTotal)
@@ -49,7 +75,7 @@ $(document).ready(function () {
 	}
 
 	function getNum(str) {
-		return parseFloat(str)
+		return str && parseFloat(str) ? parseFloat(str) : 0
 	}
 
 });

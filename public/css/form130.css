@@ -43,6 +43,10 @@
     position: relative;
 }
 
+.gf-yellow-bg {
+    background-color: #fcfbdb;
+}
+
 .gf-year {
     position: absolute;
     top: 11.5%;
