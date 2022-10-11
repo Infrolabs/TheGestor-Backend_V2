@@ -1,0 +1,9 @@
+# baseURL
+@baseURL = http://localhost:3001/v3
+
+# @baseURL = https://api.thegestor.app/v3
+
+
+###
+# Get config
+GET {{ baseURL }}/config

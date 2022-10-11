@@ -54,6 +54,7 @@ export const ResponseMessages = {
         FORM_INVALID_DATA: 'It seems there is some error in form data',
         TAX_NOT_FOUND: 'Tax details not saved. Please save tax details first.',
         TAX_UPDATED: 'Tax details saved successfully',
+        CONFIG_FETCHED: 'Config fetched successfully',
     },
     es: {
         SOMETHING_WENT_WRONG: 'Algo salió mal',
@@ -94,5 +95,6 @@ export const ResponseMessages = {
         FORM_INVALID_DATA: 'Hay algún error en los datos del formulario',
         TAX_NOT_FOUND: 'Los datos fiscales no se han guardado. Por favor, guarde primero los datos fiscales',
         TAX_UPDATED: 'Datos fiscales se han guardado correctamente',
+        CONFIG_FETCHED: 'Config fetched successfully',
     }
 }
