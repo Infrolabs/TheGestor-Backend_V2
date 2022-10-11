@@ -95,6 +95,6 @@ export const ResponseMessages = {
         FORM_INVALID_DATA: 'Hay algún error en los datos del formulario',
         TAX_NOT_FOUND: 'Los datos fiscales no se han guardado. Por favor, guarde primero los datos fiscales',
         TAX_UPDATED: 'Datos fiscales se han guardado correctamente',
-        CONFIG_FETCHED: 'Config fetched successfully',
+        CONFIG_FETCHED: 'Configuración obtenida con éxito',
     }
 }
