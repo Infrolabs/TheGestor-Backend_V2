@@ -17,6 +17,11 @@ class TaxService {
         return tax
     }
 
+    public async resetTax(year: number, trimester: number, type: ETaxType, userId: string): Promise<ITax> {
+        const tax = await taxModel.findOneAndUpdate({ year: year, trimester: trimester, userId: userId, type: type }, { $unset: { data: 1 } }, { upsert: true, new: true })
+        return tax
+    }
+
     public async generateTxt(type: ETaxType, year: number, trimester: number, user: IUser): Promise<string> {
         const tax = await taxModel.findOne({ type, year, trimester, userId: user._id })
         if (!tax)

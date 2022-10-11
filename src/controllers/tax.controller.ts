@@ -42,6 +42,16 @@ class TaxController {
             next(error);
         }
     }
+
+    public resetTax = async (req: IUserRequest, res: IApiResponse, next: NextFunction) => {
+        try {
+            const { type, year, trimester } = req.query
+            const taxes = await this.taxService.resetTax(Number(year), Number(trimester), type as ETaxType, req.user._id)
+            res.success(ResponseMessages.en.TAXES_FOUND, taxes)
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 export default TaxController;

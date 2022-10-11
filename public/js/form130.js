@@ -22,9 +22,9 @@ $(document).ready(function () {
 				getNum($('.gf-simplifiedExtraValue').val()) +
 				getNum($('.gf-in-2').val())
 			)
-		}else{
+		} else {
 			$('.gf-in-2').val(
-				getNum($('.gf-in-2').val()) - 
+				getNum($('.gf-in-2').val()) -
 				getNum($('.gf-simplifiedExtraValue').val())
 			)
 		}
@@ -41,6 +41,7 @@ $(document).ready(function () {
 	$('.gf-in-12').blur(calculateTotal)
 	$('.gf-in-14').blur(calculateTotal)
 	$('.gf-in-15').blur(calculateTotal)
+	$('.gf-in-17').blur(calculateTotal)
 
 	function calculateTotal() {
 		$('.gf-in-2').val(
@@ -64,13 +65,19 @@ $(document).ready(function () {
 			getNum($('.gf-in-12').val())
 		)
 		$('.gf-in-16').val(
-			getNum($('.gf-in-13').val())
-		)
-		$('.gf-in-17').val(
 			getNum($('.gf-in-13').val()) -
 			getNum($('.gf-in-14').val()) -
 			getNum($('.gf-in-15').val())
 		)
+		$('.gf-in-18').val(
+			getNum($('.gf-in-16').val()) -
+			getNum($('.gf-in-17').val())
+		)
+		$('.gf-in-18-2').val(
+			$('.gf-in-18').val()
+		)
+		$('#negativa').prop('checked', getNum($('.gf-in-18').val()) == 0 ? true : false)
+		$('#minusResult').prop('checked', getNum($('.gf-in-18').val()) < 0 ? true : false)
 		$('.currency').formatCurrency();
 	}
 

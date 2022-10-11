@@ -68,3 +68,8 @@ Content-Type: application/json
         "34":"0"
     }
 }
+
+###
+# Reset Tax
+DELETE  {{ baseURL }}/tax/reset?year=2022&trimester=2&type=form111
+Authorization: Bearer {{token}}

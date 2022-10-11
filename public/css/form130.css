@@ -230,3 +230,57 @@
     width: 15%;
     height: 1.2%;
 }
+
+.gf-in-18-2 {
+    position: absolute;
+    top: 75.5%;
+    left: 31.5%;
+    width: 15%;
+    height: 1.2%;
+}
+
+#forma1 {
+    position: absolute;
+    top: 78.3%;
+    left: 21%;
+}
+
+#forma2 {
+    position: absolute;
+    top: 78.3%;
+    left: 33.7%;
+}
+
+.gf-ccc {
+    position: absolute;
+    top: 82.3%;
+    left: 10.6%;
+    width: 35.6%;
+    height: 1.7%;
+}
+
+#negativa {
+    position: absolute;
+    top: 86.8%;
+    left: 15.5%;
+}
+
+#minusResult {
+    position: absolute;
+    top: 74%;
+    left: 57.8%;
+}
+
+.gf-in-21{
+    position: absolute;
+    top: 81.2%;
+    left: 57.8%;
+}
+
+.gf-justificante {
+    position: absolute;
+    top: 87%;
+    left: 70.8%;
+    width: 23%;
+    height: 1.5%;
+}

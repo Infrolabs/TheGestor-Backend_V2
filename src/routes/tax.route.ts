@@ -18,6 +18,7 @@ class FormRoute implements Routes {
         this.router.get(`${this.path}/list`, authMiddleware, validate(getTaxesListSchema), this.taxController.list);
         this.router.get(`${this.path}/txt`,authMiddleware,validate(getTxtSchema), this.taxController.getTxt);
         this.router.put(`${this.path}/`, authMiddleware, validate(updateTaxSchema), this.taxController.addUpdateTax);
+        this.router.delete(`${this.path}/reset`, authMiddleware, validate(getTxtSchema), this.taxController.resetTax);
     }
 }
 

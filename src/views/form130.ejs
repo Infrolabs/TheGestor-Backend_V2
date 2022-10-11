@@ -75,10 +75,18 @@
             <input type="number" name="16" value="<%= data['16'] ? data['16'] : '0.00'  %>"
                 class="gf-input gf-in-16 currency" readonly />
             <input type="number" name="17" value="<%= data['17'] ? data['17'] : '0.00'  %>"
-                class="gf-input gf-in-17 currency" readonly />
+                class="gf-input gf-in-17 currency" />
             <input type="number" name="18" value="<%= data['18'] ? data['18'] : '0.00'  %>"
-                class="gf-input gf-in-18 currency" />
-
+                class="gf-input gf-in-18 currency" readonly />
+            <input type="number" value="<%= data['18'] ? data['18'] : '0.00'  %>" class="gf-input gf-in-18-2 currency"
+                readonly />
+            <input class="form-check-input" type="radio" name="forma" value="1" id="forma1" <%= data['forma'] === 1 ? 'checked' : '' %>>
+            <input class="form-check-input" type="radio" name="forma" value="2" id="forma2" <%= data['forma'] === 2 ? 'checked' : '' %>>
+            <input type="text" name="ccc" value="<%= data['ccc'] ? data['ccc'] : '' %>" class="gf-input gf-ccc" />
+            <input class="form-check-input" type="checkbox" id="negativa" >
+            <input class="form-check-input" type="checkbox" id="minusResult" >
+            <input class="form-check-input gf-in-21" value="X" name="21" type="checkbox" <%= data['21'] === 'X' ? 'checked' : '' %> >
+            <input type="text" name="justificante" value="<%= data['justificante'] ? data['justificante'] : '' %>" class="gf-input gf-justificante" />
         </form>
     </div>
 </body>
