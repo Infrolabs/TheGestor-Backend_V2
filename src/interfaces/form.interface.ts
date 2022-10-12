@@ -3,7 +3,7 @@ import { ETaxType } from "./tax.interface";
 export interface IForm {
     authToken: string
     postUrl: string
-    modelBackgroundImage: string
+    imageBaseUrl: string
     jsUrl: string
     cssUrl: string
     formType: ETaxType

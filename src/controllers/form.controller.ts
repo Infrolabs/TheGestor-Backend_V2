@@ -35,7 +35,7 @@ class FormController {
             const formData: IForm = {
                 authToken:"1234",
                 postUrl: "#",
-                modelBackgroundImage: API_BASE_URL + "/static/img/" + req.query.type + ".jpeg",
+                imageBaseUrl: API_BASE_URL + "/static/img",
                 cssUrl: API_BASE_URL + "/static/css/" + req.query.type + ".css",
                 jsUrl: API_BASE_URL + "/static/js/" + req.query.type + ".js",
                 formType: req.query.type as ETaxType,

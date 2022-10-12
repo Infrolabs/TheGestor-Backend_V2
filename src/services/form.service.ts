@@ -23,7 +23,7 @@ class FormService {
             return {
                 authToken,
                 postUrl: API_BASE_URL + "/form/",
-                modelBackgroundImage: API_BASE_URL + "/static/img/" + type + ".jpeg",
+                imageBaseUrl: API_BASE_URL + "/static/img",
                 cssUrl: API_BASE_URL + "/static/css/" + type + ".css",
                 jsUrl: API_BASE_URL + "/static/js/" + type + ".js",
                 formType: type,
@@ -38,7 +38,7 @@ class FormService {
         return {
             authToken,
             postUrl: API_BASE_URL + "/form/",
-            modelBackgroundImage: API_BASE_URL + "/static/img/" + type + ".jpeg",
+            imageBaseUrl: API_BASE_URL + "/static/img",
             cssUrl: API_BASE_URL + "/static/css/" + type + ".css",
             jsUrl: API_BASE_URL + "/static/js/" + type + ".js",
             formType: type,
