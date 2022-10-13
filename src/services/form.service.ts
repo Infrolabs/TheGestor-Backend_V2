@@ -19,7 +19,7 @@ import { verify } from 'jsonwebtoken';
 class FormService {
     public async getFormData(authToken: string, user: IUser, type: ETaxType, year: number, trimester: number): Promise<IForm> {
         const taxData = await taxModel.findOne({ userId: user._id, type, year, trimester })
-        if (taxData)
+        if (taxData && taxData.data)
             return {
                 authToken,
                 postUrl: API_BASE_URL + "/form/",
