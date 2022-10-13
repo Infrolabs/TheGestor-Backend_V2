@@ -34,6 +34,7 @@ class FormController {
         try {
             const formData: IForm = {
                 authToken:"1234",
+                userId:"1234",
                 postUrl: "#",
                 imageBaseUrl: API_BASE_URL + "/static/img",
                 cssUrl: API_BASE_URL + "/static/css/" + req.query.type + ".css",

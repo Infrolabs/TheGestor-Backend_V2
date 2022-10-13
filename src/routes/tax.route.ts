@@ -4,6 +4,7 @@ import { Routes } from '@/interfaces/routes.interface';
 import { validate } from 'express-validation';
 import { getTaxesListSchema, getTxtSchema, updateTaxSchema } from '@/validations/tax.validation';
 import authMiddleware from '@/middlewares/auth.middleware';
+import { editAuthorityMiddleware, readAuthorityMiddleware } from '@/middlewares/authority.middleware';
 
 class FormRoute implements Routes {
     public path = '/tax';
@@ -15,10 +16,10 @@ class FormRoute implements Routes {
     }
 
     private initializeRoutes() {
-        this.router.get(`${this.path}/list`, authMiddleware, validate(getTaxesListSchema), this.taxController.list);
-        this.router.get(`${this.path}/txt`,authMiddleware,validate(getTxtSchema), this.taxController.getTxt);
-        this.router.put(`${this.path}/`, authMiddleware, validate(updateTaxSchema), this.taxController.addUpdateTax);
-        this.router.delete(`${this.path}/reset`, authMiddleware, validate(getTxtSchema), this.taxController.resetTax);
+        this.router.get(`${this.path}/list`, authMiddleware, readAuthorityMiddleware, validate(getTaxesListSchema), this.taxController.list);
+        this.router.get(`${this.path}/txt`, authMiddleware, readAuthorityMiddleware, validate(getTxtSchema), this.taxController.getTxt);
+        this.router.put(`${this.path}/`, authMiddleware, editAuthorityMiddleware, validate(updateTaxSchema), this.taxController.addUpdateTax);
+        this.router.delete(`${this.path}/reset`, authMiddleware, editAuthorityMiddleware, validate(getTxtSchema), this.taxController.resetTax);
     }
 }
 

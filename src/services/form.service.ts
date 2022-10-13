@@ -1,5 +1,6 @@
 import { API_BASE_URL, SECRET_KEY } from "@/config";
 import { HttpException } from "@/exceptions/HttpException";
+import { EAccessStatus, EAccessType } from "@/interfaces/access.interface";
 import { DataStoredInToken } from "@/interfaces/auth.interface";
 import { EClientType } from "@/interfaces/client.interface";
 import { IForm } from "@/interfaces/form.interface";
@@ -7,6 +8,7 @@ import { EVatType } from "@/interfaces/invoice.interface";
 import { ResponseCodes, ResponseMessages } from "@/interfaces/response.interface";
 import { ETaxStatus, ETaxType, ITax } from "@/interfaces/tax.interface";
 import { IUser } from "@/interfaces/users.interface";
+import accessModel from "@/models/access.model";
 import clientModel from "@/models/client.model";
 import expenseModel from "@/models/expense.model";
 import incomeModel from "@/models/income.model";
@@ -22,6 +24,7 @@ class FormService {
         if (taxData && taxData.data)
             return {
                 authToken,
+                userId: user._id,
                 postUrl: API_BASE_URL + "/form/",
                 imageBaseUrl: API_BASE_URL + "/static/img",
                 cssUrl: API_BASE_URL + "/static/css/" + type + ".css",
@@ -37,6 +40,7 @@ class FormService {
         // Set form with default data
         return {
             authToken,
+            userId: user._id,
             postUrl: API_BASE_URL + "/form/",
             imageBaseUrl: API_BASE_URL + "/static/img",
             cssUrl: API_BASE_URL + "/static/css/" + type + ".css",
@@ -52,7 +56,8 @@ class FormService {
     }
 
     public async saveFormData(data: any): Promise<void> {
-        const user = await this.validateAuthToken(data.authToken)
+        const userToken = await this.validateAuthToken(data.authToken)
+        const user = await this.validateEditAuthority(userToken, data.userId)
         const formType = String(data.type)
         const year = Number(data.year)
         const trimester = Number(data.trimester)
@@ -75,6 +80,14 @@ class FormService {
         if (!user)
             throw new HttpException(ResponseCodes.UNAUTHORIZED, ResponseMessages.en.WRONG_AUTH_TOKEN)
         return user
+    }
+
+    private async validateEditAuthority(authUser: IUser, userId: string): Promise<IUser> {
+        let user = await userModel.findById(authUser._id)
+        if (String(user._id) === String(userId))
+            return user
+        const access = await accessModel.findOne({ user: userId, email: user.email, status: EAccessStatus.ACCEPTED, accessType: { $in: [EAccessType.ADMIN, EAccessType.EDIT] } }).populate('user').lean()
+        return (access?.user as IUser) || user
     }
 
     private async getDefaultFormData(userId: string, type: ETaxType, trimester: number, year: number): Promise<any> {
