@@ -34,20 +34,74 @@
             <input type="text" name="cifNif" value="<%= cifNif %>" class="gf-input gf-cifnif" readonly />
             <input type="text" name="name" value="<%= name %>" class="gf-input gf-name" readonly />
             <input class="form-check-input mt-0 gf-in-1-1" type="radio" name="1" value="1" id="gf-in-1-1" <%= data['1'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input mt-0 gf-in-1-2" type="radio" name="1" value="2" id="gf-in-1-2" <%= data['1'] === '2' ? 'checked' : '' %>>
+            <input class="form-check-input mt-0 gf-in-1-2" type="radio" name="1" value="2" id="gf-in-1-2" <%= data['1'] === '1' ? '' : 'checked' %>>
             <input class="form-check-input mt-0 gf-in-2-1" type="radio" name="2" value="1" id="gf-in-2-1" <%= data['2'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input mt-0 gf-in-2-2" type="radio" name="2" value="2" id="gf-in-2-2" <%= data['2'] === '2' ? 'checked' : '' %>>
+            <input class="form-check-input mt-0 gf-in-2-2" type="radio" name="2" value="2" id="gf-in-2-2" <%= data['2'] === '1' ? '' : 'checked' %>>
             <input class="form-check-input mt-0 gf-in-3-1" type="radio" name="3" value="1" id="gf-in-3-1" <%= data['3'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input mt-0 gf-in-3-2" type="radio" name="3" value="2" id="gf-in-3-2" <%= data['3'] === '2' ? 'checked' : '' %>>
+            <input class="form-check-input mt-0 gf-in-3-2" type="radio" name="3" value="2" id="gf-in-3-2" <%= data['3'] === '1' ? '' : 'checked' %>>
             <input class="form-check-input mt-0 gf-in-4-1" type="radio" name="4" value="1" id="gf-in-4-1" <%= data['4'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input mt-0 gf-in-4-2" type="radio" name="4" value="2" id="gf-in-4-2" <%= data['4'] === '2' ? 'checked' : '' %>>
+            <input class="form-check-input mt-0 gf-in-4-2" type="radio" name="4" value="2" id="gf-in-4-2" <%= data['4'] === '1' ? '' : 'checked' %>>
             <input class="form-check-input mt-0 gf-in-5-1" type="radio" name="5" value="1" id="gf-in-5-1" <%= data['5'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input mt-0 gf-in-5-2" type="radio" name="5" value="2" id="gf-in-5-2" <%= data['5'] === '2' ? 'checked' : '' %>>
+            <input class="form-check-input mt-0 gf-in-5-2" type="radio" name="5" value="2" id="gf-in-5-2" <%= data['5'] === '1' ? '' : 'checked' %>>
             <input class="form-check-input mt-0 gf-in-6" value="1" name="6" type="checkbox" <%= data['6'] === '1' ? 'checked' : '' %> >
             <input class="form-check-input mt-0 gf-in-7" value="1" name="7" type="checkbox" <%= data['7'] === '1' ? 'checked' : '' %> >
             <input class="form-check-input mt-0 gf-in-8-1" type="radio" name="8" value="1" id="gf-in-8-1" <%= data['8'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input mt-0 gf-in-8-2" type="radio" name="8" value="2" id="gf-in-8-2" <%= data['8'] === '2' ? 'checked' : '' %>>
+            <input class="form-check-input mt-0 gf-in-8-2" type="radio" name="8" value="2" id="gf-in-8-2" <%= data['8'] === '1' ? '' : 'checked' %>>
             <input type="text" name="9" value="<%= data['9'] ? data['9'] : '' %>" class="gf-input gf-in-9" />
+            <input class="form-check-input mt-0 gf-in-10-1" type="radio" name="10" value="1" id="gf-in-8-1" <%= data['10'] === '1' ? 'checked' : '' %>>
+            <input class="form-check-input mt-0 gf-in-10-2" type="radio" name="10" value="2" id="gf-in-8-2" <%= data['10'] === '2' ? 'checked' : '' %>>
+            <input class="form-check-input mt-0 gf-in-11" value="1" name="11" type="checkbox" <%= data['11'] === '1' ? 'checked' : '' %> >
+            <input class="form-check-input mt-0 gf-in-12-1" type="radio" name="12" value="1" id="gf-in-12-1" <%= data['12'] === '1' ? 'checked' : '' %>>
+            <input class="form-check-input mt-0 gf-in-12-2" type="radio" name="12" value="2" id="gf-in-12-2" <%= data['12'] === '1' ? '' : 'checked' %>>
+            <input class="form-check-input mt-0 gf-in-13-1" type="radio" name="13" value="1" id="gf-in-13-1" <%= data['13'] === '1' ? 'checked' : '' %>>
+            <input class="form-check-input mt-0 gf-in-13-2" type="radio" name="13" value="2" id="gf-in-13-2" <%= data['13'] === '1' ? '' : 'checked' %>>
+
+            <input type="number" name="14" value="<%= data['14'] ? data['14'] : '0.00'  %>" class="gf-input gf-in-14 currency" />
+            <input type="number" name="15" value="<%= data['15'] ? data['15'] : '0.00'  %>" class="gf-input gf-in-15 currency" />
+            <input type="number" name="16" value="<%= data['16'] ? data['16'] : '0.00'  %>" class="gf-input gf-in-16 currency" />
+            <input type="number" name="17" value="<%= data['17'] ? data['17'] : '0.00'  %>" class="gf-input gf-in-17 currency" />
+            <input type="number" name="18" value="<%= data['18'] ? data['18'] : '0.00'  %>" class="gf-input gf-in-18 currency" />
+            <input type="number" name="19" value="<%= data['19'] ? data['19'] : '0.00'  %>" class="gf-input gf-in-19 currency" />
+            <input type="number" name="20" value="<%= data['20'] ? data['20'] : '0.00'  %>" class="gf-input gf-in-20 currency" />
+            <input type="number" name="21" value="<%= data['21'] ? data['21'] : '0.00'  %>" class="gf-input gf-in-21 currency" />
+            <input type="number" name="22" value="<%= data['22'] ? data['22'] : '0.00'  %>" class="gf-input gf-in-22 currency" />
+            <input type="number" name="23" value="<%= data['23'] ? data['23'] : '0.00'  %>" class="gf-input gf-in-23 currency" />
+            <input type="number" name="24" value="<%= data['24'] ? data['24'] : '0.00'  %>" class="gf-input gf-in-24 currency" />
+            <input type="number" name="25" value="<%= data['25'] ? data['25'] : '0.00'  %>" class="gf-input gf-in-25 currency" />
+            <input type="number" name="26" value="<%= data['26'] ? data['26'] : '0.00'  %>" class="gf-input gf-in-26 currency" />
+            <input type="number" name="27" value="<%= data['27'] ? data['27'] : '0.00'  %>" class="gf-input gf-in-27 currency" />
+            <input type="number" name="28" value="<%= data['28'] ? data['28'] : '0.00'  %>" class="gf-input gf-in-28 currency" />
+            <input type="number" name="29" value="<%= data['29'] ? data['29'] : '0.00'  %>" class="gf-input gf-in-29 currency" />
+            <input type="number" name="30" value="<%= data['30'] ? data['30'] : '0.00'  %>" class="gf-input gf-in-30 currency" />
+            <input type="number" name="31" value="<%= data['31'] ? data['31'] : '0.00'  %>" class="gf-input gf-in-31 currency" />
+            <input type="number" name="32" value="<%= data['32'] ? data['32'] : '0.00'  %>" class="gf-input gf-in-32 currency" />
+            <input type="number" name="33" value="<%= data['33'] ? data['33'] : '0.00'  %>" class="gf-input gf-in-33 currency" />
+            <input type="number" name="34" value="<%= data['34'] ? data['34'] : '0.00'  %>" class="gf-input gf-in-34 currency" />
+            <input type="number" name="35" value="<%= data['35'] ? data['35'] : '0.00'  %>" class="gf-input gf-in-35 currency" />
+            <input type="number" name="36" value="<%= data['36'] ? data['36'] : '0.00'  %>" class="gf-input gf-in-36 currency" />
+            <input type="number" name="37" value="<%= data['37'] ? data['37'] : '0.00'  %>" class="gf-input gf-in-37 currency" />
+            <input type="number" name="38" value="<%= data['38'] ? data['38'] : '0.00'  %>" class="gf-input gf-in-38 currency" />
+            <input type="number" name="39" value="<%= data['39'] ? data['39'] : '0.00'  %>" class="gf-input gf-in-39 currency" />
+            <input type="number" name="40" value="<%= data['40'] ? data['40'] : '0.00'  %>" class="gf-input gf-in-40 currency" />
+            <input type="number" name="41" value="<%= data['41'] ? data['41'] : '0.00'  %>" class="gf-input gf-in-41 currency" />
+            <input type="number" name="42" value="<%= data['42'] ? data['42'] : '0.00'  %>" class="gf-input gf-in-42 currency" />
+            <input type="number" name="43" value="<%= data['43'] ? data['43'] : '0.00'  %>" class="gf-input gf-in-43 currency" />
+            <input type="number" name="44" value="<%= data['44'] ? data['44'] : '0.00'  %>" class="gf-input gf-in-44 currency" />
+            <input type="number" name="45" value="<%= data['45'] ? data['45'] : '0.00'  %>" class="gf-input gf-in-45 currency" />
+            <input type="number" name="46" value="<%= data['46'] ? data['46'] : '0.00'  %>" class="gf-input gf-in-46 currency" />
+            <input type="number" name="47" value="<%= data['47'] ? data['47'] : '0.00'  %>" class="gf-input gf-in-47 currency" />
+            <input type="number" name="48" value="<%= data['48'] ? data['48'] : '0.00'  %>" class="gf-input gf-in-48 currency" />
+            <input type="number" name="49" value="<%= data['49'] ? data['49'] : '0.00'  %>" class="gf-input gf-in-49 currency" />
+            <input type="number" name="50" value="<%= data['50'] ? data['50'] : '0.00'  %>" class="gf-input gf-in-50 currency" />
+            <input type="number" name="51" value="<%= data['51'] ? data['51'] : '0.00'  %>" class="gf-input gf-in-51 currency" />
+            <input type="number" name="52" value="<%= data['52'] ? data['52'] : '0.00'  %>" class="gf-input gf-in-52 currency" />
+            <input type="number" name="53" value="<%= data['53'] ? data['53'] : '0.00'  %>" class="gf-input gf-in-53 currency" />
+            <input type="number" name="54" value="<%= data['54'] ? data['54'] : '0.00'  %>" class="gf-input gf-in-54 currency" />
+            <input type="number" name="55" value="<%= data['55'] ? data['55'] : '0.00'  %>" class="gf-input gf-in-55 currency" />
+            <input type="number" name="56" value="<%= data['56'] ? data['56'] : '0.00'  %>" class="gf-input gf-in-56 currency" />
+            <input type="number" name="57" value="<%= data['57'] ? data['57'] : '0.00'  %>" class="gf-input gf-in-57 currency" />
+            <input type="number" name="58" value="<%= data['58'] ? data['58'] : '0.00'  %>" class="gf-input gf-in-58 currency" />
+            <input type="number" name="59" value="<%= data['59'] ? data['59'] : '0.00'  %>" class="gf-input gf-in-59 currency" />
         </div>
         <hr/>
         <!-- ---------- PAGE 2 ------------- -->

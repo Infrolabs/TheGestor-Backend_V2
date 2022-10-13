@@ -8,6 +8,7 @@
     font-size: 0.5rem;
     -webkit-appearance: none;
     -moz-appearance: textfield;
+    position: absolute;
 }
 
 @media only screen and (min-width: 600px) {
@@ -191,6 +192,430 @@
     position: absolute;
     top: 24.3%;
     left: 79.3%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-10-1 {
+    position: absolute;
+    top: 26.4%;
+    left: 92%;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.gf-in-10-2 {
+    position: absolute;
+    top: 27.8%;
+    left: 92%;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.gf-in-11 {
+    position: absolute;
+    top: 37.9%;
+    left: 46.8%;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.gf-in-12-1 {
+    position: absolute;
+    top: 39.6%;
+    left: 46.8%;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.gf-in-12-2 {
+    position: absolute;
+    top: 39.6%;
+    left: 50.1%;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.gf-in-13-1 {
+    position: absolute;
+    top: 41.1%;
+    left: 46.8%;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.gf-in-13-2 {
+    position: absolute;
+    top: 41.1%;
+    left: 50.1%;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.gf-in-14 {
+    position: absolute;
+    top: 49.6%;
+    left: 51.4%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-15 {
+    position: absolute;
+    top: 49.6%;
+    left: 68.3%;
+    width: 8.5%;
+    height: 1.2%;
+}
+
+.gf-in-16 {
+    position: absolute;
+    top: 49.6%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-17 {
+    position: absolute;
+    top: 51.1%;
+    left: 51.4%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-18 {
+    position: absolute;
+    top: 51.1%;
+    left: 68.3%;
+    width: 8.5%;
+    height: 1.2%;
+}
+
+.gf-in-19 {
+    position: absolute;
+    top: 51.1%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-20 {
+    position: absolute;
+    top: 52.5%;
+    left: 51.4%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-21 {
+    position: absolute;
+    top: 52.5%;
+    left: 68.3%;
+    width: 8.5%;
+    height: 1.2%;
+}
+
+.gf-in-22 {
+    position: absolute;
+    top: 52.5%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-23 {
+    position: absolute;
+    top: 53.9%;
+    left: 51.4%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-24 {
+    position: absolute;
+    top: 53.9%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-25 {
+    position: absolute;
+    top: 55.3%;
+    left: 51.4%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-26 {
+    position: absolute;
+    top: 55.3%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-27 {
+    position: absolute;
+    top: 56.7%;
+    left: 51.4%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-28 {
+    position: absolute;
+    top: 56.7%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-29 {
+    position: absolute;
+    top: 58.2%;
+    left: 51.4%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-30 {
+    position: absolute;
+    top: 58.2%;
+    left: 68.3%;
+    width: 8.5%;
+    height: 1.2%;
+}
+
+.gf-in-31 {
+    position: absolute;
+    top: 58.2%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-32 {
+    position: absolute;
+    top: 59.6%;
+    left: 51.4%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-33 {
+    position: absolute;
+    top: 59.6%;
+    left: 68.3%;
+    width: 8.5%;
+    height: 1.2%;
+}
+
+.gf-in-34 {
+    position: absolute;
+    top: 59.6%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-35 {
+    position: absolute;
+    top: 61%;
+    left: 51.4%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-36 {
+    position: absolute;
+    top: 61%;
+    left: 68.3%;
+    width: 8.5%;
+    height: 1.2%;
+}
+
+.gf-in-37 {
+    position: absolute;
+    top: 61%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-38 {
+    position: absolute;
+    top: 62.4%;
+    left: 51.4%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-39 {
+    position: absolute;
+    top: 62.4%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-40 {
+    position: absolute;
+    top: 65.1%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-41 {
+    position: absolute;
+    top: 70.8%;
+    left: 62.1%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-42 {
+    position: absolute;
+    top: 70.8%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-43 {
+    position: absolute;
+    top: 72.2%;
+    left: 62.1%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-44 {
+    position: absolute;
+    top: 72.2%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-45 {
+    position: absolute;
+    top: 73.6%;
+    left: 62.1%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-46 {
+    position: absolute;
+    top: 73.6%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-47 {
+    position: absolute;
+    top: 75.1%;
+    left: 62.1%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-48 {
+    position: absolute;
+    top: 75.1%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-49 {
+    position: absolute;
+    top: 76.5%;
+    left: 62.1%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-50 {
+    position: absolute;
+    top: 76.5%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-51 {
+    position: absolute;
+    top: 78%;
+    left: 62.1%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-52 {
+    position: absolute;
+    top: 78%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-53 {
+    position: absolute;
+    top: 79.4%;
+    left: 62.1%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-54 {
+    position: absolute;
+    top: 79.4%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-55 {
+    position: absolute;
+    top: 80.8%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-56 {
+    position: absolute;
+    top: 82.2%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-57 {
+    position: absolute;
+    top: 83.7%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-58 {
+    position: absolute;
+    top: 87%;
+    left: 79.2%;
+    width: 14.4%;
+    height: 1.2%;
+}
+
+.gf-in-59 {
+    position: absolute;
+    top: 91.6%;
+    left: 79.2%;
     width: 14.4%;
     height: 1.2%;
 }
