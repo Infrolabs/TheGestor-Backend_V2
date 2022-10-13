@@ -40,7 +40,7 @@ $(document).ready(function () {
 	}
 
 	function getNum(str) {
-		return parseFloat(str)
+		return str && parseFloat(str) ? parseFloat(str).toFixed(2) : 0
 	}
 
 });

@@ -82,7 +82,7 @@ $(document).ready(function () {
 	}
 
 	function getNum(str) {
-		return str && parseFloat(str) ? parseFloat(str) : 0
+		return str && parseFloat(str) ? parseFloat(str).toFixed(2) : 0
 	}
 
 });
