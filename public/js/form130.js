@@ -102,8 +102,8 @@ $(document).on("wheel", "input[type=number]", function (e) {
 		positiveFormat: '%s%n',
 		negativeFormat: '(%s%n)',
 		decimalSymbol: '.',
-		digitGroupSymbol: ',',
-		groupDigits: true
+		digitGroupSymbol: '',
+		groupDigits: false
 	};
 
 	$.fn.formatCurrency = function (destination, settings) {
