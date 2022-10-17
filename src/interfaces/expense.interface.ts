@@ -1,3 +1,4 @@
+import { ECommentStatus, IComment } from "./income.interface"
 import { EPaymentMethod, IInvoiceAttachment, IInvoiceItem, IManualClient, IManualItem } from "./invoice.interface"
 
 export interface IExpense {
@@ -27,6 +28,8 @@ export interface IExpense {
     isDeleted: boolean
     isReconciled: boolean
     transactionDetails: Object
+    comments:IComment[]
+    commentStatus: ECommentStatus
 }
 
 // --------- ENUMS -----------

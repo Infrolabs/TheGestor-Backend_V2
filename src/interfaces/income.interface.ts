@@ -24,10 +24,24 @@ export interface IIncome {
     isDeleted: boolean
     isReconciled: boolean
     transactionDetails: Object
+    comments: IComment[]
+    commentStatus: ECommentStatus
 }
-
 export interface IIncomeVatInfo {
     vat4: number
     vat10: number
     vat21: number
+}
+
+export interface IComment {
+    name: string
+    userId: string
+    message: string
+    sentAt: Date
+}
+
+export enum ECommentStatus {
+    UNREAD = 'unread',
+    READ = 'read',
+    SOLVED = 'solved'
 }

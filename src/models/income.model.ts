@@ -1,4 +1,4 @@
-import { IIncome } from '@/interfaces/income.interface';
+import { ECommentStatus, IIncome } from '@/interfaces/income.interface';
 import { EPaymentMethod, EVatType } from '@/interfaces/invoice.interface';
 import { model, Schema, Document } from 'mongoose';
 
@@ -101,7 +101,24 @@ const incomeSchema: Schema = new Schema({
     type: Boolean,
     default: false
   },
-  transactionDetails: Object
+  transactionDetails: Object,
+  comments: [{
+    name: String,
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    },
+    message: String,
+    seenAt: {
+      type: Date,
+      default: Date.now
+    }
+  }],
+  commentStatus: {
+    type: String,
+    enum: Object.values(ECommentStatus),
+    default: ECommentStatus.UNREAD
+  }
 }, {
   timestamps: true
 })

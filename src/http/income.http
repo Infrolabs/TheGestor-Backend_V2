@@ -1,0 +1,28 @@
+# baseURL
+@baseURL = http://localhost:3001/v3
+
+# @baseURL = https://api.thegestor.app/v3
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJlYTY3MzZjYzhjMjg0MzMxNDMyZTY5In0sImlhdCI6MTY2NTk5MjE2Nn0.T-jJ1OuJ4SLW9qMWvYQRPtsiXUmWA5OY69Mxk6x2ka8
+
+###
+# Add comments
+POST {{ baseURL }}/income/comment/634d062fc0e4ab6182bdc2c4
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "message":"Test"
+}
+
+
+###
+# Change comment status
+# Enum ::::: status : ['unread','read','solved']
+PUT {{ baseURL }}/income/comment-status/634d062fc0e4ab6182bdc2c4
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "status":"read"
+}

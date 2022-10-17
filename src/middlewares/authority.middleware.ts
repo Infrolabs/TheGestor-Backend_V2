@@ -22,7 +22,7 @@ export const readAuthorityMiddleware = async (req: IUserRequest, res: Response, 
         next(new HttpException(ResponseCodes.FORBIDDEN,ResponseMessages.en.INVITE_NOT_ACCEPTED))
         return
     }
-    
+    req.actualUser = req.user
     req.user = access.user as IUser
     next()
 }
@@ -47,7 +47,7 @@ export const editAuthorityMiddleware = async (req: IUserRequest, res: Response, 
         next(new HttpException(ResponseCodes.FORBIDDEN,ResponseMessages.en.EDIT_ACCESS_ERROR))
         return
     }
-    
+    req.actualUser = req.user
     req.user = access.user as IUser
     next()
 }
@@ -72,7 +72,7 @@ export const adminAuthorityMiddleware = async (req: IUserRequest, res: Response,
         next(new HttpException(ResponseCodes.FORBIDDEN,ResponseMessages.en.ADMIN_ACCESS_ERROR))
         return
     }
-    
+    req.actualUser = req.user
     req.user = access.user as IUser
     next()
 }

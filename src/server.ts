@@ -8,6 +8,8 @@ import FormRoute from '@routes/form.route';
 import TaxRoute from '@routes/tax.route';
 import validateEnv from '@utils/validateEnv';
 import AppConfigRoute from '@routes/app.config.route';
+import IncomeRoute from '@routes/income.route';
+import ExpenseRoute from '@routes/expense.route';
 
 validateEnv();
 
@@ -20,6 +22,8 @@ const app = new App([
     new BillingRoute(),
     new FormRoute(),
     new TaxRoute(),
+    new IncomeRoute(),
+    new ExpenseRoute(),
 ]);
 
 app.listen();

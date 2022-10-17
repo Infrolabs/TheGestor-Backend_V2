@@ -55,6 +55,9 @@ export const ResponseMessages = {
         TAX_NOT_FOUND: 'Tax details not saved. Please save tax details first.',
         TAX_UPDATED: 'Tax details saved successfully',
         CONFIG_FETCHED: 'Config fetched successfully',
+        COMMENT_ADDED: 'Comment added successfully',
+        COMMENT_STATUS_CHANGED: 'Comment status changed successfully',
+        INCOME_NOT_FOUND: 'Income not found',
     },
     es: {
         SOMETHING_WENT_WRONG: 'Algo salió mal',
@@ -96,5 +99,8 @@ export const ResponseMessages = {
         TAX_NOT_FOUND: 'Los datos fiscales no se han guardado. Por favor, guarde primero los datos fiscales',
         TAX_UPDATED: 'Datos fiscales se han guardado correctamente',
         CONFIG_FETCHED: 'Configuración obtenida con éxito',
+        COMMENT_ADDED: 'Comment added successfully',
+        COMMENT_STATUS_CHANGED: 'Comment status changed successfully',
+        INCOME_NOT_FOUND: 'Income not found',
     }
 }
