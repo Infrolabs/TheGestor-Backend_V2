@@ -100,7 +100,7 @@ const expenseSchema: Schema = new Schema({
       ref: 'User'
     },
     message: String,
-    seenAt: {
+    sentAt: {
       type: Date,
       default: Date.now
     }
