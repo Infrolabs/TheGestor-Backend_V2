@@ -1,12 +1,12 @@
 import { HttpException } from "@/exceptions/HttpException";
-import { ECommentStatus } from "@/interfaces/income.interface";
+import { ECommentStatus, IIncome } from "@/interfaces/income.interface";
 import { ResponseCodes, ResponseMessages } from "@/interfaces/response.interface";
 import { IUser } from "@/interfaces/users.interface";
 import incomeModel from "@/models/income.model";
 
 class IncomeService {
 
-    public async addComment(userId: string, actualUser: IUser, incomeId: string, message: string): Promise<void> {
+    public async addComment(userId: string, actualUser: IUser, incomeId: string, message: string): Promise<IIncome> {
         const updatedIncome = await incomeModel.findOneAndUpdate(
             { _id: incomeId, createdBy: userId, isDeleted: false },
             {
@@ -26,6 +26,7 @@ class IncomeService {
         )
         if (!updatedIncome)
             throw new HttpException(ResponseCodes.NOT_FOUND, ResponseMessages.en.INCOME_NOT_FOUND)
+        return updatedIncome
     }
 
     public async changeCommentStatus(userId: string, incomeId: string, status: ECommentStatus): Promise<void> {

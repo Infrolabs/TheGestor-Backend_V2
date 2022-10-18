@@ -7,8 +7,8 @@ class IncomeController {
     private incomeService = new IncomeService()
     public addComment = async (req: IUserRequest, res: IApiResponse, next: NextFunction) => {
         try {
-            this.incomeService.addComment(req.user._id, req.actualUser || req.user, req.params.incomeId, req.body.message)
-            res.success(ResponseMessages.en.COMMENT_ADDED)
+            const updatedIncome = await this.incomeService.addComment(req.user._id, req.actualUser || req.user, req.params.incomeId, req.body.message)
+            res.success(ResponseMessages.en.COMMENT_ADDED, updatedIncome.comments)
         } catch (error) {
             next(error);
         }

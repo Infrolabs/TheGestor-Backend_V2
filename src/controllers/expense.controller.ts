@@ -7,8 +7,8 @@ class ExpenseController {
     private expenseService = new ExpenseService()
     public addComment = async (req: IUserRequest, res: IApiResponse, next: NextFunction) => {
         try {
-            this.expenseService.addComment(req.user._id, req.actualUser || req.user, req.params.incomeId, req.body.message)
-            res.success(ResponseMessages.en.COMMENT_ADDED)
+            const updatedExpense = await this.expenseService.addComment(req.user._id, req.actualUser || req.user, req.params.incomeId, req.body.message)
+            res.success(ResponseMessages.en.COMMENT_ADDED, updatedExpense.comments)
         } catch (error) {
             next(error);
         }
