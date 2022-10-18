@@ -58,6 +58,7 @@ export const ResponseMessages = {
         COMMENT_ADDED: 'Comment added successfully',
         COMMENT_STATUS_CHANGED: 'Comment status changed successfully',
         INCOME_NOT_FOUND: 'Income not found',
+        FORMS_FETCHED: 'Forms fetched successfully',
     },
     es: {
         SOMETHING_WENT_WRONG: 'Algo salió mal',
@@ -102,5 +103,6 @@ export const ResponseMessages = {
         COMMENT_ADDED: 'Comment added successfully',
         COMMENT_STATUS_CHANGED: 'Comment status changed successfully',
         INCOME_NOT_FOUND: 'Income not found',
+        FORMS_FETCHED: 'Forms fetched successfully',
     }
 }

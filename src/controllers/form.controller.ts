@@ -1,7 +1,7 @@
 import { API_BASE_URL } from '@/config';
 import { HttpException } from '@/exceptions/HttpException';
 import { IUserRequest } from '@/interfaces/auth.interface';
-import { IForm } from '@/interfaces/form.interface';
+import { AVAILABLE_FORMS, IForm } from '@/interfaces/form.interface';
 import { IApiResponse, ResponseCodes, ResponseMessages } from '@/interfaces/response.interface';
 import { ETaxType } from '@/interfaces/tax.interface';
 import FormService from '@/services/form.service';
@@ -9,6 +9,14 @@ import { NextFunction, Request, Response } from 'express';
 
 class FormController {
     private formService = new FormService()
+    public getFormList = async (req: IUserRequest, res: IApiResponse, next: NextFunction) => {
+        try {
+            res.success(ResponseMessages.en.FORMS_FETCHED, AVAILABLE_FORMS)
+        } catch (error) {
+            next(error);
+        }
+    }
+
     public getForm = async (req: IUserRequest, res: Response, next: NextFunction) => {
         try {
             if (req.query.type !== ETaxType.FORM111 && req.query.type !== ETaxType.FORM130)
@@ -33,15 +41,15 @@ class FormController {
     public getTestForm = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const formData: IForm = {
-                authToken:"1234",
-                userId:"1234",
+                authToken: "1234",
+                userId: "1234",
                 postUrl: "#",
                 imageBaseUrl: API_BASE_URL + "/static/img",
                 cssUrl: API_BASE_URL + "/static/css/" + req.query.type + ".css",
                 jsUrl: API_BASE_URL + "/static/js/" + req.query.type + ".js",
                 formType: req.query.type as ETaxType,
-                year:2022,
-                trimester:1,
+                year: 2022,
+                trimester: 1,
                 cifNif: "12345",
                 name: "Test",
                 surname: "Surname",

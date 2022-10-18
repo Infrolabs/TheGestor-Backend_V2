@@ -2,7 +2,7 @@ import { ETaxType } from "./tax.interface";
 
 export interface IForm {
     authToken: string
-    userId:string
+    userId: string
     postUrl: string
     imageBaseUrl: string
     jsUrl: string
@@ -15,3 +15,39 @@ export interface IForm {
     year: number
     trimester: number
 }
+
+export const AVAILABLE_FORMS = [
+    {
+        _id: 'form303',
+        en: {
+            name: "Form 303",
+            type: "VAT",
+        },
+        es: {
+            name: "Modelo 303",
+            type: "IVA",
+        }
+    },
+    {
+        _id: 'form130',
+        en: {
+            name: "Form 130",
+            type: "IRPF",
+        },
+        es: {
+            name: "Modelo 130",
+            type: "IRPF",
+        }
+    },
+    {
+        _id: 'form111',
+        en: {
+            name: "Form 111",
+            type: "Retention From Providers",
+        },
+        es: {
+            name: "Modelo 111",
+            type: "Retention From Providers",
+        }
+    }
+]
