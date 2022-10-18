@@ -55,6 +55,7 @@ export const ResponseMessages = {
         TAX_NOT_FOUND: 'Tax details not saved. Please save tax details first.',
         TAX_UPDATED: 'Tax details saved successfully',
         CONFIG_FETCHED: 'Config fetched successfully',
+        FORMS_FETCHED: 'Forms fetched successfully',
     },
     es: {
         SOMETHING_WENT_WRONG: 'Algo salió mal',
