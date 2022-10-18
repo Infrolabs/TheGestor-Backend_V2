@@ -1,25 +1,79 @@
 // @ts-nocheck
 $(document).ready(function () {
-	$('.currency').blur(function () {
-		$('.currency').formatCurrency();
-	});
-	$('.currency').formatCurrency();
-
+	$('.currency').blur(calculateTotal);
 	calculateTotal()
-	// Calculate total on blur
-	$('.gf-in-16').blur(calculateTotal)
-    $('.gf-in-19').blur(calculateTotal)
-    $('.gf-in-22').blur(calculateTotal)
-    $('.gf-in-24').blur(calculateTotal)
-    $('.gf-in-26').blur(calculateTotal)
-    $('.gf-in-28').blur(calculateTotal)
-    $('.gf-in-16').blur(calculateTotal)
-    $('.gf-in-16').blur(calculateTotal)
 
 	function calculateTotal() {
-        $('.gf-in-18').val(
-			getNum($('.gf-in-16').val()) -
-			getNum($('.gf-in-17').val())
+        $('.gf-in-16').val(
+			getNum($('.gf-in-14').val()) *
+			getNum($('.gf-in-15').val()) / 100
+		)
+        $('.gf-in-19').val(
+			getNum($('.gf-in-17').val()) *
+			getNum($('.gf-in-18').val()) / 100
+		)
+        $('.gf-in-22').val(
+			getNum($('.gf-in-20').val()) *
+			getNum($('.gf-in-21').val()) / 100
+		)
+        $('.gf-in-31').val(
+			getNum($('.gf-in-29').val()) *
+			getNum($('.gf-in-30').val()) / 100
+		)
+        $('.gf-in-34').val(
+			getNum($('.gf-in-32').val()) *
+			getNum($('.gf-in-33').val()) / 100
+		)
+        $('.gf-in-37').val(
+			getNum($('.gf-in-35').val()) *
+			getNum($('.gf-in-36').val()) / 100
+		)
+        $('.gf-in-40').val(
+			getNum($('.gf-in-16').val()) +
+            getNum($('.gf-in-19').val()) +
+            getNum($('.gf-in-22').val()) +
+            getNum($('.gf-in-24').val()) +
+            getNum($('.gf-in-26').val()) +
+            getNum($('.gf-in-28').val()) +
+            getNum($('.gf-in-31').val()) +
+            getNum($('.gf-in-34').val()) +
+            getNum($('.gf-in-37').val()) +
+            getNum($('.gf-in-39').val()) 
+		)
+        $('.gf-in-58').val(
+			getNum($('.gf-in-42').val()) +
+            getNum($('.gf-in-44').val()) +
+            getNum($('.gf-in-46').val()) +
+            getNum($('.gf-in-48').val()) +
+            getNum($('.gf-in-50').val()) +
+            getNum($('.gf-in-52').val()) +
+            getNum($('.gf-in-54').val()) +
+            getNum($('.gf-in-55').val()) +
+            getNum($('.gf-in-56').val()) +
+            getNum($('.gf-in-57').val()) 
+		)
+        $('.gf-in-59').val(
+			getNum($('.gf-in-40').val()) -
+            getNum($('.gf-in-58').val()) 
+		)
+        $('.gf-in-158').val(
+			getNum($('.gf-in-59').val()) +
+            getNum($('.gf-in-144').val()) +
+            getNum($('.gf-in-157').val())
+		)
+        $('.gf-in-160').val(
+			getNum($('.gf-in-158').val()) *
+            getNum($('.gf-in-159').val()) / 100
+		)
+        $('.gf-in-166').val(
+			getNum($('.gf-in-160').val()) +
+            getNum($('.gf-in-161').val()) -
+            getNum($('.gf-in-162').val()) +
+            getNum($('.gf-in-165').val())
+		)
+        $('.gf-in-168').val(
+			getNum($('.gf-in-166').val()) -
+            getNum($('.gf-in-167').val()) 
 		)
 		$('.currency').formatCurrency();
 	}
