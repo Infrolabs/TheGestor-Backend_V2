@@ -15,7 +15,7 @@ import incomeModel from "@/models/income.model";
 import taxModel from "@/models/tax.model";
 import userModel from "@/models/users.model";
 import { logger } from "@/utils/logger";
-import { getNameAndSurname, getTrimesterEndDate, getTrimesterStartDate } from "@/utils/util";
+import { getNameAndSurname, getTrimesterEndDate, getTrimesterStartDate, getVatFromBase } from "@/utils/util";
 import { verify } from 'jsonwebtoken';
 
 class FormService {
@@ -205,6 +205,76 @@ class FormService {
             const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
             data.isSimplified = "true"
             data.simplifiedExtraValue = ((totalIncome - totalExpense) * 5 / 100)
+            return data
+        } else if (type === ETaxType.FORM303) {
+            let dataArray = new Array(168).fill(null)
+            const findCondition = {
+                createdBy: userId,
+                isDeleted: false,
+                invoiceDate: { $gte: getTrimesterStartDate(trimester, year), $lt: getTrimesterEndDate(trimester, year) }
+            }
+            const incomes = await incomeModel.find(findCondition)
+            let vat4Base = 0
+            let vat10Base = 0
+            let vat21Base = 0
+            incomes.forEach(income => {
+                if (income.manualItem && income.manualItem.length > 0) {
+                    income.manualItem.forEach(item => {
+                        if (item.vatType === EVatType.STANDARD_21)
+                            vat21Base += Number(item.unit) * Number(item.cost)
+                        if (item.vatType === EVatType.REDUCED_10)
+                            vat10Base += Number(item.unit) * Number(item.cost)
+                        if (item.vatType === EVatType.SUPER_REDUCED_4)
+                            vat4Base += Number(item.unit) * Number(item.cost)
+                    })
+                } else if (income.items && income.items.length > 0) {
+                    income.items.forEach(item => {
+                        if (item.vatType === EVatType.STANDARD_21)
+                            vat21Base += Number(item.selectedQuantity) * Number(item.cost)
+                        if (item.vatType === EVatType.REDUCED_10)
+                            vat10Base += Number(item.selectedQuantity) * Number(item.cost)
+                        if (item.vatType === EVatType.SUPER_REDUCED_4)
+                            vat4Base += Number(item.selectedQuantity) * Number(item.cost)
+                    })
+                }
+            })
+            const expenses = await expenseModel.find(findCondition)
+            let intracommunityExp = 0
+            let baseExp = 0
+            let vatExp = 0
+            expenses.forEach(exp => {
+                if (exp.manualItem && exp.manualItem.length > 0) {
+                    exp.manualItem.forEach(item => {
+                        if (item.vatType === EVatType.INTRA_COM_0)
+                            intracommunityExp += Number(item.unit) * Number(item.cost)
+                        else if (item.vatType !== EVatType.WITHOUT_0) {
+                            baseExp += Number(item.unit) * Number(item.cost)
+                            vatExp += getVatFromBase(Number(item.unit) * Number(item.cost), item.vatType)
+                        }
+                    })
+                } else if (exp.items && exp.items.length > 0) {
+                    exp.items.forEach(item => {
+                        if (item.vatType === EVatType.INTRA_COM_0)
+                            intracommunityExp += Number(item.selectedQuantity) * Number(item.cost)
+                        else if (item.vatType === EVatType.WITHOUT_0){
+                            baseExp += Number(item.selectedQuantity) * Number(item.cost)
+                            vatExp += getVatFromBase(Number(item.selectedQuantity) * Number(item.cost), item.vatType)
+                        }
+                    })
+                }
+            })
+
+            dataArray[14] = vat4Base
+            dataArray[15] = 4
+            dataArray[17] = vat10Base
+            dataArray[18] = 10
+            dataArray[20] = vat21Base
+            dataArray[21] = 21
+            dataArray[41] = baseExp
+            dataArray[42] = vatExp
+            dataArray[49] = intracommunityExp
+            dataArray[50] = intracommunityExp * 21 / 100
+            const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
             return data
         }
         return {}

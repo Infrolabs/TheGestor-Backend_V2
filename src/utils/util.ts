@@ -1,3 +1,5 @@
+import { EVatType } from "@/interfaces/invoice.interface";
+
 /**
  * @method isEmpty
  * @param {String | Number | Object} value
@@ -52,4 +54,20 @@ export const getTrimesterEndDate = (trimester: number, year: number): Date => {
   date.setFullYear(year, trimester === 0 ? 12 : trimester * 3, 0)
   date.setHours(23, 59, 59, 999)
   return date
+}
+
+export const getVatFromBase = (base: number, vatType: EVatType): number => {
+  if (vatType === EVatType.STANDARD_21 || vatType === EVatType.INTRA_COM_21)
+    return base * 0.21
+  if (vatType === EVatType.STANDARD_21_52)
+    return base * 0.262
+  if (vatType === EVatType.REDUCED_10 || vatType === EVatType.INTRA_COM_10)
+    return base * 0.1
+  if (vatType === EVatType.REDUCED_10_14)
+    return base * 0.114
+  if (vatType === EVatType.SUPER_REDUCED_4 || vatType === EVatType.INTRA_COM_4)
+    return base * 0.04
+  if (vatType === EVatType.SUPER_REDUCED_4_05)
+    return base * 0.045
+  return 0
 }
