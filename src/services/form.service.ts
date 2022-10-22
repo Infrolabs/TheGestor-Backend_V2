@@ -238,7 +238,7 @@ class FormService {
                     })
                 }
             })
-            const expenses = await expenseModel.find(findCondition)
+            const expenses = await expenseModel.find({ ...findCondition, isSimplified: { $ne: true } })
             let intracommunityExp = 0
             let baseExp = 0
             let vatExp = 0
@@ -256,7 +256,7 @@ class FormService {
                     exp.items.forEach(item => {
                         if (item.vatType === EVatType.INTRA_COM_0)
                             intracommunityExp += Number(item.selectedQuantity) * Number(item.cost)
-                        else if (item.vatType === EVatType.WITHOUT_0){
+                        else if (item.vatType === EVatType.WITHOUT_0) {
                             baseExp += Number(item.selectedQuantity) * Number(item.cost)
                             vatExp += getVatFromBase(Number(item.selectedQuantity) * Number(item.cost), item.vatType)
                         }

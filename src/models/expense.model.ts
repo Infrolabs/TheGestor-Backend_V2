@@ -91,7 +91,11 @@ const expenseSchema: Schema = new Schema({
     type: Boolean,
     default: false
   },
-  transactionDetails: Object
+  transactionDetails: Object,
+  isSimplified: {
+    type: Boolean,
+    default: false
+},
 }, {
   timestamps: true
 })

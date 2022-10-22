@@ -27,6 +27,7 @@ export interface IExpense {
     isDeleted: boolean
     isReconciled: boolean
     transactionDetails: Object
+    isSimplified: boolean
 }
 
 // --------- ENUMS -----------
