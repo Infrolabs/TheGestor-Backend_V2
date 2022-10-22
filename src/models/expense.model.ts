@@ -109,7 +109,11 @@ const expenseSchema: Schema = new Schema({
     type: String,
     enum: Object.values(ECommentStatus),
     default: ECommentStatus.UNREAD
-  }
+  },
+  isSimplified: {
+    type: Boolean,
+    default: false
+},
 }, {
   timestamps: true
 })

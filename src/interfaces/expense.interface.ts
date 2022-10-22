@@ -30,6 +30,7 @@ export interface IExpense {
     transactionDetails: Object
     comments:IComment[]
     commentStatus: ECommentStatus
+    isSimplified: boolean
 }
 
 // --------- ENUMS -----------

@@ -2,7 +2,9 @@ import { Router } from 'express';
 import FormController from '@/controllers/form.controller';
 import { Routes } from '@/interfaces/routes.interface';
 import authMiddleware from '@/middlewares/auth.middleware';
-import { editAuthorityMiddleware } from '@/middlewares/authority.middleware';
+import { editAuthorityMiddleware, readAuthorityMiddleware } from '@/middlewares/authority.middleware';
+import { validate } from 'express-validation';
+import { formListSchema } from '@/validations/form.validation';
 
 class FormRoute implements Routes {
     public path = '/form';
@@ -14,7 +16,7 @@ class FormRoute implements Routes {
     }
 
     private initializeRoutes() {
-        this.router.get(`${this.path}/list`, this.formController.getFormList);
+        this.router.get(`${this.path}/list`, authMiddleware, readAuthorityMiddleware, validate(formListSchema), this.formController.getFormList);
         this.router.get(`${this.path}/view`, authMiddleware, editAuthorityMiddleware, this.formController.getForm);
         this.router.get(`${this.path}/test`, this.formController.getTestForm);
         this.router.post(`${this.path}/`, this.formController.saveForm);
