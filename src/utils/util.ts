@@ -71,3 +71,13 @@ export const getVatFromBase = (base: number, vatType: EVatType): number => {
     return base * 0.045
   return 0
 }
+
+export const getFormDueDate = (trimester: number, year: number) => {
+  if (trimester === 1)
+    return '20/04/' + year
+  if (trimester === 2)
+    return '20/07/' + year
+  if (trimester === 3)
+    return '20/10/' + year
+  return '31/01/' + (year + 1)
+}

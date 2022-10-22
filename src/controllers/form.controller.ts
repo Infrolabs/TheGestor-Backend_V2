@@ -11,7 +11,8 @@ class FormController {
     private formService = new FormService()
     public getFormList = async (req: IUserRequest, res: IApiResponse, next: NextFunction) => {
         try {
-            res.success(ResponseMessages.en.FORMS_FETCHED, AVAILABLE_FORMS)
+            const list = await this.formService.getFormList(req.user, Number(req.query.year), Number(req.query.trimester))
+            res.success(ResponseMessages.en.FORMS_FETCHED, list)
         } catch (error) {
             next(error);
         }

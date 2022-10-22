@@ -1,4 +1,4 @@
-import { ETaxType } from "./tax.interface";
+import { ETaxStatus, ETaxType } from "./tax.interface";
 
 export interface IForm {
     authToken: string
@@ -14,6 +14,22 @@ export interface IForm {
     cifNif: string
     year: number
     trimester: number
+}
+
+export interface ITaxForm {
+    type: ETaxType
+    data: Object
+    year: number
+    trimester: number
+    status: ETaxStatus
+    formDetails: IFormDetails
+}
+
+export interface IFormDetails {
+    _id: string
+    type: string
+    name: string
+    dueDate: string
 }
 
 export const AVAILABLE_FORMS = [

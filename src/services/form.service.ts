@@ -3,7 +3,7 @@ import { HttpException } from "@/exceptions/HttpException";
 import { EAccessStatus, EAccessType } from "@/interfaces/access.interface";
 import { DataStoredInToken } from "@/interfaces/auth.interface";
 import { EClientType } from "@/interfaces/client.interface";
-import { IForm } from "@/interfaces/form.interface";
+import { AVAILABLE_FORMS, IForm, ITaxForm } from "@/interfaces/form.interface";
 import { EVatType } from "@/interfaces/invoice.interface";
 import { ResponseCodes, ResponseMessages } from "@/interfaces/response.interface";
 import { ETaxStatus, ETaxType, ITax } from "@/interfaces/tax.interface";
@@ -14,11 +14,33 @@ import expenseModel from "@/models/expense.model";
 import incomeModel from "@/models/income.model";
 import taxModel from "@/models/tax.model";
 import userModel from "@/models/users.model";
-import { logger } from "@/utils/logger";
-import { getNameAndSurname, getTrimesterEndDate, getTrimesterStartDate, getVatFromBase } from "@/utils/util";
+import { getFormDueDate, getNameAndSurname, getTrimesterEndDate, getTrimesterStartDate, getVatFromBase } from "@/utils/util";
 import { verify } from 'jsonwebtoken';
 
 class FormService {
+
+    public async getFormList(user: IUser, year: number, trimester: number): Promise<ITaxForm[]> {
+        const taxData = await taxModel.find({ userId: user._id, year, trimester })
+        const result: ITaxForm[] = []
+        AVAILABLE_FORMS.forEach(form => {
+            const taxIndex = taxData.findIndex(tax => tax.type === form._id)
+            result.push({
+                type: form._id as ETaxType,
+                data: taxIndex !== -1 ? taxData[taxIndex].data : null,
+                status: taxIndex !== -1 ? taxData[taxIndex].status : ETaxStatus.PENDING,
+                year,
+                trimester,
+                formDetails: {
+                    _id: form._id,
+                    name: Object.keys(form).includes(user.language) ? form[user.language].name : form.en.name,
+                    type: Object.keys(form).includes(user.language) ? form[user.language].type : form.en.type,
+                    dueDate: getFormDueDate(trimester, year)
+                }
+            })
+        })
+        return result
+    }
+
     public async getFormData(authToken: string, user: IUser, type: ETaxType, year: number, trimester: number): Promise<IForm> {
         const taxData = await taxModel.findOne({ userId: user._id, type, year, trimester })
         if (taxData && taxData.data)

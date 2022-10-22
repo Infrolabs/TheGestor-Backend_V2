@@ -8,8 +8,9 @@
 
 
 ###
-# Get available forms list
-GET {{baseURL}}/form/list
+# Get all forms list
+GET {{baseURL}}/form/list?year=2022&trimester=1
+Authorization: Bearer {{token}}
 
 ###
 # Get Test form

@@ -1,6 +1,7 @@
 import { IBilling } from "@/interfaces/billing.interface";
 import { ICoupon } from "@/interfaces/coupon.interface";
 import { IBillingPlan } from "@/interfaces/plan.interface";
+import { ITax } from "@/interfaces/tax.interface";
 import { ELanguage, IUser } from "@/interfaces/users.interface";
 
 export const filterCurrentUser = (user: IUser): IUser => {
@@ -9,7 +10,7 @@ export const filterCurrentUser = (user: IUser): IUser => {
 }
 
 export const filterPlans = (plans: IBillingPlan[], language: ELanguage): IBillingPlan[] => {
-    const result : IBillingPlan[] = []
+    const result: IBillingPlan[] = []
     plans.forEach(plan => {
         result.push({
             id: plan.id,
@@ -34,11 +35,7 @@ export const filterCoupon = (coupon: ICoupon): ICoupon => {
 }
 
 export const filterBillings = (billings: IBilling[]): IBilling[] => {
-    const result: IBilling[] = []
-    billings.forEach(billing => {
-        result.push(filterBilling(billing))
-    })
-    return result
+    return billings.map(bill => filterBilling(bill))
 }
 
 export const filterBilling = (billing: IBilling): IBilling => {
@@ -67,5 +64,20 @@ export const filterBilling = (billing: IBilling): IBilling => {
         paymentStatus: billing.paymentStatus,
         subscriptionStatus: billing.subscriptionStatus,
         createdAt: billing.createdAt
+    }
+}
+
+export const filterTaxes = (taxes: ITax[]): ITax[] => {
+    return taxes.map(tax => filterTax(tax))
+}
+
+export const filterTax = (tax: ITax): ITax => {
+    return {
+        year: tax.year,
+        trimester: tax.trimester,
+        status: tax.status,
+        type: tax.type,
+        data: tax.data,
+        note: tax.note
     }
 }
