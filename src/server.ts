@@ -10,11 +10,13 @@ import validateEnv from '@utils/validateEnv';
 import AppConfigRoute from '@routes/app.config.route';
 import IncomeRoute from '@routes/income.route';
 import ExpenseRoute from '@routes/expense.route';
+import AdminRoute from './routes/admin.route';
 
 validateEnv();
 
 const app = new App([
     new IndexRoute(), 
+    new AdminRoute(),
     new AppConfigRoute(),
     new AuthRoute(),
     new PlanRoute(),

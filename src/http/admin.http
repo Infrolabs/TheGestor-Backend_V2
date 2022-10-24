@@ -1,0 +1,15 @@
+# baseURL
+@baseURL = http://localhost:3001/v3
+
+# @baseURL = https://api.thegestor.app/v3
+
+
+###
+# ADMIN LOGIN
+POST {{ baseURL }}/admin/login
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "test1234"
+}
