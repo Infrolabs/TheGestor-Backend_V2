@@ -2,9 +2,10 @@ import { NextFunction, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 import { SECRET_KEY } from '@config';
 import { HttpException } from '@exceptions/HttpException';
-import { DataStoredInToken, IUserRequest } from '@interfaces/auth.interface';
+import { AdminDataStoredInToken, DataStoredInToken, IUserRequest } from '@interfaces/auth.interface';
 import userModel from '@models/users.model';
 import { ResponseCodes, ResponseMessages } from '@/interfaces/response.interface';
+import adminModel from '@/models/admin.model';
 
 const authMiddleware = async (req: IUserRequest, res: Response, next: NextFunction) => {
   try {
@@ -12,8 +13,21 @@ const authMiddleware = async (req: IUserRequest, res: Response, next: NextFuncti
 
     if (Authorization) {
       const secretKey: string = SECRET_KEY;
-      const verificationResponse = (verify(Authorization, secretKey)) as DataStoredInToken;
-      const userId = verificationResponse.user.id;
+      const verificationResponse = (verify(Authorization, secretKey)) as any;
+
+      if (verificationResponse.admin?.id) {
+        const adminId = verificationResponse.admin?.id
+        const admin = await adminModel.findById(adminId)
+        if (admin) {
+          req.admin = admin
+          next()
+        } else {
+          next(new HttpException(ResponseCodes.UNAUTHORIZED, ResponseMessages.en.WRONG_AUTH_TOKEN));
+        }
+        return
+      }
+
+      const userId = verificationResponse.user?.id;
       const findUser = await userModel.findById(userId);
 
       if (findUser) {
