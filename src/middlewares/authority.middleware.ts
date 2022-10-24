@@ -4,6 +4,7 @@ import { IUserRequest } from "@/interfaces/auth.interface";
 import { ResponseCodes, ResponseMessages } from "@/interfaces/response.interface";
 import { IUser } from "@/interfaces/users.interface";
 import accessModel from "@/models/access.model";
+import userModel from "@/models/users.model";
 import { NextFunction, Response } from "express";
 
 export const readAuthorityMiddleware = async (req: IUserRequest, res: Response, next: NextFunction) => {
@@ -13,13 +14,22 @@ export const readAuthorityMiddleware = async (req: IUserRequest, res: Response, 
         return
     }
 
-    const access = await accessModel.findOne({ user: accessUserId, email: req.user.email }).populate('user').lean()
-    if (!access){
-        next(new HttpException(ResponseCodes.FORBIDDEN,ResponseMessages.en.NO_ACCESS_ERROR))
+    // Check for admin login
+    if (req.admin._id) {
+        const user = await userModel.findById(accessUserId)
+        req.user = user
+        req.actualUser = user
+        next()
         return
     }
-    if (access.status !== EAccessStatus.ACCEPTED){
-        next(new HttpException(ResponseCodes.FORBIDDEN,ResponseMessages.en.INVITE_NOT_ACCEPTED))
+
+    const access = await accessModel.findOne({ user: accessUserId, email: req.user.email }).populate('user').lean()
+    if (!access) {
+        next(new HttpException(ResponseCodes.FORBIDDEN, ResponseMessages.en.NO_ACCESS_ERROR))
+        return
+    }
+    if (access.status !== EAccessStatus.ACCEPTED) {
+        next(new HttpException(ResponseCodes.FORBIDDEN, ResponseMessages.en.INVITE_NOT_ACCEPTED))
         return
     }
     req.actualUser = req.user
@@ -34,17 +44,26 @@ export const editAuthorityMiddleware = async (req: IUserRequest, res: Response, 
         return
     }
 
+    // Check for admin login
+    if (req.admin._id) {
+        const user = await userModel.findById(accessUserId)
+        req.user = user
+        req.actualUser = user
+        next()
+        return
+    }
+
     const access = await accessModel.findOne({ user: accessUserId, email: req.user.email }).populate('user').lean()
-    if (!access){
-        next(new HttpException(ResponseCodes.FORBIDDEN,ResponseMessages.en.NO_ACCESS_ERROR))
+    if (!access) {
+        next(new HttpException(ResponseCodes.FORBIDDEN, ResponseMessages.en.NO_ACCESS_ERROR))
         return
     }
-    if (access.status !== EAccessStatus.ACCEPTED){
-        next(new HttpException(ResponseCodes.FORBIDDEN,ResponseMessages.en.INVITE_NOT_ACCEPTED))
+    if (access.status !== EAccessStatus.ACCEPTED) {
+        next(new HttpException(ResponseCodes.FORBIDDEN, ResponseMessages.en.INVITE_NOT_ACCEPTED))
         return
     }
-    if (access.accessType === EAccessType.READ){
-        next(new HttpException(ResponseCodes.FORBIDDEN,ResponseMessages.en.EDIT_ACCESS_ERROR))
+    if (access.accessType === EAccessType.READ) {
+        next(new HttpException(ResponseCodes.FORBIDDEN, ResponseMessages.en.EDIT_ACCESS_ERROR))
         return
     }
     req.actualUser = req.user
@@ -59,17 +78,26 @@ export const adminAuthorityMiddleware = async (req: IUserRequest, res: Response,
         return
     }
 
+    // Check for admin login
+    if (req.admin._id) {
+        const user = await userModel.findById(accessUserId)
+        req.user = user
+        req.actualUser = user
+        next()
+        return
+    }
+
     const access = await accessModel.findOne({ user: accessUserId, email: req.user.email }).populate('user').lean()
-    if (!access){
-        next(new HttpException(ResponseCodes.FORBIDDEN,ResponseMessages.en.NO_ACCESS_ERROR))
+    if (!access) {
+        next(new HttpException(ResponseCodes.FORBIDDEN, ResponseMessages.en.NO_ACCESS_ERROR))
         return
     }
-    if (access.status !== EAccessStatus.ACCEPTED){
-        next(new HttpException(ResponseCodes.FORBIDDEN,ResponseMessages.en.INVITE_NOT_ACCEPTED))
+    if (access.status !== EAccessStatus.ACCEPTED) {
+        next(new HttpException(ResponseCodes.FORBIDDEN, ResponseMessages.en.INVITE_NOT_ACCEPTED))
         return
     }
-    if (access.accessType !== EAccessType.ADMIN){
-        next(new HttpException(ResponseCodes.FORBIDDEN,ResponseMessages.en.ADMIN_ACCESS_ERROR))
+    if (access.accessType !== EAccessType.ADMIN) {
+        next(new HttpException(ResponseCodes.FORBIDDEN, ResponseMessages.en.ADMIN_ACCESS_ERROR))
         return
     }
     req.actualUser = req.user

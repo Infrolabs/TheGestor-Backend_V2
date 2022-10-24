@@ -1,3 +1,4 @@
+import { IAdmin } from "@/interfaces/admin.interface";
 import { IBilling } from "@/interfaces/billing.interface";
 import { ICoupon } from "@/interfaces/coupon.interface";
 import { IBillingPlan } from "@/interfaces/plan.interface";
@@ -6,6 +7,12 @@ import { ELanguage, IUser } from "@/interfaces/users.interface";
 
 export const filterCurrentUser = (user: IUser): IUser => {
     delete user.password
+    return user
+}
+
+export const filterAdmin = (user: IAdmin): IAdmin => {
+    delete user.password
+    delete user.isDeleted
     return user
 }
 
