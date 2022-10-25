@@ -243,12 +243,16 @@
     position: absolute;
     top: 78.5%;
     left: 21%;
+    width: 0.7rem;
+    height: 0.7rem;
 }
 
 #forma2 {
     position: absolute;
     top: 78.5%;
     left: 33.7%;
+    width: 0.7rem;
+    height: 0.7rem;
 }
 
 .gf-ccc {
@@ -263,18 +267,24 @@
     position: absolute;
     top: 87%;
     left: 15.5%;
+    width: 0.7rem;
+    height: 0.7rem;
 }
 
 #minusResult {
     position: absolute;
     top: 74.2%;
     left: 57.8%;
+    width: 0.7rem;
+    height: 0.7rem;
 }
 
 .gf-in-21{
     position: absolute;
     top: 81.4%;
     left: 57.8%;
+    width: 0.7rem;
+    height: 0.7rem;
 }
 
 .gf-justificante {

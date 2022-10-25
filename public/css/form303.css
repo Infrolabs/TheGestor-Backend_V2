@@ -3,12 +3,13 @@
 .gf-input:focus,
 .gf-input::-webkit-outer-spin-button,
 .gf-input::-webkit-inner-spin-button {
-    background-color: red;
+    background-color: white;
     border-width: 0px;
     font-size: 0.5rem;
     -webkit-appearance: none;
     -moz-appearance: textfield;
     position: absolute;
+    margin: 0 !important;
 }
 
 @media only screen and (min-width: 600px) {
