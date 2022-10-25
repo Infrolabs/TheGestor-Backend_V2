@@ -10,6 +10,12 @@ export const filterCurrentUser = (user: IUser): IUser => {
     return user
 }
 
+export const filterUserProjection = {
+    password:0,
+    accounts:0,
+    
+}
+
 export const filterAdmin = (user: IAdmin): IAdmin => {
     delete user.password
     delete user.isDeleted

@@ -3,6 +3,7 @@
 
 # @baseURL = https://api.thegestor.app/v3
 
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJlYTY3MzZjYzhjMjg0MzMxNDMyZTY5In0sImlhdCI6MTY2MDA0NTI5MywiZXhwIjoxNjkxNTgxMjkzLCJhdWQiOiJkZXYiLCJpc3MiOiJ0aGVnZXN0b3JhcHAifQ.BaytKEl8GOL8xHSLAZOuww4fGUI5PCaIwSXj1UbZRFI
 
 ###
 # ADMIN LOGIN
@@ -13,3 +14,13 @@ Content-Type: application/json
     "email": "test@test.com",
     "password": "test1234"
 }
+
+
+###
+# Get users list
+# search : to search the user by email, name, etc...
+# premiumType : to filter user based on premium
+# skip : To skip the records. Default : 0
+# limit : To limit the records. Default : 20
+GET {{ baseURL }}/admin/users?search=&premiumType=&skip=&limit=
+Authorization: Bearer {{token}}
