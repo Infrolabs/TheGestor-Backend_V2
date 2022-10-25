@@ -9,6 +9,12 @@ export const filterCurrentUser = (user: IUser): IUser => {
     return user
 }
 
+export const filterUserProjection = {
+    password:0,
+    accounts:0,
+    
+}
+
 export const filterAdmin = (user: IAdmin): IAdmin => {
     delete user.password
     delete user.isDeleted
@@ -16,7 +22,7 @@ export const filterAdmin = (user: IAdmin): IAdmin => {
 }
 
 export const filterPlans = (plans: IBillingPlan[], language: ELanguage): IBillingPlan[] => {
-    const result : IBillingPlan[] = []
+    const result: IBillingPlan[] = []
     plans.forEach(plan => {
         result.push({
             id: plan.id,
