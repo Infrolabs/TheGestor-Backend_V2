@@ -20,11 +20,9 @@ class FormController {
 
     public getForm = async (req: IUserRequest, res: Response, next: NextFunction) => {
         try {
-            if (req.query.type !== ETaxType.FORM111 && req.query.type !== ETaxType.FORM130)
-                throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_NOT_SUPPORTED)
             const taxData = await this.formService.getFormData(req.authToken, req.user, req.query.type as ETaxType, Number(req.query.year), Number(req.query.trimester))
             res.set('Content-Type', 'text/html')
-            res.render(req.query.type, taxData)
+            res.render(String(req.query.type), taxData)
         } catch (error) {
             next(error);
         }
