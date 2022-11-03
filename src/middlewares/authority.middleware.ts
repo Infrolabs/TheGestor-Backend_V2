@@ -15,7 +15,7 @@ export const readAuthorityMiddleware = async (req: IUserRequest, res: Response, 
     }
 
     // Check for admin login
-    if (req.admin._id) {
+    if (req.admin?._id) {
         const user = await userModel.findById(accessUserId)
         req.user = user
         req.actualUser = user
@@ -45,7 +45,7 @@ export const editAuthorityMiddleware = async (req: IUserRequest, res: Response, 
     }
 
     // Check for admin login
-    if (req.admin._id) {
+    if (req.admin?._id) {
         const user = await userModel.findById(accessUserId)
         req.user = user
         req.actualUser = user
@@ -79,7 +79,7 @@ export const adminAuthorityMiddleware = async (req: IUserRequest, res: Response,
     }
 
     // Check for admin login
-    if (req.admin._id) {
+    if (req.admin?._id) {
         const user = await userModel.findById(accessUserId)
         req.user = user
         req.actualUser = user
