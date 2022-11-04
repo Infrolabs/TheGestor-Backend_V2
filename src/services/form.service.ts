@@ -60,6 +60,7 @@ class FormService {
                 data: taxData.data
             }
         // Set form with default data
+        const defaultFormData = await this.getDefaultFormData(user._id, type, year, trimester)
         return {
             authToken,
             userId: user._id,
@@ -73,7 +74,7 @@ class FormService {
             cifNif: user.cifNif,
             name: getNameAndSurname(user.name).name,
             surname: getNameAndSurname(user.name).surname,
-            data: this.getDefaultFormData(user._id, type, year, trimester)
+            data: defaultFormData
         }
     }
 
