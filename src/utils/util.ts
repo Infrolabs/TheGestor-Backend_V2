@@ -40,7 +40,7 @@ export const numberToStr = (number: string, padding: number, multiplier = 100) =
 
 export const getTrimesterStartDate = (trimester: number, year: number): Date => {
   if (trimester < 0 || trimester > 4)
-    throw Error("Invalid trimester")
+    throw Error("Invalid trimester " + trimester)
   const date = new Date()
   date.setFullYear(year, trimester === 0 ? 0 : (trimester - 1) * 3, 1)
   date.setHours(0, 0, 0, 0)
@@ -49,7 +49,7 @@ export const getTrimesterStartDate = (trimester: number, year: number): Date => 
 
 export const getTrimesterEndDate = (trimester: number, year: number): Date => {
   if (trimester < 0 || trimester > 4)
-    throw Error("Invalid trimester")
+    throw Error("Invalid trimester " + trimester)
   const date = new Date()
   date.setFullYear(year, trimester === 0 ? 12 : trimester * 3, 0)
   date.setHours(23, 59, 59, 999)
