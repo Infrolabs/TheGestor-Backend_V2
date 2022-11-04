@@ -101,10 +101,10 @@ export const ResponseMessages = {
         TAX_NOT_FOUND: 'Los datos fiscales no se han guardado. Por favor, guarde primero los datos fiscales',
         TAX_UPDATED: 'Datos fiscales se han guardado correctamente',
         CONFIG_FETCHED: 'Configuración obtenida con éxito',
-        COMMENT_ADDED: 'Comment added successfully',
-        COMMENT_STATUS_CHANGED: 'Comment status changed successfully',
-        INCOME_NOT_FOUND: 'Income not found',
-        FORMS_FETCHED: 'Forms fetched successfully',
-        USERS_FETCHED: 'Users fetched successfully',
+        COMMENT_ADDED: 'Comentario añadido',
+        COMMENT_STATUS_CHANGED: "El estado del comentario ha cambiado",
+        INCOME_NOT_FOUND: "Ingresos no encontrados",
+        FORMS_FETCHED: 'Formularios obtenidos',
+        USERS_FETCHED: 'Usuarios obtenidos',
     }
 }
