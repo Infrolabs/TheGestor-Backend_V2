@@ -167,7 +167,7 @@ class FormService {
                 {
                     $project: {
                         totalDouble: { $ifNull: [{ $convert: { input: "$subTotal", to: "double", onError: 0 } }, 0] },
-                        totalTriDouble: { $cond: { if: { invoiceDate: { $gte: getTrimesterStartDate(trimester, year), $lt: getTrimesterEndDate(trimester, year) } }, then: [{ $convert: { input: "$subTotal", to: "double", onError: 0 } }, 0], else: 0 } },
+                        totalTriDouble: { $cond: { if: { $and: [{ invoiceDate: { $gte: getTrimesterStartDate(trimester, year) } }, { invoiceDate: { $lt: getTrimesterEndDate(trimester, year) } }] }, then: [{ $convert: { input: "$subTotal", to: "double", onError: 0 } }, 0], else: 0 } },
                     }
                 },
                 {
