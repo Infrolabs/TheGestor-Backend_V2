@@ -39,7 +39,7 @@ class TaxService {
     private getForm111TxtData(year: number, trimester: number, cifNif: string, name: string, tax: ITax): string {
         const data = tax.data
         const nameSurname = getNameAndSurname(name)
-        if (Object.values(data).length < 30) throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_INVALID_DATA)
+        // if (Object.values(data).length < 30) throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_INVALID_DATA)
         return "<T1110" + year + trimester + "T0000><AUX>"
             + "1.9".padStart(70 + 4, ' ') // 70 blank + 4 version string
             + "B88476437".padStart(9 + 4, ' ') // 9 NIF + 4 blanks
@@ -91,7 +91,7 @@ class TaxService {
 
     private getForm130TxtData(year: number, trimester: number, cifNif: string, name: string, tax: ITax): string {
         const data = tax.data
-        if (Object.values(data).length < 20) throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_INVALID_DATA)
+        // if (Object.values(data).length < 20) throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_INVALID_DATA)
         const nameSurname = getNameAndSurname(name)
         return "<T1300" + year + trimester + "T0000><AUX>"
             + "1.06".padStart(70 + 4, ' ') // 70 blank + 4 version string
@@ -131,7 +131,7 @@ class TaxService {
     }
     private getForm303Content(year: number, trimester: number, cifNif: string, name: string, tax: ITax): string {
         const data = tax.data
-        if (Object.values(data).length < 180) throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_INVALID_DATA)
+        // if (Object.values(data).length < 180) throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_INVALID_DATA)
         return "<T3030" + year + trimester + "T0000><AUX>"
             + "2.05".padStart(70 + 4, ' ') // 70 blank + 4 version string
             + "B88476437".padStart(9 + 4, ' ') // 9 NIF + 4 blanks
@@ -335,7 +335,7 @@ class TaxService {
 
     private getForm303Content2022(year: number, trimester: number, cifNif: string, name: string, tax: ITax): string {
         const data = tax.data
-        if (Object.values(data).length < 180) throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_INVALID_DATA)
+        // if (Object.values(data).length < 180) throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_INVALID_DATA)
         return "<T3030" + year + trimester + "T0000><AUX>"
             + "2.05".padStart(70 + 4, ' ') // 70 blank + 4 version string
             + "B88476437".padStart(9 + 4, ' ') // 9 NIF + 4 blanks
