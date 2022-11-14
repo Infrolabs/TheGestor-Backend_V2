@@ -1413,3 +1413,27 @@
     width: 14.7%;
     height: 1.2%;
 }
+
+.gf-in-income-pos {
+    position: absolute;
+    top: 37.4%;
+    left: 66.8%;
+    width: 19.8%;
+    height: 1.2%;
+}
+
+.gf-in-income-neg {
+    position: absolute;
+    top: 37%;
+    left: 21.5%;
+    width: 19.8%;
+    height: 1.2%;
+}
+
+.gf-in-income-zero {
+    position: absolute;
+    top: 40.2%;
+    left: 34.4%;
+    width: 0.7rem;
+    height: 0.7rem;
+}
