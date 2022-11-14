@@ -100,7 +100,7 @@ $(document).on("wheel", "input[type=number]", function (e) {
 	$.formatCurrency.regions[''] = {
 		symbol: '',
 		positiveFormat: '%s%n',
-		negativeFormat: '(%s%n)',
+		negativeFormat: '-%s%n',
 		decimalSymbol: '.',
 		digitGroupSymbol: '',
 		groupDigits: false

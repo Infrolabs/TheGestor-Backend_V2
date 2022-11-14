@@ -4,77 +4,84 @@ $(document).ready(function () {
 	calculateTotal()
 
 	function calculateTotal() {
-        $('.gf-in-16').val(
+		$('.gf-in-16').val(
 			getNum($('.gf-in-14').val()) *
 			getNum($('.gf-in-15').val()) / 100
 		)
-        $('.gf-in-19').val(
+		$('.gf-in-19').val(
 			getNum($('.gf-in-17').val()) *
 			getNum($('.gf-in-18').val()) / 100
 		)
-        $('.gf-in-22').val(
+		$('.gf-in-22').val(
 			getNum($('.gf-in-20').val()) *
 			getNum($('.gf-in-21').val()) / 100
 		)
-        $('.gf-in-31').val(
+		$('.gf-in-31').val(
 			getNum($('.gf-in-29').val()) *
 			getNum($('.gf-in-30').val()) / 100
 		)
-        $('.gf-in-34').val(
+		$('.gf-in-34').val(
 			getNum($('.gf-in-32').val()) *
 			getNum($('.gf-in-33').val()) / 100
 		)
-        $('.gf-in-37').val(
+		$('.gf-in-37').val(
 			getNum($('.gf-in-35').val()) *
 			getNum($('.gf-in-36').val()) / 100
 		)
-        $('.gf-in-40').val(
+		$('.gf-in-40').val(
 			getNum($('.gf-in-16').val()) +
-            getNum($('.gf-in-19').val()) +
-            getNum($('.gf-in-22').val()) +
-            getNum($('.gf-in-24').val()) +
-            getNum($('.gf-in-26').val()) +
-            getNum($('.gf-in-28').val()) +
-            getNum($('.gf-in-31').val()) +
-            getNum($('.gf-in-34').val()) +
-            getNum($('.gf-in-37').val()) +
-            getNum($('.gf-in-39').val()) 
+			getNum($('.gf-in-19').val()) +
+			getNum($('.gf-in-22').val()) +
+			getNum($('.gf-in-24').val()) +
+			getNum($('.gf-in-26').val()) +
+			getNum($('.gf-in-28').val()) +
+			getNum($('.gf-in-31').val()) +
+			getNum($('.gf-in-34').val()) +
+			getNum($('.gf-in-37').val()) +
+			getNum($('.gf-in-39').val())
 		)
-        $('.gf-in-58').val(
+		$('.gf-in-58').val(
 			getNum($('.gf-in-42').val()) +
-            getNum($('.gf-in-44').val()) +
-            getNum($('.gf-in-46').val()) +
-            getNum($('.gf-in-48').val()) +
-            getNum($('.gf-in-50').val()) +
-            getNum($('.gf-in-52').val()) +
-            getNum($('.gf-in-54').val()) +
-            getNum($('.gf-in-55').val()) +
-            getNum($('.gf-in-56').val()) +
-            getNum($('.gf-in-57').val()) 
+			getNum($('.gf-in-44').val()) +
+			getNum($('.gf-in-46').val()) +
+			getNum($('.gf-in-48').val()) +
+			getNum($('.gf-in-50').val()) +
+			getNum($('.gf-in-52').val()) +
+			getNum($('.gf-in-54').val()) +
+			getNum($('.gf-in-55').val()) +
+			getNum($('.gf-in-56').val()) +
+			getNum($('.gf-in-57').val())
 		)
-        $('.gf-in-59').val(
+		$('.gf-in-59').val(
 			getNum($('.gf-in-40').val()) -
-            getNum($('.gf-in-58').val()) 
+			getNum($('.gf-in-58').val())
 		)
-        $('.gf-in-158').val(
+		$('.gf-in-158').val(
 			getNum($('.gf-in-59').val()) +
-            getNum($('.gf-in-144').val()) +
-            getNum($('.gf-in-157').val())
+			getNum($('.gf-in-144').val()) +
+			getNum($('.gf-in-157').val())
 		)
-        $('.gf-in-160').val(
+		$('.gf-in-160').val(
 			getNum($('.gf-in-158').val()) *
-            getNum($('.gf-in-159').val()) / 100
+			getNum($('.gf-in-159').val()) / 100
 		)
-        $('.gf-in-166').val(
+		$('.gf-in-166').val(
 			getNum($('.gf-in-160').val()) +
-            getNum($('.gf-in-161').val()) -
-            getNum($('.gf-in-162').val()) +
-            getNum($('.gf-in-165').val())
+			getNum($('.gf-in-161').val()) -
+			getNum($('.gf-in-162').val()) +
+			getNum($('.gf-in-165').val())
 		)
-        $('.gf-in-168').val(
+		$('.gf-in-168').val(
 			getNum($('.gf-in-166').val()) -
-            getNum($('.gf-in-167').val()) 
+			getNum($('.gf-in-167').val())
 		)
+		$('.gf-in-income-pos').val(
+			parseFloat($('.gf-in-168').val()) > 0 ? parseFloat($('.gf-in-168').val()) : 0
+		)
+		$('.gf-in-income-neg').val(
+			parseFloat($('.gf-in-168').val()) < 0 ? Math.abs(parseFloat($('.gf-in-168').val())) : 0
+		)
+		$('.gf-in-income-zero').prop('checked', parseFloat($('.gf-in-168').val()) === 0)
 		$('.currency').formatCurrency();
 	}
 
@@ -97,7 +104,7 @@ $(document).on("wheel", "input[type=number]", function (e) {
 	$.formatCurrency.regions[''] = {
 		symbol: '',
 		positiveFormat: '%s%n',
-		negativeFormat: '(%s%n)',
+		negativeFormat: '-%s%n',
 		decimalSymbol: '.',
 		digitGroupSymbol: '',
 		groupDigits: false
@@ -182,7 +189,6 @@ $(document).on("wheel", "input[type=number]", function (e) {
 				decimals = decimals.substring(2); // remove "0."
 			}
 			num = String(num);
-
 			if (settings.groupDigits) {
 				for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++) {
 					num = num.substring(0, num.length - (4 * i + 3)) + settings.digitGroupSymbol + num.substring(num.length - (4 * i + 3));
@@ -192,7 +198,6 @@ $(document).on("wheel", "input[type=number]", function (e) {
 			if ((hasDecimals && settings.roundToDecimalPlace == -1) || settings.roundToDecimalPlace > 0) {
 				num += settings.decimalSymbol + decimals;
 			}
-
 			// format symbol/negative
 			var format = isPositive ? settings.positiveFormat : settings.negativeFormat;
 			var money = format.replace(/%s/g, settings.symbol);
