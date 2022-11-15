@@ -39,7 +39,7 @@ class AdminService {
             }
         if (premiumType)
             findCondition = { ...findCondition, premiumType }
-        const users = await userModel.find(findCondition, filterUserProjection).skip(skip).limit(limit).lean()
+        const users = await userModel.find(findCondition, filterUserProjection).skip(skip).limit(limit).sort({ _id: -1 }).lean()
         const totalCount = await userModel.countDocuments(findCondition)
         return { users, totalCount };
     }
