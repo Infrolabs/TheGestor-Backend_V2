@@ -24,5 +24,7 @@ export const {
     REDSYS_SUCCESS_URL,
     REDSYS_ERROR_URL,
     REDSYS_URL,
-    REDSYS_SOAP_URL
+    REDSYS_SOAP_URL,
+    ONESIGNAL_APP_ID,
+    ONESIGNAL_API_KEY,
 } = process.env;

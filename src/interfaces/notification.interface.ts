@@ -1,10 +1,10 @@
 export interface INotification {
-    _id: string
+    _id?: string
     userId: string
     message: string
     localizationMessages: INotificationLocalizedMessages
     type: ENotificationType
-    isSeen: boolean
+    isSeen?: boolean
 }
 
 export interface INotificationLocalizedMessages {
@@ -19,5 +19,6 @@ export enum ENotificationType {
     INCOME = "income",
     INVOICE = "invoice",
     EXPENSE = "expense",
-    USER_MANAGEMENT = "user_management"
+    USER_MANAGEMENT = "user_management",
+    COMMENT = 'comment',
 }
