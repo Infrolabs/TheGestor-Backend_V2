@@ -1,4 +1,4 @@
-import { ENotificationType, INotification } from '@/interfaces/notification.interface';
+import { ENotificationDataType, ENotificationType, INotification } from '@/interfaces/notification.interface';
 import { model, Schema, Document } from 'mongoose';
 
 const notificationSchema: Schema = new Schema({
@@ -22,6 +22,14 @@ const notificationSchema: Schema = new Schema({
   isSeen: {
     type: Boolean,
     default: false
+  },
+  notificationData: {
+    url: String,
+    type: {
+      type: String,
+      enum: Object.values(ENotificationDataType)
+    },
+    resourceId: String
   }
 }, {
   timestamps: true

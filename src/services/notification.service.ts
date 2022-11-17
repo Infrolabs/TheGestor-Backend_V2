@@ -1,14 +1,14 @@
 import { ONESIGNAL_APP_ID, ONESIGNAL_API_KEY } from "@/config";
-import { ENotificationType, INotification, INotificationLocalizedMessages } from "@/interfaces/notification.interface";
+import { ENotificationType, INotification, INotificationData, INotificationLocalizedMessages } from "@/interfaces/notification.interface";
 import { ELanguage } from "@/interfaces/users.interface";
 import notificationModel from "@/models/notification.model";
 import userModel from "@/models/users.model";
-import OneSignal from 'onesignal-node'
+import * as OneSignal from 'onesignal-node'
 
 class NotificationService {
     private oneSignalClient = new OneSignal.Client(ONESIGNAL_APP_ID, ONESIGNAL_API_KEY)
-    
-    public async sendNotification(message: INotificationLocalizedMessages, type: ENotificationType, userIds: string[]): Promise<void> {
+
+    public async sendNotification(message: INotificationLocalizedMessages, type: ENotificationType, userIds: string[], notificationData: INotificationData): Promise<void> {
         const notificationUsers = {
             [ELanguage.EN]: [],
             [ELanguage.ES]: [],
@@ -40,7 +40,8 @@ class NotificationService {
                 message: message[ELanguage.EN],
                 type,
                 localizationMessages: message,
-                userId
+                userId,
+                notificationData
             })
         })
         notificationUsers[ELanguage.ES].forEach(userId => {
@@ -48,7 +49,8 @@ class NotificationService {
                 message: message[ELanguage.ES],
                 type,
                 localizationMessages: message,
-                userId
+                userId,
+                notificationData
             })
         })
         await notificationModel.insertMany(notifications)
