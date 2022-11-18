@@ -65,6 +65,8 @@ export const getVatFromBase = (base: number, vatType: EVatType): number => {
     return base * 0.1
   if (vatType === EVatType.REDUCED_10_14)
     return base * 0.114
+  if (vatType === EVatType.IVA_5)
+    return base * 0.05
   if (vatType === EVatType.SUPER_REDUCED_4 || vatType === EVatType.INTRA_COM_4)
     return base * 0.04
   if (vatType === EVatType.SUPER_REDUCED_4_05)

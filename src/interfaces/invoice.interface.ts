@@ -85,6 +85,7 @@ export enum EInvoiceTemplate {
 export enum EVatType {
     STANDARD_21 = "standard_21",
     REDUCED_10 = "reduced_10",
+    IVA_5 = 'iva_5',
     SUPER_REDUCED_4 = "super_reduced_4",
     WITHOUT_0 = "without_0",
     STANDARD_21_52 = "standard_21_52",
