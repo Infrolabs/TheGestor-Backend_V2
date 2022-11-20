@@ -116,8 +116,6 @@ class FormService {
     private async getDefaultFormData(userId: string, type: ETaxType, trimester: number, year: number): Promise<any> {
         if (type === ETaxType.FORM111) {
             let dataArray = new Array(31).fill(null)
-            const noOfSuppliers = await clientModel.countDocuments({ createdBy: userId, clientType: EClientType.SUPPLIER, isDeleted: false })
-            dataArray[7] = noOfSuppliers
             const expenses = await expenseModel.find({
                 invoiceDate: { $gte: getTrimesterStartDate(trimester, year), $lte: getTrimesterEndDate(trimester, year) },
                 createdBy: userId,
@@ -126,6 +124,7 @@ class FormService {
             }, { manualItem: 1, items: 1 })
             let totalBaseExp = 0
             let totalIrpf = 0
+            let listOfSuppliers = []
             expenses.forEach(exp => {
                 if (exp.manualItem && exp.manualItem.length > 0) {
                     exp.manualItem.forEach(item => {
@@ -134,6 +133,9 @@ class FormService {
 
                         totalBaseExp += item.cost * item.unit
                         totalIrpf += item.cost * item.unit * item.irpf / 100
+                        const supplier = exp.manualClient.cifNif || String(exp.client)
+                        if (!listOfSuppliers.includes(supplier))
+                            listOfSuppliers.push(supplier)
                     })
                 } else if (exp.items && exp.items.length > 0) {
                     exp.items.forEach(item => {
@@ -142,9 +144,13 @@ class FormService {
 
                         totalBaseExp += item.cost * item.selectedQuantity
                         totalIrpf += item.cost * item.selectedQuantity * item.irpf / 100
+                        const supplier = exp.manualClient.cifNif || String(exp.client)
+                        if (!listOfSuppliers.includes(supplier))
+                            listOfSuppliers.push(supplier)
                     })
                 }
             })
+            dataArray[7] = listOfSuppliers.length
             dataArray[8] = totalBaseExp
             dataArray[9] = totalIrpf
             const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
