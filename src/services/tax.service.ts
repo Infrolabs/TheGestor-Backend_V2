@@ -34,6 +34,34 @@ class TaxService {
             return this.getForm303Content2022(year, trimester, user.cifNif, user.name, tax)
         if (tax.type === ETaxType.FORM111)
             return this.getForm111TxtData(year, trimester, user.cifNif, user.name, tax)
+        if (tax.type === ETaxType.FORM115)
+            return this.getForm115TxtData(year, trimester, user.cifNif, user.name, tax)
+    }
+
+    private getForm115TxtData(year: number, trimester: number, cifNif: string, name: string, tax: ITax): string {
+        const data = tax.data
+        const nameSurname = getNameAndSurname(name)
+        // if (Object.values(data).length < 30) throw new HttpException(ResponseCodes.BAD_REQUEST, ResponseMessages.en.FORM_INVALID_DATA)
+        return "<T1150" + year + trimester + "T0000><AUX>"
+            + "1.9".padStart(70 + 4, ' ') // 70 blank + 4 version string
+            + "B88476437".padStart(9 + 4, ' ') // 9 NIF + 4 blanks
+            + "</AUX>".padStart(213 + 6, ' ') // 213 blank space + </AUX>
+            + "<T11501000> "//----- FIRST PAGE ------
+            + (parseFloat(data['30']) && parseFloat(data['30']) <= 0 ? "N" : "I")
+            + cifNif
+            + nameSurname.surname.padEnd(60, ' ')
+            + nameSurname.name.padEnd(20, ' ')
+            + year
+            + trimester + "T"
+            + numberToStr(data["1"], 15, 1)
+            + numberToStr(data["2"], 17)
+            + numberToStr(data["3"], 17)
+            + numberToStr(data["4"], 17)
+            + numberToStr(data["5"], 17)
+            + String(data['6'] || " ").charAt(0)
+            + String(data['7'] || "").padStart(13, ' ')
+            + "</T11501000>".padStart(34 + 236 + 13 + 12, ' ') // 389 + 13 spaces + 12 tag
+            + "</T1150" + year + trimester + "T0000>"
     }
 
     private getForm111TxtData(year: number, trimester: number, cifNif: string, name: string, tax: ITax): string {

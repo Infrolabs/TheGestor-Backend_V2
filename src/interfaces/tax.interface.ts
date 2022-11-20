@@ -20,4 +20,5 @@ export enum ETaxType {
     FORM303 = 'form303',
     FORM130 = 'form130',
     FORM111 = 'form111',
+    FORM115 = 'form115',
 }

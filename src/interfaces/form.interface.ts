@@ -65,5 +65,16 @@ export const AVAILABLE_FORMS = [
             name: "Modelo 111",
             type: "Retention From Providers",
         }
+    },
+    {
+        _id: 'form115',
+        en: {
+            name: "Form 115",
+            type: "Retention From Providers",
+        },
+        es: {
+            name: "Modelo 115",
+            type: "Retention From Providers",
+        }
     }
 ]
