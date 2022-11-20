@@ -9,7 +9,6 @@ import { ResponseCodes, ResponseMessages } from "@/interfaces/response.interface
 import { ETaxStatus, ETaxType, ITax } from "@/interfaces/tax.interface";
 import { IUser } from "@/interfaces/users.interface";
 import accessModel from "@/models/access.model";
-import clientModel from "@/models/client.model";
 import expenseModel from "@/models/expense.model";
 import incomeModel from "@/models/income.model";
 import taxModel from "@/models/tax.model";
@@ -116,16 +115,15 @@ class FormService {
     private async getDefaultFormData(userId: string, type: ETaxType, trimester: number, year: number): Promise<any> {
         if (type === ETaxType.FORM111) {
             let dataArray = new Array(31).fill(null)
-            const noOfSuppliers = await clientModel.countDocuments({ createdBy: userId, clientType: EClientType.SUPPLIER, isDeleted: false })
-            dataArray[7] = noOfSuppliers
             const expenses = await expenseModel.find({
                 invoiceDate: { $gte: getTrimesterStartDate(trimester, year), $lte: getTrimesterEndDate(trimester, year) },
                 createdBy: userId,
                 isDeleted: false,
                 isDraft: false
-            }, { manualItem: 1, items: 1 })
+            }, { manualItem: 1, items: 1, manualClient: 1, client: 1 })
             let totalBaseExp = 0
             let totalIrpf = 0
+            let listOfSuppliers = []
             expenses.forEach(exp => {
                 if (exp.manualItem && exp.manualItem.length > 0) {
                     exp.manualItem.forEach(item => {
@@ -134,6 +132,9 @@ class FormService {
 
                         totalBaseExp += item.cost * item.unit
                         totalIrpf += item.cost * item.unit * item.irpf / 100
+                        const supplier = exp.manualClient.cifNif || String(exp.client)
+                        if (!listOfSuppliers.includes(supplier))
+                            listOfSuppliers.push(supplier)
                     })
                 } else if (exp.items && exp.items.length > 0) {
                     exp.items.forEach(item => {
@@ -142,9 +143,13 @@ class FormService {
 
                         totalBaseExp += item.cost * item.selectedQuantity
                         totalIrpf += item.cost * item.selectedQuantity * item.irpf / 100
+                        const supplier = exp.manualClient.cifNif || String(exp.client)
+                        if (!listOfSuppliers.includes(supplier))
+                            listOfSuppliers.push(supplier)
                     })
                 }
             })
+            dataArray[7] = listOfSuppliers.length
             dataArray[8] = totalBaseExp
             dataArray[9] = totalIrpf
             const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
@@ -311,6 +316,48 @@ class FormService {
             dataArray[49] = intracommunityExp
             dataArray[50] = intracommunityExp * 21 / 100
             const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
+            return data
+        } else if (type === ETaxType.FORM115) {
+            let dataArray = new Array(7).fill(null)
+            const expenses = await expenseModel.find({
+                invoiceDate: { $gte: getTrimesterStartDate(trimester, year), $lte: getTrimesterEndDate(trimester, year) },
+                createdBy: userId,
+                isDeleted: false,
+                isDraft: false
+            }, { manualItem: 1, items: 1, manualClient: 1, client: 1 })
+            let totalBaseExp = 0
+            let totalIrpf = 0
+            let listOfSuppliers = []
+            expenses.forEach(exp => {
+                if (exp.manualItem && exp.manualItem.length > 0) {
+                    exp.manualItem.forEach(item => {
+                        if (item.irpf !== 19)
+                            return
+
+                        totalBaseExp += item.cost * item.unit
+                        totalIrpf += item.cost * item.unit * item.irpf / 100
+                        const supplier = exp.manualClient.cifNif || String(exp.client)
+                        if (!listOfSuppliers.includes(supplier))
+                            listOfSuppliers.push(supplier)
+                    })
+                } else if (exp.items && exp.items.length > 0) {
+                    exp.items.forEach(item => {
+                        if (item.irpf !== 19)
+                            return
+
+                        totalBaseExp += item.cost * item.selectedQuantity
+                        totalIrpf += item.cost * item.selectedQuantity * item.irpf / 100
+                        const supplier = exp.manualClient.cifNif || String(exp.client)
+                        if (!listOfSuppliers.includes(supplier))
+                            listOfSuppliers.push(supplier)
+                    })
+                }
+            })
+            dataArray[1] = listOfSuppliers.length
+            dataArray[2] = totalBaseExp
+            dataArray[3] = totalIrpf
+            const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
+            delete data['0']
             return data
         }
         return {}
