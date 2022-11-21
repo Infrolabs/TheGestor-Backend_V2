@@ -3,7 +3,7 @@
 .gf-input:focus,
 .gf-input::-webkit-outer-spin-button,
 .gf-input::-webkit-inner-spin-button {
-    background-color: white;
+    background-color: red;
     border-width: 0px;
     font-size: 0.5rem;
     -webkit-appearance: none;
@@ -47,1250 +47,1186 @@
 
 .gf-year {
     position: absolute;
-    top: 13%;
-    left: 75.2%;
-    width: 7.2%;
+    top: 13.15%;
+    left: 76.5%;
+    width: 8%;
     height: 1.2%;
 }
 
 .gf-trimester {
     position: absolute;
-    top: 13%;
-    left: 89.3%;
-    width: 3.5%;
+    top: 13.15%;
+    left: 91.6%;
+    width: 4%;
     height: 1.2%;
 }
 
 .gf-cifnif {
     position: absolute;
-    top: 16.6%;
-    left: 7.5%;
-    width: 17%;
+    top: 16.7%;
+    left: 3.5%;
+    width: 17.8%;
     height: 1.2%;
 }
 
 .gf-name {
     position: absolute;
-    top: 16.6%;
-    left: 25.2%;
-    width: 38.6%;
+    top: 16.7%;
+    left: 22.4%;
+    width: 74%;
     height: 1.2%;
 }
 
-.gf-in-1-1 {
+.gf-in-1 {
     position: absolute;
-    top: 24%;
-    left: 46.8%;
+    top: 23.7%;
+    left: 47.9%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
-.gf-in-1-2 {
+.gf-in-2 {
     position: absolute;
-    top: 24%;
-    left: 50.1%;
+    top: 25.35%;
+    left: 47.9%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
-.gf-in-2-1 {
+.gf-in-3 {
     position: absolute;
-    top: 25.6%;
-    left: 46.8%;
+    top: 26.9%;
+    left: 47.9%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
-.gf-in-2-2 {
+.gf-in-4 {
     position: absolute;
-    top: 25.6%;
-    left: 50.1%;
+    top: 28.5%;
+    left: 47.9%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
-.gf-in-3-1 {
+.gf-in-5 {
     position: absolute;
-    top: 27.1%;
-    left: 46.8%;
-    width: 0.7rem;
-    height: 0.7rem;
-}
-
-.gf-in-3-2 {
-    position: absolute;
-    top: 27.1%;
-    left: 50.1%;
-    width: 0.7rem;
-    height: 0.7rem;
-}
-
-.gf-in-4-1 {
-    position: absolute;
-    top: 30%;
-    left: 46.8%;
-    width: 0.7rem;
-    height: 0.7rem;
-}
-
-.gf-in-4-2 {
-    position: absolute;
-    top: 30%;
-    left: 50.1%;
-    width: 0.7rem;
-    height: 0.7rem;
-}
-
-.gf-in-5-1 {
-    position: absolute;
-    top: 31.8%;
-    left: 46.8%;
-    width: 0.7rem;
-    height: 0.7rem;
-}
-
-.gf-in-5-2 {
-    position: absolute;
-    top: 31.8%;
-    left: 50.1%;
+    top: 30.1%;
+    left: 47.9%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
 .gf-in-6 {
     position: absolute;
-    top: 33.7%;
-    left: 46.8%;
+    top: 31.7%;
+    left: 47.9%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
 .gf-in-7 {
     position: absolute;
-    top: 35.6%;
-    left: 46.8%;
+    top: 33.25%;
+    left: 47.9%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
-.gf-in-8-1 {
+.gf-in-8 {
     position: absolute;
-    top: 28.6%;
-    left: 46.8%;
-    width: 0.7rem;
-    height: 0.7rem;
-}
-
-.gf-in-8-2 {
-    position: absolute;
-    top: 28.6%;
-    left: 50.1%;
+    top: 34.9%;
+    left: 47.9%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
 .gf-in-9 {
     position: absolute;
-    top: 24.3%;
-    left: 79.3%;
+    top: 38.5%;
+    left: 29.1%;
     width: 14.4%;
     height: 1.2%;
 }
 
 .gf-in-10-1 {
     position: absolute;
-    top: 26.4%;
-    left: 92%;
+    top: 40.95%;
+    left: 42.5%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
 .gf-in-10-2 {
     position: absolute;
-    top: 27.8%;
-    left: 92%;
+    top: 42.4%;
+    left: 42.5%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
 .gf-in-11 {
     position: absolute;
-    top: 37.9%;
-    left: 46.8%;
+    top: 23.8%;
+    left: 94.6%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
-.gf-in-12-1 {
+.gf-in-12 {
     position: absolute;
-    top: 39.6%;
-    left: 46.8%;
+    top: 25.4%;
+    left: 94.6%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
-.gf-in-12-2 {
+.gf-in-13 {
     position: absolute;
-    top: 39.6%;
-    left: 50.1%;
-    width: 0.7rem;
-    height: 0.7rem;
-}
-
-.gf-in-13-1 {
-    position: absolute;
-    top: 41.1%;
-    left: 46.8%;
-    width: 0.7rem;
-    height: 0.7rem;
-}
-
-.gf-in-13-2 {
-    position: absolute;
-    top: 41.1%;
-    left: 50.1%;
+    top: 26.95%;
+    left: 94.6%;
     width: 0.7rem;
     height: 0.7rem;
 }
 
 .gf-in-14 {
     position: absolute;
-    top: 49.6%;
-    left: 51.4%;
-    width: 14.4%;
+    top: 53.55%;
+    left: 51.6%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-15 {
     position: absolute;
-    top: 49.6%;
-    left: 68.3%;
+    top: 53.55%;
+    left: 69.4%;
     width: 8.5%;
     height: 1.2%;
 }
 
 .gf-in-16 {
     position: absolute;
-    top: 49.6%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 53.55%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-17 {
     position: absolute;
-    top: 51.1%;
-    left: 51.4%;
-    width: 14.4%;
+    top: 54.95%;
+    left: 51.6%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-18 {
     position: absolute;
-    top: 51.1%;
-    left: 68.3%;
+    top: 54.95%;
+    left: 69.4%;
     width: 8.5%;
     height: 1.2%;
 }
 
 .gf-in-19 {
     position: absolute;
-    top: 51.1%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 54.95%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-20 {
     position: absolute;
-    top: 52.5%;
-    left: 51.4%;
-    width: 14.4%;
+    top: 56.4%;
+    left: 51.6%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-21 {
     position: absolute;
-    top: 52.5%;
-    left: 68.3%;
+    top: 56.4%;
+    left: 69.4%;
     width: 8.5%;
     height: 1.2%;
 }
 
 .gf-in-22 {
     position: absolute;
-    top: 52.5%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 56.4%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-23 {
     position: absolute;
-    top: 53.9%;
-    left: 51.4%;
-    width: 14.4%;
+    top: 57.9%;
+    left: 51.6%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-24 {
     position: absolute;
-    top: 53.9%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 57.9%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-25 {
     position: absolute;
-    top: 55.3%;
-    left: 51.4%;
-    width: 14.4%;
+    top: 59.4%;
+    left: 51.6%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-26 {
     position: absolute;
-    top: 55.3%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 59.4%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-27 {
     position: absolute;
-    top: 56.7%;
-    left: 51.4%;
-    width: 14.4%;
+    top: 60.85%;
+    left: 51.6%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-28 {
     position: absolute;
-    top: 56.7%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 60.85%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-29 {
     position: absolute;
-    top: 58.2%;
-    left: 51.4%;
-    width: 14.4%;
+    top: 62.3%;
+    left: 51.6%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-30 {
     position: absolute;
-    top: 58.2%;
-    left: 68.3%;
+    top: 62.3%;
+    left: 69.4%;
     width: 8.5%;
     height: 1.2%;
 }
 
 .gf-in-31 {
     position: absolute;
-    top: 58.2%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 62.3%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-32 {
     position: absolute;
-    top: 59.6%;
-    left: 51.4%;
-    width: 14.4%;
+    top: 63.8%;
+    left: 51.6%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-33 {
     position: absolute;
-    top: 59.6%;
-    left: 68.3%;
+    top: 63.8%;
+    left: 69.4%;
     width: 8.5%;
     height: 1.2%;
 }
 
 .gf-in-34 {
     position: absolute;
-    top: 59.6%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 63.8%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-35 {
     position: absolute;
-    top: 61%;
-    left: 51.4%;
-    width: 14.4%;
+    top: 65.25%;
+    left: 51.6%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-36 {
     position: absolute;
-    top: 61%;
-    left: 68.3%;
+    top: 65.25%;
+    left: 69.4%;
     width: 8.5%;
     height: 1.2%;
 }
 
 .gf-in-37 {
     position: absolute;
-    top: 61%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 65.25%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-38 {
     position: absolute;
-    top: 62.4%;
-    left: 51.4%;
-    width: 14.4%;
+    top: 66.7%;
+    left: 51.6%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-39 {
     position: absolute;
-    top: 62.4%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 66.7%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-40 {
     position: absolute;
-    top: 65.1%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 68.9%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-41 {
     position: absolute;
-    top: 70.8%;
-    left: 62.1%;
-    width: 14.4%;
+    top: 74.2%;
+    left: 62.8%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-42 {
     position: absolute;
-    top: 70.8%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 74.2%;
+    left: 80.8%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-43 {
     position: absolute;
-    top: 72.2%;
-    left: 62.1%;
-    width: 14.4%;
+    top: 75.55%;
+    left:62.8%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-44 {
     position: absolute;
-    top: 72.2%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 75.55%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-45 {
     position: absolute;
-    top: 73.6%;
-    left: 62.1%;
-    width: 14.4%;
+    top: 77%;
+    left: 62.8%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-46 {
     position: absolute;
-    top: 73.6%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 77%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-47 {
     position: absolute;
-    top: 75.1%;
-    left: 62.1%;
-    width: 14.4%;
+    top: 78.5%;
+    left: 62.8%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-48 {
     position: absolute;
-    top: 75.1%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 78.5%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-49 {
     position: absolute;
-    top: 76.5%;
-    left: 62.1%;
-    width: 14.4%;
+    top: 80%;
+    left: 62.8%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-50 {
     position: absolute;
-    top: 76.5%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 80%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-51 {
     position: absolute;
-    top: 78%;
-    left: 62.1%;
-    width: 14.4%;
+    top: 81.45%;
+    left: 62.8%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-52 {
     position: absolute;
-    top: 78%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 81.45%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-53 {
     position: absolute;
-    top: 79.4%;
-    left: 62.1%;
-    width: 14.4%;
+    top: 82.9%;
+    left: 62.8%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-54 {
     position: absolute;
-    top: 79.4%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 82.9%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-55 {
     position: absolute;
-    top: 80.8%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 84.4%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-56 {
     position: absolute;
-    top: 82.2%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 85.9%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-57 {
     position: absolute;
-    top: 83.7%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 87.3%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-58 {
     position: absolute;
-    top: 87%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 89.6%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-in-59 {
     position: absolute;
-    top: 91.6%;
-    left: 79.2%;
-    width: 14.4%;
+    top: 93.8%;
+    left: 80.9%;
+    width: 15.4%;
     height: 1.2%;
 }
 
 .gf-cifnif-pg-2 {
     position: absolute;
-    top: 9.3%;
-    left: 8.5%;
-    width: 17%;
+    top: 1.5%;
+    left: 11.7%;
+    width: 17.9%;
     height: 1.2%;
 }
 
 .gf-name-pg-2 {
     position: absolute;
-    top: 9.3%;
-    left: 32.2%;
-    width: 38.6%;
+    top: 1.5%;
+    left: 30.9%;
+    width: 56.6%;
     height: 1.2%;
 }
 
 .gf-in-61 {
     position: absolute;
-    top: 18.6%;
-    left: 9%;
+    top: 11.5%;
+    left: 6.8%;
     width: 3.4%;
     height: 1.2%;
 }
 
 .gf-in-62 {
     position: absolute;
-    top: 18.6%;
-    left: 15.5%;
+    top: 11.5%;
+    left: 13.6%;
     width: 10.5%;
     height: 1.2%;
 }
 
 .gf-in-63 {
     position: absolute;
-    top: 18.6%;
-    left: 29%;
+    top: 11.5%;
+    left: 27.9%;
     width: 5.4%;
     height: 1.2%;
 }
 
 .gf-in-64 {
     position: absolute;
-    top: 18.6%;
-    left: 37.8%;
+    top: 11.5%;
+    left: 37.3%;
     width: 10.5%;
     height: 1.2%;
 }
 
 .gf-in-65 {
     position: absolute;
-    top: 21.8%;
-    left: 10.6%;
+    top: 14.85%;
+    left: 8.4%;
     width: 4.5%;
     height: 1.2%;
 }
 
 .gf-in-66 {
     position: absolute;
-    top: 21.8%;
-    left: 25%;
+    top: 14.85%;
+    left: 23.7%;
     width: 10.5%;
     height: 1.2%;
 }
 
 .gf-in-67 {
     position: absolute;
-    top: 26.1%;
-    left: 10.6%;
+    top: 19.3%;
+    left: 8.4%;
     width: 10.5%;
     height: 1.2%;
 }
 
 .gf-in-68 {
     position: absolute;
-    top: 26.1%;
-    left: 25%;
+    top: 19.3%;
+    left: 23.7%;
     width: 10.5%;
     height: 1.2%;
 }
 
 .gf-in-69 {
     position: absolute;
-    top: 18.6%;
-    left: 54.4%;
+    top: 11.5%;
+    left: 55%;
     width: 3.4%;
     height: 1.2%;
 }
 
 .gf-in-70 {
     position: absolute;
-    top: 18.6%;
-    left: 61%;
+    top: 11.5%;
+    left: 61.9%;
     width: 10.5%;
     height: 1.2%;
 }
 
 .gf-in-71 {
     position: absolute;
-    top: 18.6%;
-    left: 74.4%;
+    top: 11.5%;
+    left: 76.2%;
     width: 5.4%;
     height: 1.2%;
 }
 
 .gf-in-72 {
     position: absolute;
-    top: 18.6%;
-    left: 83.25%;
+    top: 11.5%;
+    left: 85.5%;
     width: 10.5%;
     height: 1.2%;
 }
 
 .gf-in-73 {
     position: absolute;
-    top: 21.8%;
-    left: 56%;
+    top: 14.85%;
+    left: 56.65%;
     width: 4.5%;
     height: 1.2%;
 }
 
 .gf-in-74 {
     position: absolute;
-    top: 21.8%;
-    left: 70.4%;
+    top: 14.85%;
+    left: 72%;
     width: 10.5%;
     height: 1.2%;
 }
 
 .gf-in-75 {
     position: absolute;
-    top: 26.1%;
-    left: 56%;
+    top: 19.3%;
+    left: 56.6%;
     width: 10.5%;
     height: 1.2%;
 }
 
 .gf-in-76 {
     position: absolute;
-    top: 26.1%;
-    left: 70.4%;
+    top: 19.3%;
+    left: 72%;
     width: 10.5%;
     height: 1.2%;
 }
 
 .gf-in-77 {
     position: absolute;
-    top: 30.4%;
-    left: 28.2%;
+    top: 24.3%;
+    left: 27.15%;
     width: 7%;
     height: 1.2%;
 }
 
 .gf-in-79 {
     position: absolute;
-    top: 34.4%;
-    left: 15.4%;
-    width: 14.7%;
+    top: 28.55%;
+    left: 13.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-80 {
     position: absolute;
-    top: 34.4%;
-    left: 32.9%;
-    width: 14.7%;
+    top: 28.55%;
+    left: 32%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-81 {
     position: absolute;
-    top: 35.8%;
-    left: 15.4%;
-    width: 14.7%;
+    top: 29.9%;
+    left: 13.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-82 {
     position: absolute;
-    top: 35.8%;
-    left: 32.9%;
-    width: 14.7%;
+    top: 29.9%;
+    left: 32%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-83 {
     position: absolute;
-    top: 37.2%;
-    left: 15.4%;
-    width: 14.7%;
+    top: 31.4%;
+    left: 13.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-84 {
     position: absolute;
-    top: 37.2%;
-    left: 32.9%;
-    width: 14.7%;
+    top: 31.4%;
+    left: 32%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-85 {
     position: absolute;
-    top: 38.6%;
-    left: 15.4%;
-    width: 14.7%;
+    top: 32.9%;
+    left: 13.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-86 {
     position: absolute;
-    top: 38.6%;
-    left: 32.9%;
-    width: 14.7%;
+    top: 32.9%;
+    left: 32%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-87 {
     position: absolute;
-    top: 40%;
-    left: 15.4%;
-    width: 14.7%;
+    top: 34.3%;
+    left: 13.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-88 {
     position: absolute;
-    top: 40%;
-    left: 32.9%;
-    width: 14.7%;
+    top: 34.3%;
+    left: 32%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-89 {
     position: absolute;
-    top: 41.5%;
-    left: 15.4%;
-    width: 14.7%;
+    top: 35.8%;
+    left: 13.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-90 {
     position: absolute;
-    top: 41.5%;
-    left: 32.9%;
-    width: 14.7%;
+    top: 35.8%;
+    left: 32%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-91 {
     position: absolute;
-    top: 42.9%;
-    left: 15.4%;
-    width: 14.7%;
+    top: 37.3%;
+    left: 13.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-92 {
     position: absolute;
-    top: 42.9%;
-    left: 32.9%;
-    width: 14.7%;
+    top: 37.3%;
+    left: 32%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-93 {
     position: absolute;
-    top: 45.5%;
-    left: 33.7%;
-    width: 14.7%;
+    top: 40%;
+    left: 32.8%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-94 {
     position: absolute;
-    top: 47.3%;
-    left: 33.7%;
-    width: 14.7%;
+    top: 41.8%;
+    left: 32.8%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-95 {
     position: absolute;
-    top: 49.8%;
-    left: 37.1%;
+    top: 44.5%;
+    left: 36.4%;
     width: 8%;
     height: 1.2%;
 }
 
 .gf-in-96 {
     position: absolute;
-    top: 51.7%;
-    left: 36.8%;
+    top: 46.5%;
+    left: 36.4%;
     width: 5.4%;
     height: 1.2%;
 }
 
 .gf-in-97 {
     position: absolute;
-    top: 53.6%;
-    left: 33.7%;
-    width: 14.7%;
+    top: 48.4%;
+    left: 32.8%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-98 {
     position: absolute;
-    top: 59.8%;
-    left: 33.7%;
-    width: 14.7%;
+    top: 55.3%;
+    left: 32.8%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-99 {
     position: absolute;
-    top: 61.65%;
-    left: 37.1%;
+    top: 57.3%;
+    left: 36.3%;
     width: 8%;
     height: 1.2%;
 }
 
 .gf-in-100 {
     position: absolute;
-    top: 63.7%;
-    left: 33.7%;
-    width: 14.7%;
+    top: 59.35%;
+    left: 32.8%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-101 {
     position: absolute;
-    top: 65.4%;
-    left: 36.8%;
+    top: 61.1%;
+    left: 36.3%;
     width: 5.4%;
     height: 1.2%;
 }
 
 .gf-in-102 {
     position: absolute;
-    top: 67.2%;
-    left: 33.7%;
-    width: 14.7%;
+    top: 62.95%;
+    left: 32.8%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-103 {
     position: absolute;
-    top: 68.6%;
-    left: 33.7%;
-    width: 14.7%;
+    top: 64.4%;
+    left: 32.8%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-104 {
     position: absolute;
-    top: 70.5%;
-    left: 33.7%;
-    width: 14.7%;
+    top: 66.4%;
+    left: 32.8%;
+    width: 15.5%;
     height: 1.2%;
 }
 /* ------------------ */
 
 .gf-in-105 {
     position: absolute;
-    top: 30.4%;
-    left: 74.6%;
+    top: 24.3%;
+    left: 46.2%;
     width: 7%;
     height: 1.2%;
 }
 
 .gf-in-107 {
     position: absolute;
-    top: 34.4%;
-    left: 61%;
-    width: 14.7%;
+    top: 28.55%;
+    left: 61.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-108 {
     position: absolute;
-    top: 34.4%;
-    left: 78.3%;
-    width: 14.7%;
+    top: 28.55%;
+    left: 80%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-109 {
     position: absolute;
-    top: 35.8%;
-    left: 61%;
-    width: 14.7%;
+    top: 29.9%;
+    left: 61.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-110 {
     position: absolute;
-    top: 35.8%;
-    left: 78.3%;
-    width: 14.7%;
+    top: 29.9%;
+    left: 80%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-111 {
     position: absolute;
-    top: 37.2%;
-    left: 61%;
-    width: 14.7%;
+    top: 31.4%;
+    left: 61.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-112 {
     position: absolute;
-    top: 37.2%;
-    left: 78.3%;
-    width: 14.7%;
+    top:31.4%;
+    left: 80%;
+    width:15.5%;
     height: 1.2%;
 }
 
 .gf-in-113 {
     position: absolute;
-    top: 38.6%;
-    left: 61%;
-    width: 14.7%;
+    top: 32.9%;
+    left: 61.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-114 {
     position: absolute;
-    top: 38.6%;
-    left: 78.3%;
-    width: 14.7%;
+    top: 32.9%;
+    left: 80%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-115 {
     position: absolute;
-    top: 40%;
-    left: 61%;
-    width: 14.7%;
+    top: 34.3%;
+    left: 61.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-116 {
     position: absolute;
-    top: 40%;
-    left: 78.3%;
-    width: 14.7%;
+    top: 34.3%;
+    left: 80%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-117 {
     position: absolute;
-    top: 41.5%;
-    left: 61%;
-    width: 14.7%;
+    top: 35.8%;
+    left: 61.6%;
+    width:15.5%;
     height: 1.2%;
 }
 
 .gf-in-118 {
     position: absolute;
-    top: 41.5%;
-    left: 78.3%;
-    width: 14.7%;
+    top: 35.8%;
+    left: 80%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-119 {
     position: absolute;
-    top: 42.9%;
-    left: 61%;
-    width: 14.7%;
+    top: 37.3%;
+    left: 61.6%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-120 {
     position: absolute;
-    top: 42.9%;
-    left: 78.3%;
-    width: 14.7%;
+    top: 37.3%;
+    left: 80%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-121 {
     position: absolute;
-    top: 45.5%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 40%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-122 {
     position: absolute;
-    top: 47.3%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 41.8%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-123 {
     position: absolute;
-    top: 49.8%;
-    left: 82.5%;
+    top: 44.5%;
+    left: 84.5%;
     width: 8%;
     height: 1.2%;
 }
 
 .gf-in-124 {
     position: absolute;
-    top: 51.7%;
-    left: 82.3%;
+    top: 46.5%;
+    left: 84.5%;
     width: 5.4%;
     height: 1.2%;
 }
 
 .gf-in-125 {
     position: absolute;
-    top: 53.6%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 48.4%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-126 {
     position: absolute;
-    top: 59.8%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 55.3%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-127 {
     position: absolute;
-    top: 61.65%;
-    left: 82.3%;
+    top: 57.3%;
+    left: 84.5%;
     width: 8%;
     height: 1.2%;
 }
 
 .gf-in-128 {
     position: absolute;
-    top: 63.7%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 59.35%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-129 {
     position: absolute;
-    top: 65.4%;
-    left: 82.3%;
+    top: 61.1%;
+    left: 84.5%;
     width: 5.4%;
     height: 1.2%;
 }
 
 .gf-in-130 {
     position: absolute;
-    top: 67.2%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 62.95%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-131 {
     position: absolute;
-    top: 68.6%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 64.4%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-132 {
     position: absolute;
-    top: 70.5%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 66.4%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-133 {
     position: absolute;
-    top: 57.1%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 52.4%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-134 {
     position: absolute;
-    top: 73.1%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 69.7%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-135 {
     position: absolute;
-    top: 75.2%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 72%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-136 {
     position: absolute;
-    top: 77.4%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 74.1%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-137 {
     position: absolute;
-    top: 80.8%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 77.6%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-138 {
     position: absolute;
-    top: 82.2%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 79.1%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-139 {
     position: absolute;
-    top: 83.6%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 80.55%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-140 {
     position: absolute;
-    top: 85.6%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 82.65%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-141 {
     position: absolute;
-    top: 89.7%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 87.15%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-142 {
     position: absolute;
-    top: 91.2%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 88.6%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-143 {
     position: absolute;
-    top: 92.6%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 90.1%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-144 {
     position: absolute;
-    top: 95.9%;
-    left: 79.2%;
-    width: 14.7%;
+    top: 93.6%;
+    left: 80.9%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1314,7 +1250,7 @@
     position: absolute;
     top: 7.1%;
     left: 79.4%;
-    width: 14.7%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1322,7 +1258,7 @@
     position: absolute;
     top: 8.5%;
     left: 79.4%;
-    width: 14.7%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1330,7 +1266,7 @@
     position: absolute;
     top: 9.9%;
     left: 79.4%;
-    width: 14.7%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1338,7 +1274,7 @@
     position: absolute;
     top: 20.4%;
     left: 79.4%;
-    width: 14.7%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1346,7 +1282,7 @@
     position: absolute;
     top: 21.8%;
     left: 79.4%;
-    width: 14.7%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1362,7 +1298,7 @@
     position: absolute;
     top: 23.2%;
     left: 79.4%;
-    width: 14.7%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1370,7 +1306,7 @@
     position: absolute;
     top: 24.6%;
     left: 79.4%;
-    width: 14.7%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1378,7 +1314,7 @@
     position: absolute;
     top: 26.2%;
     left: 79.4%;
-    width: 14.7%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1386,7 +1322,7 @@
     position: absolute;
     top: 30.6%;
     left: 10.7%;
-    width: 14.7%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1394,7 +1330,7 @@
     position: absolute;
     top: 28%;
     left: 79.4%;
-    width: 14.7%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1402,7 +1338,7 @@
     position: absolute;
     top: 29.7%;
     left: 79.4%;
-    width: 14.7%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1410,7 +1346,7 @@
     position: absolute;
     top: 31.2%;
     left: 79.4%;
-    width: 14.7%;
+    width: 15.5%;
     height: 1.2%;
 }
 
