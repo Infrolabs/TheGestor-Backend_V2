@@ -74,7 +74,7 @@ export const AVAILABLE_FORMS = [
         },
         es: {
             name: "Modelo 115",
-            type: "Retention From Providers",
+            type: "Retenciones del arrendamiento",
         }
     }
 ]
