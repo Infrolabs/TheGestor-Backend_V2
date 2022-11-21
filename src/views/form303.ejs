@@ -33,29 +33,21 @@
             <input type="text" name="trimester" value="<%= trimester %>" class="gf-input gf-trimester" readonly />
             <input type="text" name="cifNif" value="<%= cifNif %>" class="gf-input gf-cifnif" readonly />
             <input type="text" name="name" value="<%= name %>" class="gf-input gf-name" readonly />
-            <input class="form-check-input m-0 gf-in-1-1" type="radio" name="1" value="1" id="gf-in-1-1" <%= data['1'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input m-0 gf-in-1-2" type="radio" name="1" value="2" id="gf-in-1-2" <%= data['1'] === '1' ? '' : 'checked' %>>
-            <input class="form-check-input m-0 gf-in-2-1" type="radio" name="2" value="1" id="gf-in-2-1" <%= data['2'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input m-0 gf-in-2-2" type="radio" name="2" value="2" id="gf-in-2-2" <%= data['2'] === '1' ? '' : 'checked' %>>
-            <input class="form-check-input m-0 gf-in-3-1" type="radio" name="3" value="1" id="gf-in-3-1" <%= data['3'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input m-0 gf-in-3-2" type="radio" name="3" value="2" id="gf-in-3-2" <%= data['3'] === '1' ? '' : 'checked' %>>
-            <input class="form-check-input m-0 gf-in-4-1" type="radio" name="4" value="1" id="gf-in-4-1" <%= data['4'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input m-0 gf-in-4-2" type="radio" name="4" value="2" id="gf-in-4-2" <%= data['4'] === '1' ? '' : 'checked' %>>
-            <input class="form-check-input m-0 gf-in-5-1" type="radio" name="5" value="1" id="gf-in-5-1" <%= data['5'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input m-0 gf-in-5-2" type="radio" name="5" value="2" id="gf-in-5-2" <%= data['5'] === '1' ? '' : 'checked' %>>
+            <input class="form-check-input m-0 gf-in-1" value="1" name="1" type="checkbox" <%= data['1'] === '1' ? 'checked' : '' %> >
+            <input class="form-check-input m-0 gf-in-2" value="1" name="2" type="checkbox" <%= data['2'] === '1' ? 'checked' : '' %> >
+            <input class="form-check-input m-0 gf-in-3" value="1" name="3" type="checkbox" <%= data['3'] === '1' ? 'checked' : '' %> >
+            <input class="form-check-input m-0 gf-in-4" value="1" name="4" type="checkbox" <%= data['4'] === '1' ? 'checked' : '' %> >
+            <input class="form-check-input m-0 gf-in-5" value="1" name="5" type="checkbox" <%= data['5'] === '1' ? 'checked' : '' %> >
             <input class="form-check-input m-0 gf-in-6" value="1" name="6" type="checkbox" <%= data['6'] === '1' ? 'checked' : '' %> >
             <input class="form-check-input m-0 gf-in-7" value="1" name="7" type="checkbox" <%= data['7'] === '1' ? 'checked' : '' %> >
-            <input class="form-check-input m-0 gf-in-8-1" type="radio" name="8" value="1" id="gf-in-8-1" <%= data['8'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input m-0 gf-in-8-2" type="radio" name="8" value="2" id="gf-in-8-2" <%= data['8'] === '1' ? '' : 'checked' %>>
+            <input class="form-check-input m-0 gf-in-8" value="1" name="8" type="checkbox" <%= data['8'] === '1' ? 'checked' : '' %> >
             <input type="text" name="9" value="<%= data['9'] ? data['9'] : '' %>" class="gf-input gf-in-9" />
             <input class="form-check-input m-0 gf-in-10-1" type="radio" name="10" value="1" id="gf-in-8-1" <%= data['10'] === '1' ? 'checked' : '' %>>
             <input class="form-check-input m-0 gf-in-10-2" type="radio" name="10" value="2" id="gf-in-8-2" <%= data['10'] === '2' ? 'checked' : '' %>>
             <input class="form-check-input m-0 gf-in-11" value="1" name="11" type="checkbox" <%= data['11'] === '1' ? 'checked' : '' %> >
-            <input class="form-check-input m-0 gf-in-12-1" type="radio" name="12" value="1" id="gf-in-12-1" <%= data['12'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input m-0 gf-in-12-2" type="radio" name="12" value="2" id="gf-in-12-2" <%= data['12'] === '1' ? '' : 'checked' %>>
-            <input class="form-check-input m-0 gf-in-13-1" type="radio" name="13" value="1" id="gf-in-13-1" <%= data['13'] === '1' ? 'checked' : '' %>>
-            <input class="form-check-input m-0 gf-in-13-2" type="radio" name="13" value="2" id="gf-in-13-2" <%= data['13'] === '1' ? '' : 'checked' %>>
-
+            <input class="form-check-input m-0 gf-in-12" value="1" name="12" type="checkbox" <%= data['12'] === '1' ? 'checked' : '' %> >
+            <input class="form-check-input m-0 gf-in-13" value="1" name="13" type="checkbox" <%= data['13'] === '1' ? 'checked' : '' %> >
+            
             <input type="number" name="14" value="<%= data['14'] ? data['14'] : '0.00'  %>" class="gf-input gf-in-14 currency" />
             <input type="number" name="15" value="<%= data['15'] ? data['15'] : '0.00'  %>" class="gf-input gf-in-15 currency" />
             <input type="number" name="16" value="<%= data['16'] ? data['16'] : '0.00'  %>" class="gf-input gf-in-16 currency" readonly/>

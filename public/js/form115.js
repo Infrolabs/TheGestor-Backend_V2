@@ -5,6 +5,7 @@ $(document).ready(function () {
 		$('.currency').formatCurrency();
 	});
 	$('.currency').formatCurrency();
+	calculateTotal()
 
 	// Calculate total on blur
 	$('.gf-in-3').blur(calculateTotal)
