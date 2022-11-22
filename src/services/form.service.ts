@@ -54,6 +54,7 @@ class FormService {
                 year,
                 trimester,
                 cifNif: user.cifNif,
+                fullname: user.name,
                 name: getNameAndSurname(user.name).name,
                 surname: getNameAndSurname(user.name).surname,
                 data: taxData.data
@@ -71,6 +72,7 @@ class FormService {
             year,
             trimester,
             cifNif: user.cifNif,
+            fullname: user.name,
             name: getNameAndSurname(user.name).name,
             surname: getNameAndSurname(user.name).surname,
             data: defaultFormData
