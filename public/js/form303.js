@@ -65,10 +65,16 @@ $(document).ready(function () {
 			getNum($('.gf-in-158').val()) *
 			getNum($('.gf-in-159').val()) / 100
 		)
+
+		$('.gf-in-164').val(
+			getNum($('.gf-in-162').val()) -
+			getNum($('.gf-in-163').val())
+		)
+
 		$('.gf-in-166').val(
 			getNum($('.gf-in-160').val()) +
 			getNum($('.gf-in-161').val()) -
-			getNum($('.gf-in-162').val()) +
+			getNum($('.gf-in-163').val()) +
 			getNum($('.gf-in-165').val())
 		)
 		$('.gf-in-168').val(

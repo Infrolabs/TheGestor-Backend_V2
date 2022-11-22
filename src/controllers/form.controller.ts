@@ -50,6 +50,7 @@ class FormController {
                 year: 2022,
                 trimester: 1,
                 cifNif: "12345",
+                fullname: "Test Surname",
                 name: "Test",
                 surname: "Surname",
                 data: {}
