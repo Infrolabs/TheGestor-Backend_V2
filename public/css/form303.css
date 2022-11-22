@@ -424,7 +424,7 @@
 .gf-in-43 {
     position: absolute;
     top: 75.55%;
-    left:62.8%;
+    left: 62.8%;
     width: 15.4%;
     height: 1.2%;
 }
@@ -916,6 +916,7 @@
     width: 15.5%;
     height: 1.2%;
 }
+
 /* ------------------ */
 
 .gf-in-105 {
@@ -968,9 +969,9 @@
 
 .gf-in-112 {
     position: absolute;
-    top:31.4%;
+    top: 31.4%;
     left: 80%;
-    width:15.5%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1010,7 +1011,7 @@
     position: absolute;
     top: 35.8%;
     left: 61.6%;
-    width:15.5%;
+    width: 15.5%;
     height: 1.2%;
 }
 
@@ -1232,144 +1233,177 @@
 
 .gf-cifnif-pg-3 {
     position: absolute;
-    top: 3.4%;
-    left: 13.8%;
-    width: 17%;
+    top: 1.5%;
+    left: 11.7%;
+    width: 17.9%;
     height: 1.2%;
 }
 
 .gf-name-pg-3 {
     position: absolute;
-    top: 3.4%;
-    left: 32.2%;
-    width: 38.6%;
+    top: 1.5%;
+    left: 31.1%;
+    width: 56.6%;
     height: 1.2%;
 }
 
 .gf-in-145 {
     position: absolute;
-    top: 7.1%;
-    left: 79.4%;
+    top: 5.6%;
+    left: 81.2%;
     width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-146 {
     position: absolute;
-    top: 8.5%;
-    left: 79.4%;
+    top: 7.3%;
+    left: 81.2%;
     width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-147 {
+    display: none;
     position: absolute;
     top: 9.9%;
-    left: 79.4%;
+    left: 81.2%;
+    width: 15.5%;
+    height: 1.2%;
+}
+
+.gf-in-148 {
+    position: absolute;
+    top: 9%;
+    left: 81.2%;
+    width: 15.5%;
+    height: 1.2%;
+}
+
+.gf-in-150 {
+    position: absolute;
+    top: 10.75%;
+    left: 81.2%;
+    width: 15.5%;
+    height: 1.2%;
+}
+
+.gf-in-151 {
+    position: absolute;
+    top: 12.5%;
+    left: 81.2%;
+    width: 15.5%;
+    height: 1.2%;
+}
+
+.gf-in-152 {
+    position: absolute;
+    top: 14.3%;
+    left: 81.2%;
     width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-157 {
     position: absolute;
-    top: 20.4%;
-    left: 79.4%;
+    top: 25.6%;
+    left: 81.2%;
     width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-158 {
     position: absolute;
-    top: 21.8%;
-    left: 79.4%;
+    top: 27.3%;
+    left: 81.2%;
     width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-159 {
     position: absolute;
-    top: 23.6%;
-    left: 31%;
+    top: 29.2%;
+    left: 27.5%;
     width: 4.2%;
     height: 1.2%;
 }
 
 .gf-in-160 {
     position: absolute;
-    top: 23.2%;
-    left: 79.4%;
+    top: 29.1%;
+    left: 81.2%;
     width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-161 {
     position: absolute;
-    top: 24.6%;
-    left: 79.4%;
+    top: 30.75%;
+    left: 81.2%;
     width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-162 {
     position: absolute;
-    top: 26.2%;
-    left: 79.4%;
+    top: 32.5%;
+    left: 81.2%;
     width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-165 {
     position: absolute;
-    top: 30.6%;
-    left: 10.7%;
+    top: 42.1%;
+    left: 6.3%;
     width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-166 {
     position: absolute;
-    top: 28%;
-    left: 79.4%;
+    top: 38.5%;
+    left: 81.2%;
     width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-167 {
     position: absolute;
-    top: 29.7%;
-    left: 79.4%;
+    top: 40.2%;
+    left: 81.2%;
     width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-168 {
     position: absolute;
-    top: 31.2%;
-    left: 79.4%;
+    top: 41.9%;
+    left: 81.2%;
     width: 15.5%;
     height: 1.2%;
 }
 
 .gf-in-income-pos {
     position: absolute;
-    top: 37.4%;
-    left: 66.8%;
+    top: 50.4%;
+    left: 67.4%;
     width: 19.8%;
     height: 1.2%;
 }
 
 .gf-in-income-neg {
     position: absolute;
-    top: 37%;
-    left: 21.5%;
+    top: 49.8%;
+    left: 17.3%;
     width: 19.8%;
     height: 1.2%;
 }
 
 .gf-in-income-zero {
     position: absolute;
-    top: 40.2%;
-    left: 34.4%;
+    top: 54.7%;
+    left: 33.4%;
     width: 0.7rem;
     height: 0.7rem;
 }
