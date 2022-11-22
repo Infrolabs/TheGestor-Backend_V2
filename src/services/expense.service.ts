@@ -5,6 +5,7 @@ import { ENotificationDataType, ENotificationType } from "@/interfaces/notificat
 import { ResponseCodes, ResponseMessages } from "@/interfaces/response.interface";
 import { ELanguage, IUser } from "@/interfaces/users.interface";
 import expenseModel from "@/models/expense.model";
+import userModel from "@/models/users.model";
 import EmailService from "./email.service";
 import NotificationService from "./notification.service";
 
@@ -32,17 +33,30 @@ class ExpenseService {
         )
         if (!updatedExpense)
             throw new HttpException(ResponseCodes.NOT_FOUND, ResponseMessages.en.INCOME_NOT_FOUND)
-            
-        this.notificationService.sendNotification(
-            {
-                [ELanguage.EN]: `${actualUser.companyName || actualUser.name} has commented on ${updatedExpense.invoiceNo}. Please reply as soon as possible.`,
-                [ELanguage.ES]: `${actualUser.companyName || actualUser.name} ha añadido un comentario para ${updatedExpense.invoiceNo}. Por favor, compruebe y responda lo antes posible.`,
-            },
-            ENotificationType.COMMENT,
-            [user._id],
-            { url: actualUser.image, type: ENotificationDataType.EXPENSE, resourceId: expenseId }
-        )
-        this.emailService.sendCommentMail(user.companyName || user.name, actualUser.companyName || actualUser.name, updatedExpense.invoiceNo, user.email)
+
+        let users: IUser[] = []
+        if (String(actualUser._id) !== String(user._id))
+            users.push(user)
+        else {
+            const usersToNotify: String[] = []
+            updatedExpense.comments?.forEach(comment => {
+                if (String(comment.userId) !== String(actualUser._id) && !usersToNotify.includes(String(comment.userId)))
+                    usersToNotify.push(String(comment.userId))
+            })
+            users = await userModel.find({ _id: { $in: usersToNotify } })
+        }
+        for (let i = 0; i < users.length; i++) {
+            this.notificationService.sendNotification(
+                {
+                    [ELanguage.EN]: `${actualUser.companyName || actualUser.name} has commented on ${updatedExpense.invoiceNo}. Please reply as soon as possible.`,
+                    [ELanguage.ES]: `${actualUser.companyName || actualUser.name} ha añadido un comentario para ${updatedExpense.invoiceNo}. Por favor, compruebe y responda lo antes posible.`,
+                },
+                ENotificationType.COMMENT,
+                [users[i]._id],
+                { url: actualUser.image, type: ENotificationDataType.EXPENSE, resourceId: expenseId }
+            )
+            this.emailService.sendCommentMail(users[i].companyName || users[i].name, actualUser.companyName || actualUser.name, updatedExpense.invoiceNo, users[i].email)
+        }
         return updatedExpense
     }
 
