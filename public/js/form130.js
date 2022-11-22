@@ -76,8 +76,8 @@ $(document).ready(function () {
 		$('.gf-in-18-2').val(
 			$('.gf-in-18').val()
 		)
-		$('#negativa').prop('checked', getNum($('.gf-in-18').val()) == 0 ? true : false)
-		$('#minusResult').prop('checked', getNum($('.gf-in-18').val()) < 0 ? true : false)
+		$('#negativa').prop('checked', parseFloat($('.gf-in-18').val()) === 0)
+		$('#minusResult').prop('checked', parseFloat($('.gf-in-18').val()) && parseFloat($('.gf-in-18').val()) < 0)
 		$('.currency').formatCurrency();
 	}
 

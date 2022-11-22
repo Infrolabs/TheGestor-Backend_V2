@@ -18,7 +18,7 @@ $(document).ready(function () {
 	$('.gf-in-27').blur(calculateTotal)
 	$('.gf-in-29').blur(calculateTotal)
 
-
+	calculateTotal()
 	function calculateTotal() {
 		$('.gf-in-28').val(
 			getNum($('.gf-in-3').val()) +
@@ -36,6 +36,10 @@ $(document).ready(function () {
 			getNum($('.gf-in-28').val()) -
 			getNum($('.gf-in-29').val())
 		)
+		$('.gf-in-30-2').val(
+			$('.gf-in-30').val()
+		)
+		$('#negativa').prop('checked', parseFloat($('.gf-in-30').val()) === 0)
 		$('.currency').formatCurrency();
 	}
 

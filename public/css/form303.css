@@ -3,7 +3,7 @@
 .gf-input:focus,
 .gf-input::-webkit-outer-spin-button,
 .gf-input::-webkit-inner-spin-button {
-    background-color: red;
+    background-color: white;
     border-width: 0px;
     font-size: 0.5rem;
     -webkit-appearance: none;
@@ -1347,6 +1347,22 @@
 .gf-in-162 {
     position: absolute;
     top: 32.5%;
+    left: 81.2%;
+    width: 15.5%;
+    height: 1.2%;
+}
+
+.gf-in-163 {
+    position: absolute;
+    top: 34.3%;
+    left: 81.2%;
+    width: 15.5%;
+    height: 1.2%;
+}
+
+.gf-in-164 {
+    position: absolute;
+    top: 36%;
     left: 81.2%;
     width: 15.5%;
     height: 1.2%;
