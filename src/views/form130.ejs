@@ -40,7 +40,7 @@
             <input type="text" name="year" value="<%= year %>" class="gf-input gf-year" readonly />
             <input type="text" name="trimester" value="<%= trimester %>" class="gf-input gf-trimester" readonly />
             <input type="text" name="cifNif" value="<%= cifNif %>" class="gf-input gf-cifnif" readonly />
-            <input type="text" name="name" value="<%= name %>" class="gf-input gf-name" readonly />
+            <input type="text" name="name" value="<%= `${name} ${surname}` %>" class="gf-input gf-name" readonly />
             <input type="number" name="0" value="<%= data['0'] ? data['0'] : '0.00'  %>"
                 class="gf-input gf-in-0 currency" />
             <input type="number" name="1" value="<%= data['1'] ? data['1'] : '0.00'  %>"

@@ -32,7 +32,7 @@
             <input type="text" name="year" value="<%= year %>" class="gf-input gf-year" readonly />
             <input type="text" name="trimester" value="<%= trimester %>" class="gf-input gf-trimester" readonly />
             <input type="text" name="cifNif" value="<%= cifNif %>" class="gf-input gf-cifnif" readonly />
-            <input type="text" name="name" value="<%= name %>" class="gf-input gf-name" readonly />
+            <input type="text" name="name" value="<%= `${name} ${surname}` %>" class="gf-input gf-name" readonly />
             <input class="form-check-input m-0 gf-in-1" value="1" name="1" type="checkbox" <%= data['1'] === '1' ? 'checked' : '' %> >
             <input class="form-check-input m-0 gf-in-2" value="1" name="2" type="checkbox" <%= data['2'] === '1' ? 'checked' : '' %> >
             <input class="form-check-input m-0 gf-in-3" value="1" name="3" type="checkbox" <%= data['3'] === '1' ? 'checked' : '' %> >
@@ -101,7 +101,7 @@
             <img src="<%- imageBaseUrl + '/form303_2.jpeg' %>" style="width: 100%;height: auto;" />
 
             <input type="text" value="<%= cifNif %>" class="gf-input gf-cifnif-pg-2" readonly />
-            <input type="text" value="<%= name %>" class="gf-input gf-name-pg-2" readonly />
+            <input type="text" value="<%= `${name} ${surname}` %>" class="gf-input gf-name-pg-2" readonly />
 
             <input type="number" name="61" value="<%= data['61'] ? data['61'] : ''  %>" class="gf-input gf-in-61" />
             <input type="number" name="62" value="<%= data['62'] ? data['62'] : ''  %>" class="gf-input gf-in-62 currency" />
@@ -196,11 +196,15 @@
             <img src="<%- imageBaseUrl + '/form303_3.jpeg' %>" style="width: 100%;height: auto;" />
             
             <input type="text" value="<%= cifNif %>" class="gf-input gf-cifnif-pg-3" readonly />
-            <input type="text" value="<%= name %>" class="gf-input gf-name-pg-3" readonly />
+            <input type="text" value="<%= `${name} ${surname}` %>" class="gf-input gf-name-pg-3" readonly />
 
             <input type="number" name="145" value="<%= data['145'] ? data['145'] : '0.00'  %>" class="gf-input gf-in-145 currency" />
             <input type="number" name="146" value="<%= data['146'] ? data['146'] : '0.00'  %>" class="gf-input gf-in-146 currency" />
             <input type="number" name="147" value="<%= data['147'] ? data['147'] : '0.00'  %>" class="gf-input gf-in-147 currency" />
+            <input type="number" name="148" value="<%= data['148'] ? data['148'] : '0.00'  %>" class="gf-input gf-in-148 currency" />
+            <input type="number" name="150" value="<%= data['150'] ? data['150'] : '0.00'  %>" class="gf-input gf-in-150 currency" />
+            <input type="number" name="151" value="<%= data['151'] ? data['151'] : '0.00'  %>" class="gf-input gf-in-151 currency" />
+            <input type="number" name="152" value="<%= data['152'] ? data['152'] : '0.00'  %>" class="gf-input gf-in-152 currency" />
 
             <input type="number" name="157" value="<%= data['157'] ? data['157'] : '0.00'  %>" class="gf-input gf-in-157 currency" />
             <input type="number" name="158" value="<%= data['158'] ? data['158'] : '0.00'  %>" class="gf-input gf-in-158 currency" readonly />
