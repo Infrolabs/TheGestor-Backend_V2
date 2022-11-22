@@ -9,6 +9,7 @@ export interface IForm {
     cssUrl: string
     formType: ETaxType
     data: Object
+    fullname: string
     name: string
     surname: string
     cifNif: string
