@@ -1,5 +1,5 @@
 import { secretKey, CURRENCIES, TRANSACTION_TYPES, getResponseParameters } from 'redsys-pay'
-import soap from 'soap'
+import { createClient } from 'soap'
 import crypto from 'crypto'
 import { Buffer } from 'buffer'
 import xml from 'xml'
@@ -17,9 +17,9 @@ class RedsysService {
     }
 
     public getMerchantParams(orderNo: string, amount: number, user: IUser, isRecurring: boolean = false): any {
-        let productDesc = "User:" + user.name+"("+user.email+")"
-        if(productDesc.length > 125)
-            productDesc = productDesc.slice(0,125)
+        let productDesc = "User:" + user.name + "(" + user.email + ")"
+        if (productDesc.length > 125)
+            productDesc = productDesc.slice(0, 125)
         const obj = {
             amount: Math.round(amount * 100),
             order: orderNo,
@@ -93,8 +93,7 @@ class RedsysService {
         }
 
         const params = this.makeWSParameters(dataparams)
-
-        soap.createClient(REDSYS_SOAP_URL, (err, client) => {
+        createClient(REDSYS_SOAP_URL, (err, client) => {
             if (err) {
                 userModel.updateOne({ _id: billing.user }, { $set: { premiumType: EPremiumType.FREE } })
             } else {
