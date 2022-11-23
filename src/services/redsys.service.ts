@@ -77,6 +77,10 @@ class RedsysService {
         }
         newBilling = await newBilling.save()
 
+        const user = await userModel.findById(billing.user)
+        let productDesc = "RUsr:" + user.name + "(" + user.email + ")"
+        if (productDesc.length > 125)
+            productDesc = productDesc.slice(0, 125)
         const dataparams = {
             amount: Math.round(newBilling.amount * 100),
             order: newBilling.orderNo,
@@ -89,7 +93,7 @@ class RedsysService {
             cofTxnId: txnId,
             cofIni: "N",
             excepSca: "MIT",
-            productDesc: "User : " + billing.user + " (Recurring)",
+            productDesc: productDesc,
         }
 
         const params = this.makeWSParameters(dataparams)
