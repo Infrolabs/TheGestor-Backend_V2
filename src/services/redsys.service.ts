@@ -11,7 +11,10 @@ import userModel from '@/models/users.model'
 import billingModel from '@/models/billing.model'
 import { logger } from '@/utils/logger'
 import { IUser } from '@/interfaces/users.interface'
+import EmailService from './email.service'
 class RedsysService {
+    private emailService = new EmailService()
+
     constructor() {
         secretKey(REDSYS_SECRET_KEY)
     }
@@ -97,9 +100,10 @@ class RedsysService {
         }
 
         const params = this.makeWSParameters(dataparams)
-        createClient(REDSYS_SOAP_URL, (err, client) => {
+        createClient(REDSYS_SOAP_URL, async (err, client) => {
             if (err) {
-                userModel.updateOne({ _id: billing.user }, { $set: { premiumType: EPremiumType.FREE } })
+                await userModel.updateOne({ _id: billing.user }, { $set: { premiumType: EPremiumType.FREE } })
+                this.emailService.sendPaymentMail(user.name, user.email, false)
             } else {
                 client.trataPeticion({ _xml: params }, async (err2, result, rawResponse) => {
                     const start = new Date()
@@ -113,9 +117,11 @@ class RedsysService {
                     if (err2) {
                         await userModel.updateOne({ _id: billing.user }, { $set: { premiumType: EPremiumType.FREE, lastBilling: newBilling._id } })
                         await billingModel.updateOne({ _id: newBilling._id }, { $set: { invoiceNo, paymentStatus: EBillingPaymentStatus.UNPAID } })
+                        this.emailService.sendPaymentMail(user.name, user.email, false)
                     } else {
                         await billingModel.updateOne({ _id: newBilling._id }, { $set: { invoiceNo, paymentStatus: EBillingPaymentStatus.PAID } })
                         await userModel.updateOne({ _id: billing.user }, { $set: { lastBilling: newBilling._id } })
+                        this.emailService.sendPaymentMail(user.name, user.email, true)
                     }
                 })
             }
