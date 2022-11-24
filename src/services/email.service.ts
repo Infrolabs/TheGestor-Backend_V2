@@ -13,9 +13,6 @@ class EmailService {
         },
     })
     public async sendWelcomeMail(name: string, email: string): Promise<void> {
-        // return if development env
-        if (NODE_ENV === "development")
-            return
         const htmlBody = '<img style="width:250px;" src="cid:logo"><br/><br/>Hola ' + name + ' ¡Felicidades! Tu registro se ha completado con éxito.<br/><br/>Ya puedes disfrutar de THEGESTOR totalmente Gratis para gestionar tu negocio.<br/><br/>Con THEGESTOR tienes las funcionalidades que necesitas para gestionar tu negocio, presentar tus impuestos y tomar el control de tus gastos para ahorrar en tu factura fiscal:<br/><ul><li>Crear y organizar tus productos y servicios</li><li>Crear y enviar tus facturas personalizadas y hacer seguimiento del cobro</li><li>Subir tus gastos y tickets haciendo una foto con tu móvil</li><li>Conectar con tu banco para conciliar tus ingresos y gastos</li><li>Ver tus impuestos de IVA e IRPF en tiempo real</li><li>Guardar, consultar y descargar tus estados financieros desde cualquier lugar</li><li>Crear un usuario totalmente gratuito para que tu gestoría tenga acceso en tiempo real a todos tus ingresos y gastos.</li></ul><br/>Accede a THEGESTOR desde tu PC o desde el móvil descargando la aplicación.<br/><br/><a href="https://thegestor.app"><div style="display:inline-block;border-radius:8px;padding:10px 15px;background-color:#304799"><b style="color:white;font-size:14px;text-decoration:none;">Visita TheGestor</b></div></a><br/><br/>Recuerda que si necesitas ayuda para presentar impuestos o para gestionar tu contabilidad siempre tienes a tu disposición la ayuda de nuestros gestores contables y fiscales que te ayudarán desde el chat de la aplicación.<br/><br/>Un Saludo,<br/><br/>Lorenz Dos Ramos<br/>Customer Success TheGestor<br/><a href = "mailto:clientes@thegestor.com">clientes@thegestor.com</a><br/><a href="tel:+34633779821">+34 633 77 98 21</a>'
         const textBody = 'Hola ' + name +
             ` ¡Felicidades! Tu registro se ha completado con éxito.
@@ -64,8 +61,6 @@ class EmailService {
     }
 
     public async sendCommentMail(name: string, commentorName: string, invoiceNo: string, email: string): Promise<void> {
-        if (NODE_ENV === "development")
-            return
         const htmlBody = `<img style="width:250px;" src="cid:logo"><br/><br/>
         Hola ${name},<br/><br/>
         ${commentorName} ha añadido un comentario para ${invoiceNo}. Por favor, compruebe y responda lo antes posible. <br/><br/>
@@ -102,8 +97,6 @@ class EmailService {
     }
 
     public async sendPaymentMail(name: string, email: string, isSuccess: boolean): Promise<void> {
-        if (NODE_ENV === "development")
-            return
         const htmlBody = isSuccess ? `<img style="width:250px;" src="cid:logo"><br/><br/>
         Hola Estimado ${name},<br/><br/>
         Le notificamos que su pago ha sido procesado con éxito.<br/><br/>
