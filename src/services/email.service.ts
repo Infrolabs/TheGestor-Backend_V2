@@ -49,7 +49,7 @@ class EmailService {
             text: textBody,
             attachments: [{
                 filename: 'logo.jpeg',
-                path: process.cwd() + '/assets/logo.jpeg',
+                path: process.cwd() + '/public/img/logo.jpeg',
                 cid: 'logo'
             }],
             html: htmlBody,
@@ -88,7 +88,7 @@ class EmailService {
             text: textBody,
             attachments: [{
                 filename: 'logo.jpeg',
-                path: process.cwd() + '/assets/logo.jpeg',
+                path: process.cwd() + '/public/img/logo.jpeg',
                 cid: 'logo'
             }],
             html: htmlBody,
