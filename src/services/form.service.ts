@@ -198,7 +198,6 @@ class FormService {
                     }
                 }
             ])
-            dataArray[0] = cumulativeIncomes[0]?.totalIncome || 0
             const expenses = await expenseModel.aggregate([
                 {
                     $match: {
@@ -234,8 +233,8 @@ class FormService {
             taxes.forEach(tax => {
                 if (tax.data && Object.keys(tax.data).length > 15) {
                     cell2Total += Number(tax.data[1]) || 0
-                    if ((Number(tax.data[7]) || 0) > 0 && tax.trimester === trimester - 1) {
-                        cell5 = Number(tax.data[7]) - (Number(tax.data[15]) || 0)
+                    if ((Number(tax.data[6]) || 0) > 0 && tax.trimester === trimester - 1) {
+                        cell5 = Number(tax.data[6]) - (Number(tax.data[15]) || 0)
                     }
                 }
             })
@@ -243,7 +242,8 @@ class FormService {
 
             const totalIncome = cumulativeIncomes[0]?.totalTriDouble || 0
             const totalExpense = (expenses[0]?.totalExpense || 0)
-            dataArray[1] = ((totalIncome - totalExpense) * 5 / 100) + totalIncome + cell2Total
+            dataArray[0] = cumulativeIncomes[0]?.totalIncome || 0
+            dataArray[1] = ((totalIncome - totalExpense) * 5 / 100) + totalExpense + cell2Total
             dataArray[4] = cell5
             const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
             data.isSimplified = "true"
