@@ -104,6 +104,7 @@ class RedsysService {
             if (err) {
                 await userModel.updateOne({ _id: billing.user }, { $set: { premiumType: EPremiumType.FREE } })
                 this.emailService.sendPaymentMail(user.name, user.email, false)
+                logger.error(`=======>> Premium renew error : ${err}`)
             } else {
                 client.trataPeticion({ _xml: params }, async (err2, result, rawResponse) => {
                     const start = new Date()
@@ -118,10 +119,12 @@ class RedsysService {
                         await userModel.updateOne({ _id: billing.user }, { $set: { premiumType: EPremiumType.FREE, lastBilling: newBilling._id } })
                         await billingModel.updateOne({ _id: newBilling._id }, { $set: { invoiceNo, paymentStatus: EBillingPaymentStatus.UNPAID } })
                         this.emailService.sendPaymentMail(user.name, user.email, false)
+                        logger.error(`=======>> Premium renew error : ${err2}`)
                     } else {
                         await billingModel.updateOne({ _id: newBilling._id }, { $set: { invoiceNo, paymentStatus: EBillingPaymentStatus.PAID } })
                         await userModel.updateOne({ _id: billing.user }, { $set: { lastBilling: newBilling._id } })
                         this.emailService.sendPaymentMail(user.name, user.email, true)
+                        logger.error(`=======>> Premium renew success : ${billing.user}`)
                     }
                 })
             }

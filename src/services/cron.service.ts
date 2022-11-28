@@ -19,7 +19,7 @@ class CronService {
     private async premiumRenewJob() {
         logger.info("======>> Premium cron started")
         const endDate = new Date()
-        endDate.setHours(9,0,0,0)
+        endDate.setHours(9, 0, 0, 0)
         const startDate = new Date(endDate.getTime() - 24 * 60 * 60 * 1000)
         const users = await userModel.aggregate([
             {
@@ -39,7 +39,7 @@ class CronService {
             }
 
         ])
-        logger.info("======>> Premium expired : ", users.map(u => u._id))
+        logger.info(`======>> Premium expired : ${JSON.stringify(users.map(u => u._id))}`)
         let i = 0
         for (; i < users.length; i++) {
             this.redsysService.renewPremium(users[i].lastBilling)
