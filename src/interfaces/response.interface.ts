@@ -60,6 +60,7 @@ export const ResponseMessages = {
         INCOME_NOT_FOUND: 'Income not found',
         FORMS_FETCHED: 'Forms fetched successfully',
         USERS_FETCHED: 'Users fetched successfully',
+        BILLING_FETCHED: 'Billing fetched successfully',
     },
     es: {
         SOMETHING_WENT_WRONG: 'Algo salió mal',
@@ -106,5 +107,6 @@ export const ResponseMessages = {
         INCOME_NOT_FOUND: "Ingresos no encontrados",
         FORMS_FETCHED: 'Formularios obtenidos',
         USERS_FETCHED: 'Usuarios obtenidos',
+        BILLING_FETCHED: 'Billing fetched successfully',
     }
 }

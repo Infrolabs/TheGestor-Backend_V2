@@ -2,10 +2,12 @@ import { SECRET_KEY } from "@/config";
 import { HttpException } from "@/exceptions/HttpException";
 import { IAdmin } from "@/interfaces/admin.interface";
 import { AdminDataStoredInToken, DataStoredInToken } from "@/interfaces/auth.interface";
+import { EBillingPaymentStatus, IBilling } from "@/interfaces/billing.interface";
 import { EPremiumType } from "@/interfaces/premium.interface";
 import { ResponseCodes, ResponseMessages } from "@/interfaces/response.interface";
 import { IUser } from "@/interfaces/users.interface";
 import adminModel from "@/models/admin.model";
+import billingModel from "@/models/billing.model";
 import userModel from "@/models/users.model";
 import { filterAdmin, filterUserProjection } from "@/utils/filters";
 import { compare } from "bcrypt";
@@ -42,6 +44,17 @@ class AdminService {
         const users = await userModel.find(findCondition, filterUserProjection).skip(skip).limit(limit).sort({ _id: -1 }).lean()
         const totalCount = await userModel.countDocuments(findCondition)
         return { users, totalCount };
+    }
+
+    public async billingList(paymentStatus: EBillingPaymentStatus, skip: number, limit: number): Promise<{ billings: IBilling[], totalCount: number }> {
+        let findCondition: any = {}
+        if (paymentStatus)
+            findCondition = {
+                paymentStatus
+            }
+        const billings = await billingModel.find(findCondition).skip(skip).limit(limit).sort({ _id: -1 }).lean()
+        const totalCount = await billingModel.countDocuments(findCondition)
+        return { billings, totalCount };
     }
 
     public createToken(user: IAdmin): string {

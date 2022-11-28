@@ -24,3 +24,12 @@ Content-Type: application/json
 # limit : To limit the records. Default : 20
 GET {{ baseURL }}/admin/users?search=&premiumType=&skip=&limit=
 Authorization: Bearer {{token}}
+
+
+###
+# Get billing list
+# paymentStatus : to filter user based on payment status
+# skip : To skip the records. Default : 0
+# limit : To limit the records. Default : 20
+GET {{ baseURL }}/admin/billings?paymentStatus=&skip=&limit=
+Authorization: Bearer {{token}}
