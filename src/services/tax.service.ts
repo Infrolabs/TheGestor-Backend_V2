@@ -164,7 +164,8 @@ class TaxService {
             + "2.05".padStart(70 + 4, ' ') // 70 blank + 4 version string
             + "B88476437".padStart(9 + 4, ' ') // 9 NIF + 4 blanks
             + "</AUX>".padStart(213 + 6, ' ') // 213 blank space + </AUX>
-            + "<T30301000> A" //----- FIRST PAGE ------
+            + "<T30301000> " //----- FIRST PAGE ------
+            + (parseFloat(data['168']) && parseFloat(data['168']) === 0 ? "N" : parseFloat(data['168']) && parseFloat(data['168']) < 0 ? "C" : "I")
             + cifNif
             + name.padEnd(80, ' ')
             + year
@@ -368,7 +369,8 @@ class TaxService {
             + "2.05".padStart(70 + 4, ' ') // 70 blank + 4 version string
             + "B88476437".padStart(9 + 4, ' ') // 9 NIF + 4 blanks
             + "</AUX>".padStart(213 + 6, ' ') // 213 blank space + </AUX>
-            + "<T30301000> A" //----- FIRST PAGE ------
+            + "<T30301000> " //----- FIRST PAGE ------
+            + (parseFloat(data['168']) && parseFloat(data['168']) === 0 ? "N" : parseFloat(data['168']) && parseFloat(data['168']) < 0 ? "C" : "I")
             + cifNif
             + name.padEnd(80, ' ')
             + year
