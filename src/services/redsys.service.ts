@@ -134,7 +134,7 @@ class RedsysService {
     public validatePayment(merchantParams: any, amount: number): boolean {
         try {
             const result = getResponseParameters(merchantParams)
-            if (result?.Ds_AuthorisationCode && Number(result?.Ds_Amount) === amount * 100)
+            if (result?.Ds_AuthorisationCode && Number(result?.Ds_Amount) === amount * 100 && result?.Ds_Response === '0000')
                 return true
         } catch (e) {
             logger.error("Payment validate error : ", e)
