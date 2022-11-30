@@ -107,6 +107,6 @@ export const ResponseMessages = {
         INCOME_NOT_FOUND: "Ingresos no encontrados",
         FORMS_FETCHED: 'Formularios obtenidos',
         USERS_FETCHED: 'Usuarios obtenidos',
-        BILLING_FETCHED: 'Billing fetched successfully',
+        BILLING_FETCHED: 'Facturación obtenida con éxito',
     }
 }
