@@ -40,7 +40,7 @@ class EmailService {
     clientes@thegestor.com
     +34 633 77 98 21`
         let mailOptions = {
-            from: `"TheGestor" <${FROM_EMAIL}>`,
+            from: `TheGestor <${FROM_EMAIL}>`,
             to: email,
             subject: "Tu registro en The Gestor se ha completado con éxito.",
             text: textBody,
@@ -77,7 +77,7 @@ class EmailService {
             Un Saludo,
             TheGestor Team`
         let mailOptions = {
-            from: `"TheGestor" <${FROM_EMAIL}>`,
+            from: `TheGestor <${FROM_EMAIL}>`,
             to: email,
             subject: `Error en tu factura ${invoiceNo}`,
             text: textBody,
@@ -128,7 +128,7 @@ class EmailService {
 
         Equipo TheGestor`
         let mailOptions = {
-            from: `"TheGestor" <${FROM_EMAIL}>`,
+            from: `TheGestor <${FROM_EMAIL}>`,
             to: email,
             subject: isSuccess ? "Le notificamos que su pago ha sido procesado con éxito" : "Le notficamos que no hemos podido procesar su pago",
             text: textBody,
