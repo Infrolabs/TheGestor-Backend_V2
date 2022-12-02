@@ -80,32 +80,30 @@ export const filterBilling = (billing: IBilling): IBilling => {
     }
 }
 
-export const filterBillingProjection = (): any => {
-    return {
-        name: 1,
-        orderNo: 1,
-        invoiceNo: 1,
-        address: 1,
-        cifNif: 1,
-        email: 1,
-        province: 1,
-        country: 1,
-        zipCode: 1,
-        city: 1,
-        planId: 1,
-        expiryDate: 1,
-        amount: 1,
-        unitCost: 1,
-        subTotal: 1,
-        vat: 1,
-        discount: 1,
-        units: 1,
-        coupon: 1,
-        planType: 1,
-        paymentStatus: 1,
-        subscriptionStatus: 1,
-        createdAt: 1
-    }
+export const filterBillingProjection = {
+    name: 1,
+    orderNo: 1,
+    invoiceNo: 1,
+    address: 1,
+    cifNif: 1,
+    email: 1,
+    province: 1,
+    country: 1,
+    zipCode: 1,
+    city: 1,
+    planId: 1,
+    expiryDate: 1,
+    amount: 1,
+    unitCost: 1,
+    subTotal: 1,
+    vat: 1,
+    discount: 1,
+    units: 1,
+    coupon: 1,
+    planType: 1,
+    paymentStatus: 1,
+    subscriptionStatus: 1,
+    createdAt: 1
 }
 
 export const filterTaxes = (taxes: ITax[]): ITax[] => {

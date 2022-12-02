@@ -13,6 +13,7 @@ import expenseModel from "@/models/expense.model";
 import incomeModel from "@/models/income.model";
 import taxModel from "@/models/tax.model";
 import userModel from "@/models/users.model";
+import { logger } from "@/utils/logger";
 import { getFormDueDate, getNameAndSurname, getTrimesterEndDate, getTrimesterStartDate, getVatFromBase } from "@/utils/util";
 import { verify } from 'jsonwebtoken';
 
@@ -182,9 +183,9 @@ class FormService {
                                         { $lt: ['$invoiceDate', getTrimesterEndDate(trimester, year)] }
                                     ]
                                 },
-                                then: [
-                                    { $convert: { input: "$subTotal", to: "double", onError: 0 } }, 0
-                                ],
+                                then: {
+                                    $ifNull: [{ $convert: { input: "$subTotal", to: "double", onError: 0 } }, 0]
+                                },
                                 else: 0
                             }
                         },
@@ -240,7 +241,7 @@ class FormService {
             })
 
 
-            const totalIncome = cumulativeIncomes[0]?.totalTriDouble || 0
+            const totalIncome = cumulativeIncomes[0]?.totalTriIncome || 0
             const totalExpense = (expenses[0]?.totalExpense || 0)
             dataArray[0] = cumulativeIncomes[0]?.totalIncome || 0
             dataArray[1] = ((totalIncome - totalExpense) * 5 / 100) + totalExpense + cell2Total
