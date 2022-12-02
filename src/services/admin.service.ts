@@ -9,7 +9,7 @@ import { IUser } from "@/interfaces/users.interface";
 import adminModel from "@/models/admin.model";
 import billingModel from "@/models/billing.model";
 import userModel from "@/models/users.model";
-import { filterAdmin, filterUserProjection } from "@/utils/filters";
+import { filterAdmin, filterBillingProjection, filterUserProjection } from "@/utils/filters";
 import { compare } from "bcrypt";
 import { sign } from 'jsonwebtoken';
 
@@ -41,7 +41,7 @@ class AdminService {
             }
         if (premiumType)
             findCondition = { ...findCondition, premiumType }
-        const users = await userModel.find(findCondition, filterUserProjection).skip(skip).limit(limit).sort({ _id: -1 }).lean()
+        const users = await userModel.find(findCondition, filterUserProjection).populate('lastBilling', filterBillingProjection).skip(skip).limit(limit).sort({ _id: -1 }).lean()
         const totalCount = await userModel.countDocuments(findCondition)
         return { users, totalCount };
     }
