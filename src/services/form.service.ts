@@ -235,7 +235,7 @@ class FormService {
             taxes.forEach(tax => {
                 if (tax.data && Object.keys(tax.data).length > 15) {
                     cell2Total += Number(tax.data[1]) || 0
-                    if ((Number(tax.data[6]) || 0) > 0 && tax.trimester === trimester - 1) {
+                    if ((Number(tax.data[6]) || 0) > 0) {
                         cell7Total += Number(tax.data[6])
                         cell16Total += (Number(tax.data[15]) || 0)
                     }
