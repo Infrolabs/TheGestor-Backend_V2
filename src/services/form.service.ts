@@ -229,13 +229,15 @@ class FormService {
                 }
             ])
             let cell2Total = 0
-            let cell5 = 0
+            let cell7Total = 0
+            let cell16Total = 0
             const taxes = await taxModel.find({ userId: userId, year, trimester: { $lt: trimester }, type: ETaxType.FORM130 })
             taxes.forEach(tax => {
                 if (tax.data && Object.keys(tax.data).length > 15) {
                     cell2Total += Number(tax.data[1]) || 0
                     if ((Number(tax.data[6]) || 0) > 0 && tax.trimester === trimester - 1) {
-                        cell5 = Number(tax.data[6]) - (Number(tax.data[15]) || 0)
+                        cell7Total += Number(tax.data[6])
+                        cell16Total += (Number(tax.data[15]) || 0)
                     }
                 }
             })
@@ -245,7 +247,7 @@ class FormService {
             const totalExpense = (expenses[0]?.totalExpense || 0)
             dataArray[0] = cumulativeIncomes[0]?.totalIncome || 0
             dataArray[1] = ((totalIncome - totalExpense) * 5 / 100) + totalExpense + cell2Total
-            dataArray[4] = cell5
+            dataArray[4] = cell7Total - cell16Total
             const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
             data.isSimplified = "true"
             data.simplifiedExtraValue = ((totalIncome - totalExpense) * 5 / 100)
