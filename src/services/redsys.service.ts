@@ -12,6 +12,7 @@ import billingModel from '@/models/billing.model'
 import { logger } from '@/utils/logger'
 import { IUser } from '@/interfaces/users.interface'
 import EmailService from './email.service'
+import axios from 'axios'
 class RedsysService {
     private emailService = new EmailService()
 
@@ -44,6 +45,27 @@ class RedsysService {
         const result = this.makeParameters(obj)
 
         return { url: REDSYS_URL, ...result }
+    }
+
+    public async checkPaymentStatus(billing: IBilling): Promise<any> {
+        const obj = {
+            amount: Math.round(billing.amount * 100),
+            order: billing.orderNo,
+            merchantName: REDSYS_MERCHANT_NAME,
+            merchantCode: REDSYS_MERCHANT_CODE,
+            currency: CURRENCIES.EUR,
+            transactionType: TRANSACTION_TYPES.PRE_AUTHENTICATION_CONFIRMATION,
+            terminal: REDSYS_MERCHANT_TERMINAL,
+        }
+        const requestBody = this.makeParameters(obj)
+        try {
+            const result = await axios.post(REDSYS_URL, requestBody)
+            logger.info(`>>>>>>>>> Check payment status success >>> ${JSON.stringify(result)}`)
+        } catch (err) {
+            logger.error(`Check payment status error >>> ${err}`)
+        }
+
+
     }
 
     public async renewPremium(billing: IBilling): Promise<void> {

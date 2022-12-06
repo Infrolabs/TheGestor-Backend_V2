@@ -1,5 +1,7 @@
-import { ESubscriptionStatus } from '@/interfaces/billing.interface'
+import { REDSYS_PAYMENT_STATUS_CHECK_MINS } from '@/config'
+import { EBillingPaymentStatus, IBilling } from '@/interfaces/billing.interface'
 import { EPremiumType } from '@/interfaces/premium.interface'
+import billingModel from '@/models/billing.model'
 import userModel from '@/models/users.model'
 import { logger } from '@/utils/logger'
 import schedule from 'node-schedule'
@@ -12,6 +14,16 @@ class CronService {
         // Schedule corn every day at 9:00
         schedule.scheduleJob("Premium", "0 0 9 * * *", () => {
             this.premiumRenewJob()
+        })
+    }
+
+    public checkForPayment(billing: IBilling) {
+        const time = billing.createdAt
+        time.setMinutes(time.getMinutes() + (Number(REDSYS_PAYMENT_STATUS_CHECK_MINS) || 15))
+        schedule.scheduleJob(billing._id, time, async () => {
+            const updatedBilling = await billingModel.findById(billing._id).lean()
+            if (updatedBilling.paymentStatus === EBillingPaymentStatus.PENDING)
+                this.redsysService.checkPaymentStatus(updatedBilling)
         })
     }
 
