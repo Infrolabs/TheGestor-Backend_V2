@@ -60,7 +60,7 @@ class RedsysService {
         const requestBody = this.makeParameters(obj)
         try {
             const result = await axios.post(REDSYS_URL, requestBody)
-            logger.info(`>>>>>>>>> Check payment status success >>> ${JSON.stringify(result)}`)
+            logger.info(`>>>>>>>>> Check payment status success >>> ${JSON.stringify(result.data)}`)
         } catch (err) {
             logger.error(`Check payment status error >>> ${err}`)
         }
