@@ -13,6 +13,7 @@ import { logger } from '@/utils/logger'
 import { IUser } from '@/interfaces/users.interface'
 import EmailService from './email.service'
 import axios from 'axios'
+import { nanoid } from 'nanoid'
 class RedsysService {
     private emailService = new EmailService()
 
@@ -92,14 +93,8 @@ class RedsysService {
         newBilling.units = billing.units
         newBilling.user = billing.user
         newBilling.transactionDetails = billing.transactionDetails
-        const orderNo = (await billingModel.countDocuments()) + 1
-        newBilling.orderNo = String(orderNo % 10000).padStart(6, '0') + String(newBilling.user).substring(String(newBilling.user).length - 6)
-        const today = new Date()
-        if (newBilling.planType === EPlanType.MONTHLY) {
-            newBilling.expiryDate = new Date(today.setMonth(today.getMonth() + newBilling.units))
-        } else if (newBilling.planType === EPlanType.YEARLY) {
-            newBilling.expiryDate = new Date(today.getFullYear() + newBilling.units, today.getMonth(), today.getDate())
-        }
+        newBilling.orderNo = nanoid(12)
+        newBilling.expiryDate = billing.expiryDate
         newBilling = await newBilling.save()
 
         const user = await userModel.findById(billing.user)
@@ -124,26 +119,22 @@ class RedsysService {
         const params = this.makeWSParameters(dataparams)
         createClient(REDSYS_SOAP_URL, async (err, client) => {
             if (err) {
-                await userModel.updateOne({ _id: billing.user }, { $set: { premiumType: EPremiumType.FREE } })
-                this.emailService.sendPaymentMail(user.name, user.email, false)
-                logger.error(`=======>> Premium renew error : ${err}`)
+                const tempInvoiceNo = await this.generateInvoiceNo()
+                await this.handlePremiumRenewError(tempInvoiceNo, billing, newBilling, user, err)
             } else {
                 client.trataPeticion({ _xml: params }, async (err2, result, rawResponse) => {
-                    const start = new Date()
-                    start.setMonth(0, 1)
-                    start.setHours(0, 0, 0, 0)
-                    const end = new Date()
-                    end.setMonth(11, 32)
-                    end.setHours(0, 0, 0, 0)
-                    const invoices = await billingModel.countDocuments({ createdAt: { $gte: start, $lt: end }, paymentStatus: { $in: [EBillingPaymentStatus.PAID, EBillingPaymentStatus.UNPAID] } })
-                    const invoiceNo = (new Date()).getFullYear() + "-INC-" + (String(invoices).padStart(6, "0"))
+                    const invoiceNo = await this.generateInvoiceNo()
                     if (err2) {
-                        await userModel.updateOne({ _id: billing.user }, { $set: { premiumType: EPremiumType.FREE, lastBilling: newBilling._id } })
-                        await billingModel.updateOne({ _id: newBilling._id }, { $set: { invoiceNo, paymentStatus: EBillingPaymentStatus.UNPAID } })
-                        this.emailService.sendPaymentMail(user.name, user.email, false)
-                        logger.error(`=======>> Premium renew error : ${err2}`)
+                        await this.handlePremiumRenewError(invoiceNo, billing, newBilling, user, err2)
                     } else {
-                        await billingModel.updateOne({ _id: newBilling._id }, { $set: { invoiceNo, paymentStatus: EBillingPaymentStatus.PAID } })
+                        let expiryDate = new Date()
+                        const today = new Date(billing.expiryDate)
+                        if (newBilling.planType === EPlanType.MONTHLY) {
+                            expiryDate = new Date(today.setMonth(today.getMonth() + newBilling.units))
+                        } else if (newBilling.planType === EPlanType.YEARLY) {
+                            expiryDate = new Date(today.getFullYear() + newBilling.units, today.getMonth(), today.getDate())
+                        }
+                        await billingModel.updateOne({ _id: newBilling._id }, { $set: { invoiceNo, expiryDate, paymentStatus: EBillingPaymentStatus.PAID } })
                         await userModel.updateOne({ _id: billing.user }, { $set: { lastBilling: newBilling._id } })
                         this.emailService.sendPaymentMail(user.name, user.email, true)
                         logger.error(`=======>> Premium renew success : ${billing.user}`)
@@ -151,6 +142,33 @@ class RedsysService {
                 })
             }
         })
+    }
+
+    private async handlePremiumRenewError(invoiceNo: string, billing: IBilling, newBilling: IBilling, user: IUser, err: any) {
+        let premiumType = user.premiumType
+        if (billing.retryAttempts >= 2)
+            premiumType = EPremiumType.FREE
+        await userModel.updateOne({ _id: billing.user }, { $set: { premiumType, lastBilling: newBilling._id } })
+        const retryAttempts = (billing.retryAttempts || 0) + 1
+        const retryOn = new Date()
+        if (billing.retryAttempts < 2) {
+            retryOn.setDate(retryOn.getDate() + 5)
+            retryOn.setHours(0, 0, 0, 0)
+        }
+        await billingModel.updateOne({ _id: newBilling._id }, { $set: { invoiceNo, paymentStatus: EBillingPaymentStatus.UNPAID, retryAttempts, retryOn } })
+        this.emailService.sendPaymentMail(user.name, user.email, false)
+        logger.error(`=======>> Premium renew error : ${err}`)
+    }
+
+    private async generateInvoiceNo(): Promise<string> {
+        const start = new Date()
+        start.setMonth(0, 1)
+        start.setHours(0, 0, 0, 0)
+        const end = new Date()
+        end.setMonth(11, 32)
+        end.setHours(0, 0, 0, 0)
+        const invoices = await billingModel.countDocuments({ createdAt: { $gte: start, $lt: end }, paymentStatus: { $in: [EBillingPaymentStatus.PAID, EBillingPaymentStatus.UNPAID] } })
+        return (new Date()).getFullYear() + "-INC-" + (String(invoices).padStart(6, "0"))
     }
 
     public validatePayment(merchantParams: any, amount: number): boolean {

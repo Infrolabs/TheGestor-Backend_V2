@@ -44,6 +44,13 @@ const billingSchema: Schema = new Schema({
   },
   errorDetails: {
     type: Object
+  },
+  retryOn: {
+    type: Date
+  },
+  retryAttempts: {
+    type: Number,
+    default: 0
   }
 }, {
   timestamps: true

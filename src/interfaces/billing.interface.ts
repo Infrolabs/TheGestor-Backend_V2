@@ -25,6 +25,8 @@ export interface IBilling {
     subscriptionStatus?: ESubscriptionStatus
     transactionDetails?: any
     errorDetails?: any
+    retryOn?: Date
+    retryAttempts?: number
     createdAt?: Date
 }
 

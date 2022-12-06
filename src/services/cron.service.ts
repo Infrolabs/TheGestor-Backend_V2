@@ -46,7 +46,10 @@ class CronService {
             { $unwind: "$lastBilling" },
             {
                 $match: {
-                    "lastBilling.expiryDate": { $lt: endDate, $gte: startDate }
+                    $or: [
+                        { "lastBilling.expiryDate": { $lt: endDate, $gte: startDate } },
+                        { "lastBilling.retryOn": { $lt: endDate, $gte: startDate } }
+                    ]
                 }
             }
 
