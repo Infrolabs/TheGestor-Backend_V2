@@ -20,7 +20,7 @@ class CronService {
     public checkForPayment(billing: IBilling) {
         const time = billing.createdAt
         time.setMinutes(time.getMinutes() + (Number(REDSYS_PAYMENT_STATUS_CHECK_MINS) || 15))
-        schedule.scheduleJob(billing._id, time, async () => {
+        schedule.scheduleJob(String(billing._id), time, async () => {
             const updatedBilling = await billingModel.findById(billing._id).lean()
             if (updatedBilling.paymentStatus === EBillingPaymentStatus.PENDING)
                 this.redsysService.checkPaymentStatus(updatedBilling)
