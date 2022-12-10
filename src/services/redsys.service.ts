@@ -90,7 +90,11 @@ class RedsysService {
         newBilling.planId = billing.planId
         newBilling.planType = billing.planType
         newBilling.amount = billing.planType === EPlanType.YEARLY ? plan.amount.year : plan.amount.month
-        newBilling.units = billing.units
+        newBilling.unitCost = newBilling.amount * 100 / 121
+        newBilling.subTotal = newBilling.amount * 100 / 121
+        newBilling.discount = 0
+        newBilling.vat = newBilling.subTotal * 21 / 100
+        newBilling.units = 1
         newBilling.user = billing.user
         newBilling.transactionDetails = billing.transactionDetails
         newBilling.orderNo = nanoid(12)
