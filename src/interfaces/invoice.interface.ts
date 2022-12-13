@@ -70,6 +70,8 @@ export interface IInvoiceItem {
 
 // ------------- ENUMS ------------
 export enum EInvoiceStatus {
+    CREDIT_NOTE = 'creditNote',
+    QUOTE = 'quote',
     DRAFT = 'draft',
     PENDING = 'pending',
     UNPAID = 'unpaid',

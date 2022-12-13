@@ -199,35 +199,60 @@ class FormService {
                     }
                 }
             ])
-            const expenses = await expenseModel.aggregate([
-                {
-                    $match: {
-                        createdBy: userId,
-                        isDeleted: false,
-                        invoiceDate: { $gte: getTrimesterStartDate(trimester, year), $lt: getTrimesterEndDate(trimester, year) },
-                        isDraft: false
-                    }
-                },
-                {
-                    $project: {
-                        totalDouble: { $ifNull: [{ $convert: { input: "$subTotal", to: "double", onError: 0 } }, 0] },
-                        vatDouble: { $ifNull: [{ $convert: { input: "$vat", to: "double", onError: 0 } }, 0] },
-                        irpfDouble: { $ifNull: [{ $convert: { input: "$irpf", to: "double", onError: 0 } }, 0] },
-                        retentionProvidersDouble: { $ifNull: [{ $convert: { input: "$retentionProviders", to: "double", onError: 0 } }, 0] },
-                        retentionRentDouble: { $ifNull: [{ $convert: { input: "$retentionRent", to: "double", onError: 0 } }, 0] },
-                    }
-                },
-                {
-                    $group: {
-                        _id: null,
-                        totalExpense: { $sum: '$totalDouble' },
-                        totalVat: { $sum: "$vatDouble" },
-                        totalIRPF: { $sum: "$irpfDouble" },
-                        totalRetentionProviders: { $sum: "$retentionProvidersDouble" },
-                        totalRetentionRent: { $sum: "$retentionRentDouble" },
-                    }
+            // const expenses = await expenseModel.aggregate([
+            //     {
+            //         $match: {
+            //             createdBy: userId,
+            //             isDeleted: false,
+            //             invoiceDate: { $gte: getTrimesterStartDate(trimester, year), $lt: getTrimesterEndDate(trimester, year) },
+            //             isDraft: false
+            //         }
+            //     },
+            //     {
+            //         $project: {
+            //             totalDouble: { $ifNull: [{ $convert: { input: "$subTotal", to: "double", onError: 0 } }, 0] },
+            //             vatDouble: { $ifNull: [{ $convert: { input: "$vat", to: "double", onError: 0 } }, 0] },
+            //             irpfDouble: { $ifNull: [{ $convert: { input: "$irpf", to: "double", onError: 0 } }, 0] },
+            //             retentionProvidersDouble: { $ifNull: [{ $convert: { input: "$retentionProviders", to: "double", onError: 0 } }, 0] },
+            //             retentionRentDouble: { $ifNull: [{ $convert: { input: "$retentionRent", to: "double", onError: 0 } }, 0] },
+            //         }
+            //     },
+            //     {
+            //         $group: {
+            //             _id: null,
+            //             totalExpense: { $sum: '$totalDouble' },
+            //             totalVat: { $sum: "$vatDouble" },
+            //             totalIRPF: { $sum: "$irpfDouble" },
+            //             totalRetentionProviders: { $sum: "$retentionProvidersDouble" },
+            //             totalRetentionRent: { $sum: "$retentionRentDouble" },
+            //         }
+            //     }
+            // ])
+
+            const expenses = await expenseModel.find({
+                createdBy: userId,
+                isDeleted: false,
+                invoiceDate: { $gte: getTrimesterStartDate(trimester, year), $lt: getTrimesterEndDate(trimester, year) },
+                isDraft: false
+            }).lean()
+
+            let totalExpense = 0
+            let cell6 = 0
+            expenses.forEach(exp => {
+                totalExpense += Number(exp.subTotal) || 0
+                if (exp.manualItem && exp.manualItem.length > 0) {
+                    exp.manualItem.forEach(item => {
+                        if (item.irpf === 15 || item.irpf === 7)
+                            cell6 += Number(item.unit) * Number(item.cost)
+                    })
+                } else if (exp.items && exp.items.length > 0) {
+                    exp.items.forEach(item => {
+                        if (item.irpf === 15 || item.irpf === 7)
+                            cell6 += Number(item.selectedQuantity) * Number(item.cost)
+                    })
                 }
-            ])
+            })
+
             let prevCell2 = 0
             let cell7Total = 0
             let cell16Total = 0
@@ -245,10 +270,11 @@ class FormService {
 
 
             const totalIncome = cumulativeIncomes[0]?.totalTriIncome || 0
-            const totalExpense = (expenses[0]?.totalExpense || 0)
+            const cell2Additional = ((totalIncome - totalExpense) * 5 / 100) > 2000 ? 2000 : ((totalIncome - totalExpense) * 5 / 100)
             dataArray[0] = cumulativeIncomes[0]?.totalIncome || 0
-            dataArray[1] = ((totalIncome - totalExpense) * 5 / 100) + totalExpense + prevCell2
+            dataArray[1] = cell2Additional + totalExpense + prevCell2
             dataArray[4] = cell7Total - cell16Total
+            dataArray[5] = cell6
             const data = Object.fromEntries(dataArray.map((element, index) => [String(index), element]))
             data.isSimplified = "true"
             data.simplifiedExtraValue = ((totalIncome - totalExpense) * 5 / 100)
