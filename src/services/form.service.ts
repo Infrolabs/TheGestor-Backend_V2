@@ -28,6 +28,7 @@ class FormService {
                 type: form._id as ETaxType,
                 data: taxIndex !== -1 ? taxData[taxIndex].data : null,
                 status: taxIndex !== -1 ? taxData[taxIndex].status : ETaxStatus.PENDING,
+                note: taxIndex !== -1 ? taxData[taxIndex].note : "",
                 year,
                 trimester,
                 formDetails: {

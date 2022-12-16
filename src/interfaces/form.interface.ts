@@ -23,6 +23,7 @@ export interface ITaxForm {
     year: number
     trimester: number
     status: ETaxStatus
+    note: string
     formDetails: IFormDetails
 }
 
