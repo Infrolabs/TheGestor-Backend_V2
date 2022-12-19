@@ -48,27 +48,6 @@ class RedsysService {
         return { url: REDSYS_URL, ...result }
     }
 
-    public async checkPaymentStatus(billing: IBilling): Promise<any> {
-        const obj = {
-            amount: Math.round(billing.amount * 100),
-            order: billing.orderNo,
-            merchantName: REDSYS_MERCHANT_NAME,
-            merchantCode: REDSYS_MERCHANT_CODE,
-            currency: CURRENCIES.EUR,
-            transactionType: TRANSACTION_TYPES.PRE_AUTHENTICATION_CONFIRMATION,
-            terminal: REDSYS_MERCHANT_TERMINAL,
-        }
-        const requestBody = this.makeParameters(obj)
-        try {
-            const result = await axios.post(REDSYS_URL, requestBody)
-            logger.info(`>>>>>>>>> Check payment status success >>> ${JSON.stringify(result.data)}`)
-        } catch (err) {
-            logger.error(`Check payment status error >>> ${err}`)
-        }
-
-
-    }
-
     public async renewPremium(billing: IBilling): Promise<void> {
         const identifier = billing?.transactionDetails?.Ds_MerchantParameters ? getResponseParameters(billing.transactionDetails.Ds_MerchantParameters)?.Ds_Merchant_Identifier : null
         const txnId = billing?.transactionDetails?.Ds_MerchantParameters ? getResponseParameters(billing.transactionDetails.Ds_MerchantParameters)?.Ds_Merchant_Cof_Txnid : null
