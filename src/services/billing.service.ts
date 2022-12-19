@@ -7,11 +7,9 @@ import { IUser } from "@/interfaces/users.interface";
 import billingModel from "@/models/billing.model";
 import userModel from "@/models/users.model";
 import CouponService from "./coupon.service";
-import CronService from "./cron.service";
 import RedsysService from "./redsys.service";
 
 class BillingService {
-    private cronService = new CronService()
     private couponService = new CouponService()
     private redsysService = new RedsysService()
 
@@ -56,7 +54,6 @@ class BillingService {
         billingData.orderNo = String(orderNo % 10000).padStart(6, '0') + String(billingData.user).substring(String(billingData.user).length - 6)
         let billing = new billingModel(billingData)
         billing = await billing.save()
-        this.cronService.checkForPayment(billing)
         return billing
     }
 
