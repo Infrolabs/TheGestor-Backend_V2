@@ -49,7 +49,7 @@ $(document).ready(function () {
 			getNum($('.gf-in-1').val())
 		)
 		$('.gf-in-3').val(
-			getNum($('.gf-in-2').val()) * 0.2
+			getNum(getNum($('.gf-in-2').val()) * 0.2)
 		)
 		$('.gf-in-6').val(
 			getNum($('.gf-in-3').val()) -
