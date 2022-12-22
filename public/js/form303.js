@@ -5,28 +5,40 @@ $(document).ready(function () {
 
 	function calculateTotal() {
 		$('.gf-in-16').val(
-			getNum($('.gf-in-14').val()) *
-			getNum($('.gf-in-15').val()) / 100
+			getNum(
+				getNum($('.gf-in-14').val()) *
+				getNum($('.gf-in-15').val()) / 100
+			)
 		)
 		$('.gf-in-19').val(
-			getNum($('.gf-in-17').val()) *
-			getNum($('.gf-in-18').val()) / 100
+			getNum(
+				getNum($('.gf-in-17').val()) *
+				getNum($('.gf-in-18').val()) / 100
+			)
 		)
 		$('.gf-in-22').val(
-			getNum($('.gf-in-20').val()) *
-			getNum($('.gf-in-21').val()) / 100
+			getNum(
+				getNum($('.gf-in-20').val()) *
+				getNum($('.gf-in-21').val()) / 100
+			)
 		)
 		$('.gf-in-31').val(
-			getNum($('.gf-in-29').val()) *
-			getNum($('.gf-in-30').val()) / 100
+			getNum(
+				getNum($('.gf-in-29').val()) *
+				getNum($('.gf-in-30').val()) / 100
+			)
 		)
 		$('.gf-in-34').val(
-			getNum($('.gf-in-32').val()) *
-			getNum($('.gf-in-33').val()) / 100
+			getNum(
+				getNum($('.gf-in-32').val()) *
+				getNum($('.gf-in-33').val()) / 100
+			)
 		)
 		$('.gf-in-37').val(
-			getNum($('.gf-in-35').val()) *
-			getNum($('.gf-in-36').val()) / 100
+			getNum(
+				getNum($('.gf-in-35').val()) *
+				getNum($('.gf-in-36').val()) / 100
+			)
 		)
 		$('.gf-in-40').val(
 			getNum($('.gf-in-16').val()) +
@@ -62,8 +74,10 @@ $(document).ready(function () {
 			getNum($('.gf-in-157').val())
 		)
 		$('.gf-in-160').val(
-			getNum($('.gf-in-158').val()) *
-			getNum($('.gf-in-159').val()) / 100
+			getNum(
+				getNum($('.gf-in-158').val()) *
+				getNum($('.gf-in-159').val()) / 100
+			)
 		)
 
 		$('.gf-in-164').val(
