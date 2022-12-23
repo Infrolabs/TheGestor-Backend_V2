@@ -12,16 +12,17 @@ class CronService {
     public rescheduleAllJobs() {
         // ======>> For PREMIUM users expiry
         // Schedule corn every day at 9:00
-        schedule.scheduleJob("Premium", "0 0 9 * * *", () => {
+        schedule.scheduleJob("Premium", "0 0 6 * * *", () => {
             this.premiumRenewJob()
         })
     }
 
     private async premiumRenewJob() {
         logger.info("======>> Premium cron started")
-        const endDate = new Date()
-        endDate.setHours(9, 0, 0, 0)
-        const startDate = new Date(endDate.getTime() - 24 * 60 * 60 * 1000)
+        const startDate = new Date()
+        startDate.setHours(0,0,0,0)
+        const endDate = new Date(startDate)
+        endDate.setDate(endDate.getDate() + 1)
         const users = await userModel.aggregate([
             {
                 $lookup: {
