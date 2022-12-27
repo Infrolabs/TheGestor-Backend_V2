@@ -27,5 +27,4 @@ export const {
     REDSYS_SOAP_URL,
     ONESIGNAL_APP_ID,
     ONESIGNAL_API_KEY,
-    REDSYS_PAYMENT_STATUS_CHECK_MINS
 } = process.env;

@@ -1,7 +1,4 @@
-import { REDSYS_PAYMENT_STATUS_CHECK_MINS } from '@/config'
-import { EBillingPaymentStatus, IBilling } from '@/interfaces/billing.interface'
 import { EPremiumType } from '@/interfaces/premium.interface'
-import billingModel from '@/models/billing.model'
 import userModel from '@/models/users.model'
 import { logger } from '@/utils/logger'
 import schedule from 'node-schedule'
