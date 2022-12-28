@@ -20,7 +20,7 @@ class CronService {
     private async premiumRenewJob() {
         logger.info("======>> Premium cron started")
         const startDate = new Date()
-        startDate.setHours(0,0,0,0)
+        startDate.setHours(0, 0, 0, 0)
         const endDate = new Date(startDate)
         endDate.setDate(endDate.getDate() + 1)
         const users = await userModel.aggregate([
@@ -36,6 +36,7 @@ class CronService {
             { $unwind: "$lastBilling" },
             {
                 $match: {
+                    premiumType: { $ne: EPremiumType.LIFETIME },
                     $or: [
                         { "lastBilling.expiryDate": { $lt: endDate, $gte: startDate } },
                         { "lastBilling.retryOn": { $lt: endDate, $gte: startDate } }
