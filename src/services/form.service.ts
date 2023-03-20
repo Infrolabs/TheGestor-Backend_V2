@@ -269,9 +269,9 @@ class FormService {
                 }
             })
 
-
+            const expenseDeduction = year >= 2023 ? 7 : 5
             const totalIncome = cumulativeIncomes[0]?.totalTriIncome || 0
-            const cell2Additional = ((totalIncome - totalExpense) * 5 / 100) > 2000 ? 2000 : ((totalIncome - totalExpense) * 5 / 100)
+            const cell2Additional = ((totalIncome - totalExpense) * expenseDeduction / 100) > 2000 ? 2000 : ((totalIncome - totalExpense) * expenseDeduction / 100)
             dataArray[0] = cumulativeIncomes[0]?.totalIncome || 0
             dataArray[1] = cell2Additional + totalExpense + prevCell2
             dataArray[4] = cell7Total - cell16Total
