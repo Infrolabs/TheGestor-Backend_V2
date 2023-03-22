@@ -14,7 +14,7 @@
 
 <body>
     <div class="gf-main-container gf-yellow-bg p-2">
-        <p>En la casilla 2 se incluye el 5% de los gastos de dificil justificacion sobre el rendimiento neto</p>
+        <p>En la casilla 2 se incluye el <%= year >= 2023? '7' : '5' %>% de los gastos de dificil justificacion sobre el rendimiento neto</p>
         <button class="btn gf-simplified-btn <%= data['isSimplified'] === false ? 'btn-primary' : 'btn-danger' %>">
             <%= data['isSimplified']===false ? 'Añadido' : 'Revertir' %>
         </button>
