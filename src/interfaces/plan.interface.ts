@@ -67,8 +67,8 @@ export const BillinPlans : IBillingPlan[] = [
             ]
         },
         amount: {
-            month: 39,
-            year: 390
+            month: 44,
+            year: 440
         }
     },
     {
