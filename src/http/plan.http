@@ -1,6 +1,6 @@
 # baseURL
-# @baseURL = http://localhost:3001/v3
- @baseURL = https://api-staging.thegestor.app/v3
+ @baseURL = http://localhost:3001/v3
+#@baseURL = https://api-staging.thegestor.app/v3
 # @baseURL = https://api.thegestor.app/v3
 
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIwYjUwNGI1ZWFkYTBhNzkyOGI4ODNkIn0sImlhdCI6MTY1OTk0MDE4OSwiZXhwIjoxNjkxNDc2MTg5LCJhdWQiOiJkZXYiLCJpc3MiOiJ0aGVnZXN0b3JhcHAifQ.UrVuhDZMllh3oNVMI9f6bsTCEtWSvomoI4TbISHJD4Y

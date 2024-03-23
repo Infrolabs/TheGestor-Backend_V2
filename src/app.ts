@@ -28,7 +28,13 @@ class App {
     this.env = NODE_ENV || 'development';
     this.port = PORT || 3000;
 
-    this.connectToDatabase();
+    this.connectToDatabase().then(() => {
+      console.log("successfully connected to the database");
+    })
+    .catch((err) => {
+      console.log("error connecting to the database:",err);
+      process.exit();
+    });
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
     this.initializeSwagger();
@@ -49,10 +55,20 @@ class App {
     return this.app;
   }
 
+  // private connectToDatabase() {
+  //   connect(dbConnection.url, dbConnection.options as ConnectOptions);
+  // }
   private connectToDatabase() {
-    connect(dbConnection.url, dbConnection.options as ConnectOptions);
+    return new Promise((resolve, reject) => {
+      connect(dbConnection.url, dbConnection.options as ConnectOptions, (error) => {
+        if (error) {
+          reject(error); // Connection failed
+        } else {
+          resolve("Connected"); // Connection successful
+        }
+      });
+    });
   }
-
   private initializeMiddlewares() {
     this.app.use(morgan(LOG_FORMAT, { stream }));
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
